@@ -1,4 +1,6 @@
-﻿namespace CodeTest.Game
+﻿using CodeTest.Game.Control;
+
+namespace CodeTest.Game.Simulation
 {
 	public class SimulationInput
 	{

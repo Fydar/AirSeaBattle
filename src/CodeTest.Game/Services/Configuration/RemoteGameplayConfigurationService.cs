@@ -4,7 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Services.Configuration
 {
 	/// <inheritdoc/>
 	public class RemoteGameplayConfigurationService : IGameplayConfigurationService

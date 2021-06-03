@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Services.Configuration
 {
 	/// <summary>
 	/// A class representing web-hosted game configuration.

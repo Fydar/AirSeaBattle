@@ -1,4 +1,4 @@
-﻿namespace CodeTest.Game
+﻿namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 {
 	public class EnemySpawnerSystemFactory : IWorldSystemFactory
 	{

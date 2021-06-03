@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CodeTest.Game.Control;
+using CodeTest.Game.Math;
+using System;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {
 	public class PlayerControlSystem : IWorldSystem
 	{

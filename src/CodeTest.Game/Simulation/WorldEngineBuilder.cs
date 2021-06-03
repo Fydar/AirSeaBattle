@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Simulation
 {
 	public class WorldEngineBuilder
 	{

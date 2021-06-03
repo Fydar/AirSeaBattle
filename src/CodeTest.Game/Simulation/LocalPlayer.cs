@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Simulation
 {
 	public class LocalPlayer
 	{

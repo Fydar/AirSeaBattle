@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Simulation
 {
 	public class WorldPlayer
 	{

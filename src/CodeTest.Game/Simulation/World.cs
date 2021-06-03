@@ -1,7 +1,8 @@
-﻿using System;
+﻿using CodeTest.Game.Math;
+using System;
 using System.Collections.ObjectModel;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Simulation
 {
 	public class World
 	{

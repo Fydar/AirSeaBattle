@@ -1,4 +1,6 @@
-﻿namespace CodeTest.Game
+﻿using CodeTest.Game.Math;
+
+namespace CodeTest.Game.Simulation
 {
 	public readonly struct UpdateParameters
 	{

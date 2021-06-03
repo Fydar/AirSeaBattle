@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using CodeTest.Game.Services.Configuration;
+using System.Collections.Generic;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Simulation
 {
 	public class WorldBuilder
 	{
