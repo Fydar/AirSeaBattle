@@ -14,6 +14,7 @@ namespace CodeTest.Game.IntegrationTests
 		{
 			var worldEngine = WorldEngineBuilder.Create()
 				.UseWorldSystem(new PlayerSpawnerSystemFactory(new PlayerSpawnerConfiguration()))
+				.UseWorldSystem(new PlayerControlSystemFactory(new PlayerControlConfiguration()))
 				.UseWorldSystem(new EnemySpawnerSystemFactory(new EnemySpawnerConfiguration()))
 				.Build();
 
