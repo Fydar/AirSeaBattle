@@ -18,7 +18,6 @@ namespace CodeTest.Game.IntegrationTests
 		public void Test1()
 		{
 			var worldEngine = WorldEngineBuilder.Create()
-				.UseWorldSystem(new PlayerSpawnerSystemFactory(new PlayerSpawnerConfiguration()))
 				.UseWorldSystem(new PlayerControlSystemFactory(new PlayerControlConfiguration()))
 				.UseWorldSystem(new EnemySpawnerSystemFactory(new EnemySpawnerConfiguration()))
 				.Build();
@@ -31,11 +30,11 @@ namespace CodeTest.Game.IntegrationTests
 
 			world.AddPlayer(player);
 
-			world.Update(0.2f);
-			world.Update(0.2f);
-			world.Update(0.2f);
-			world.Update(0.2f);
-			world.Update(0.2f);
+			world.Update(((Fixed)1) / 5);
+			world.Update(((Fixed)1) / 5);
+			world.Update(((Fixed)1) / 5);
+			world.Update(((Fixed)1) / 5);
+			world.Update(((Fixed)1) / 5);
 		}
 	}
 }

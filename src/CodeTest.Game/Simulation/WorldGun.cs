@@ -4,11 +4,15 @@ namespace CodeTest.Game.Simulation
 {
 	public class WorldGun
 	{
-		public float PositionX { get; set; } = 0.25f;
+		public World World { get; }
+		public WorldGunPosition Angle { get; }
+		public Fixed PositionX { get; set; }
 		public bool IsFlipped { get; set; }
 
-		public WorldGun()
+		public WorldGun(World world, WorldGunPosition angle)
 		{
+			World = world;
+			Angle = angle;
 		}
 	}
 }

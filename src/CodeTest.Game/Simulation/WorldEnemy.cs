@@ -4,13 +4,15 @@ namespace CodeTest.Game.Simulation
 {
 	public class WorldEnemy
 	{
+		public World World { get; }
 		public WorldEnemyTemplate Template { get; }
-		public float PositionX { get; set; }
+		public Fixed PositionX { get; set; }
 		public int Layer { get; set; }
-		public float VelocityX { get; set; }
+		public Fixed VelocityX { get; set; }
 
-		public WorldEnemy(WorldEnemyTemplate template)
+		public WorldEnemy(World world, WorldEnemyTemplate template)
 		{
+			World = world;
 			Template = template;
 		}
 	}

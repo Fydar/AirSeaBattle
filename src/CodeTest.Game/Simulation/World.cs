@@ -12,9 +12,9 @@ namespace CodeTest.Game.Simulation
 		/// <summary>
 		/// The age of the world in seconds.
 		/// </summary>
-		public float Age { get; private set; }
-		public float Width { get; set; }
-		public float Height { get; set; }
+		public Fixed Age { get; private set; }
+		public Fixed Width { get; set; }
+		public Fixed Height { get; set; }
 		public ObservableCollection<WorldEnemy> Enemies { get; } = new();
 		public ObservableCollection<WorldPlayer> Players { get; } = new();
 		public ObservableCollection<WorldGun> Guns { get; } = new();
@@ -31,8 +31,8 @@ namespace CodeTest.Game.Simulation
 		{
 			this.worldEngine = worldEngine;
 
-			Width = 16.0f;
-			Height = 9.0f;
+			Width = 16;
+			Height = 9;
 		}
 
 		/// <summary>
@@ -40,7 +40,7 @@ namespace CodeTest.Game.Simulation
 		/// </summary>
 		/// <param name="width"></param>
 		/// <param name="height"></param>
-		public void Resize(float width, float height)
+		public void Resize(Fixed width, Fixed height)
 		{
 			// Ahhhhh gameplay that is fundemantally effected by the screen size? Makes me sad; but it's
 			// what the design document asks for. Got to make it so the world can be resized as I rather
@@ -55,7 +55,7 @@ namespace CodeTest.Game.Simulation
 		/// </summary>
 		/// <param name="deltaTime"></param>
 		/// <param name="time"></param>
-		public void Update(float deltaTime)
+		public void Update(Fixed deltaTime)
 		{
 			Age += deltaTime;
 
@@ -74,7 +74,7 @@ namespace CodeTest.Game.Simulation
 		/// <param name="localPlayer">An object representing the player that joined.</param>
 		public WorldPlayer AddPlayer(LocalPlayer localPlayer)
 		{
-			var worldPlayer = new WorldPlayer(localPlayer.Input);
+			var worldPlayer = new WorldPlayer(this, localPlayer.Input);
 			Players.Add(worldPlayer);
 
 			for (int i = 0; i < systems.Length; i++)
@@ -105,7 +105,8 @@ namespace CodeTest.Game.Simulation
 		/// </summary>
 		public void Reset()
 		{
-			Age = 0.0f;
+			Age = 0;
+			Guns.Clear();
 			Enemies.Clear();
 			Players.Clear();
 		}
