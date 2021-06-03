@@ -1,4 +1,4 @@
-﻿namespace CodeTest.Game
+﻿namespace CodeTest.Game.Control
 {
 	public class InputButton
 	{

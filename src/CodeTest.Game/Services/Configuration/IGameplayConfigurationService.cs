@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Services.Configuration
 {
 	/// <summary>
 	/// A service for providing the game with configuration.

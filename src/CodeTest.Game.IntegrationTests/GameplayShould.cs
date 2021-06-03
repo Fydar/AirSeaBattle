@@ -1,3 +1,8 @@
+using CodeTest.Game.Math;
+using CodeTest.Game.Services.Configuration;
+using CodeTest.Game.Simulation;
+using CodeTest.Game.Simulation.Systems.EnemySpawning;
+using CodeTest.Game.Simulation.Systems.PlayerControl;
 using NUnit.Framework;
 
 namespace CodeTest.Game.IntegrationTests

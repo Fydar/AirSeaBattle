@@ -1,6 +1,7 @@
-﻿using System;
+﻿using CodeTest.Game.Math;
+using System;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 {
 	public class EnemySpawnerSystem : IWorldSystem
 	{

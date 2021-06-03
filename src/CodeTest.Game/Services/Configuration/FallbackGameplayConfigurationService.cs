@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace CodeTest.Game
+namespace CodeTest.Game.Services.Configuration
 {
 	/// <inheritdoc/>
 	public class FallbackGameplayConfigurationService : IGameplayConfigurationService

@@ -1,4 +1,4 @@
-﻿namespace CodeTest.Game
+﻿namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {
 	public class PlayerControlSystemFactory : IWorldSystemFactory
 	{
