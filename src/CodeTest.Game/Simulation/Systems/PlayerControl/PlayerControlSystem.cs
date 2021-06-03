@@ -7,9 +7,9 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 	public class PlayerControlSystem : IWorldSystem
 	{
 		private readonly World world;
-		private readonly PlayerSpawnerConfiguration configuration;
+		private readonly PlayerControlConfiguration configuration;
 
-		public PlayerControlSystem(World world, PlayerSpawnerConfiguration configuration)
+		public PlayerControlSystem(World world, PlayerControlConfiguration configuration)
 		{
 			this.world = world;
 			this.configuration = configuration;
@@ -17,10 +17,22 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
+			// give the player a gun in the world
+			var gun = new WorldGun(world, configuration.DefaultPosition)
+			{
+				PositionX = world.Guns.Count == 0 ? ((Fixed)1) / 4 : ((Fixed)3) / 4
+			};
+
+			world.Guns.Add(gun);
+			worldPlayer.ControlledGuns.Add(gun);
 		}
 
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
+			foreach (var gun in worldPlayer.ControlledGuns)
+			{
+				world.Guns.Remove(gun);
+			}
 		}
 
 		public void OnUpdate(UpdateParameters parameters)
@@ -31,6 +43,15 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 				{
 					foreach (var gun in player.ControlledGuns)
 					{
+						var targetPosition = configuration.DefaultPosition;
+						if (player.Input.Up.IsDown)
+						{
+							targetPosition = configuration.DownPosition;
+						}
+						else if (player.Input.Down.IsDown)
+						{
+							targetPosition = configuration.UpPosition;
+						}
 
 					}
 				}

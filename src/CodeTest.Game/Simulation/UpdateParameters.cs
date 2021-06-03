@@ -4,9 +4,9 @@ namespace CodeTest.Game.Simulation
 {
 	public readonly struct UpdateParameters
 	{
-		public float DeltaTime { get; }
+		public Fixed DeltaTime { get; }
 
-		public UpdateParameters(float deltaTime)
+		public UpdateParameters(Fixed deltaTime)
 		{
 			DeltaTime = deltaTime;
 		}

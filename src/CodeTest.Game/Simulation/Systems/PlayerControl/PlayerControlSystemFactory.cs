@@ -4,14 +4,14 @@
 	{
 		private readonly PlayerControlConfiguration configuration;
 
-		public PlayerSpawnerSystemFactory(PlayerControlConfiguration configuration)
+		public PlayerControlSystemFactory(PlayerControlConfiguration configuration)
 		{
 			this.configuration = configuration;
 		}
 
 		public IWorldSystem Build(World world)
 		{
-			return new PlayerSpawnerSystem(world, configuration);
+			return new PlayerControlSystem(world, configuration);
 		}
 	}
 }

@@ -34,6 +34,8 @@ namespace CodeTest.Game.Simulation
 				systems[i] = worldEngine.worldSystems[i].Build(world);
 			}
 
+			world.systems = systems;
+
 			return world;
 		}
 	}

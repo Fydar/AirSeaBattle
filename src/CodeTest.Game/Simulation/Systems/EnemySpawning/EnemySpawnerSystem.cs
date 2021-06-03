@@ -9,13 +9,13 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 		private readonly EnemySpawnerConfiguration configuration;
 
 		private readonly Random random;
-		private float timeWaitingWithNoEnemies = 0.0f;
+		private Fixed timeWaitingWithNoEnemies;
 
-		public float LayerHeight
+		public Fixed LayerHeight
 		{
 			get
 			{
-				float minusReserved = world.Height - (configuration.MinimumAltitudePercent * world.Height);
+				var minusReserved = world.Height - (configuration.MinimumAltitudePercent * world.Height);
 
 				return minusReserved / configuration.LayersCount;
 			}
@@ -48,20 +48,20 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 
 			if (timeWaitingWithNoEnemies >= configuration.DelayBetweenRounds)
 			{
-				timeWaitingWithNoEnemies = 0.0f;
+				timeWaitingWithNoEnemies = 0;
 
 				SpawnVerticalWave();
 			}
 		}
 
-		public float GetLayerCenter(int layer)
+		public Fixed GetLayerCenter(int layer)
 		{
 			if (layer >= configuration.LayersCount)
 			{
 				throw new ArgumentOutOfRangeException(nameof(layer), "Layer is too large.");
 			}
 
-			return (configuration.MinimumAltitudePercent * world.Height) + (LayerHeight * (layer - 0.5f));
+			return (configuration.MinimumAltitudePercent * world.Height) + (LayerHeight * (layer - Constants.Half));
 		}
 
 		/// <summary>
@@ -75,10 +75,10 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 
 			for (int i = 0; i < enemiesCount; i++)
 			{
-				var newEnemy = new WorldEnemy(configuration.Enemy)
+				var newEnemy = new WorldEnemy(world, configuration.Enemy)
 				{
 					Layer = startRow + i,
-					PositionX = 0.0f,
+					PositionX = Constants.Zero,
 					VelocityX = configuration.Enemy.Speed
 				};
 

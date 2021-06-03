@@ -4,34 +4,39 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {
 	public class PlayerControlConfiguration
 	{
-		public float PlayerHeightPercent { get; set; } = 0.125f;
-		public float BulletSpeed { get; set; }
-		public float BulletSize { get; set; }
-		public float PlayerWidth { get; set; }
-		public float PlayerHeight { get; set; }
+		public Fixed PlayerHeightPercent { get; set; } = Constants.One / 8;
+		public Fixed BulletSpeed { get; set; } = Constants.One;
+		public Fixed BulletSize { get; set; } = Constants.One / 8;
+		public FixedVector2 GunSize { get; set; } = FixedVector2.One;
 
-		public GunPosition DefaultPosition { get; set; } = new GunPosition()
+		public WorldGunPosition DefaultPosition { get; set; } = new WorldGunPosition()
 		{
 			Graphic = "gun_60",
 			Inclination = 60,
-			BulletOffsetX = 0.6f,
-			BulletOffsetY = 0.6f
+			BulletOffset = new FixedVector2(
+				Constants.One * 6 / 10,
+				Constants.One * 6 / 10
+			)
 		};
 
-		public GunPosition UpPosition { get; set; } = new GunPosition()
+		public WorldGunPosition UpPosition { get; set; } = new WorldGunPosition()
 		{
 			Graphic = "gun_90",
 			Inclination = 60,
-			BulletOffsetX = 0.3f,
-			BulletOffsetY = 0.9f
+			BulletOffset = new FixedVector2(
+				Constants.One * 3 / 10,
+				Constants.One * 9 / 10
+			)
 		};
 
-		public GunPosition DownPosition { get; set; } = new GunPosition()
+		public WorldGunPosition DownPosition { get; set; } = new WorldGunPosition()
 		{
 			Graphic = "gun_30",
 			Inclination = 30,
-			BulletOffsetX = 0.9f,
-			BulletOffsetY = 0.5f
+			BulletOffset = new FixedVector2(
+				Constants.One * 9 / 10,
+				Constants.One * 3 / 10
+			)
 		};
 	}
 }
