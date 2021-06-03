@@ -5,9 +5,9 @@ namespace CodeTest.Game
 	public class PlayerSpawnerSystem : IWorldSystem
 	{
 		private readonly World world;
-		private readonly PlayerSpawnerConfiguration configuration;
+		private readonly PlayerControlConfiguration configuration;
 
-		public PlayerSpawnerSystem(World world, PlayerSpawnerConfiguration configuration)
+		public PlayerSpawnerSystem(World world, PlayerControlConfiguration configuration)
 		{
 			this.world = world;
 			this.configuration = configuration;
