@@ -63,6 +63,13 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 
 					if (player.Input.Fire.CurrentState == InputButtonState.Pressed)
 					{
+						// Limit the amount of projectiles in the game.
+						// Don't create new projectiles if there are too many.
+						if (world.Projectiles.Count >= world.MaximumProjectiles)
+						{
+							continue;
+						}
+
 						var velocityVector = FixedVector2.Rotate(FixedVector2.Right, gun.Value.Angle.Value.Inclination * Constants.Deg2Rad);
 
 						var projectilePosition = gun.Value.Bounds.NormalizedToPoint(gun.Value.Angle.Value.BulletOffset);
