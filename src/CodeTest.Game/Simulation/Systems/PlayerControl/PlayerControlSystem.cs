@@ -36,6 +36,11 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 
 		public void OnUpdate(UpdateParameters parameters)
 		{
+			if (world.IsGameOver)
+			{
+				return;
+			}
+
 			foreach (var playerKvp in world.Players)
 			{
 				var player = playerKvp.Value;

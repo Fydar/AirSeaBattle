@@ -15,6 +15,7 @@ namespace CodeTestUnity
 	{
 		[SerializeField] private ControlSchema[] controls;
 		[SerializeField] private WorldRenderer worldRenderer;
+		[SerializeField] private HudController playerHud;
 
 		[Header("Configuration")]
 		[SerializeField] private float enemySpeed = 1.0f;
@@ -55,7 +56,9 @@ namespace CodeTestUnity
 			playerInputManager.AttachInput(playerInput);
 
 			var player = new LocalPlayer(playerInput);
-			CurrentWorld.AddPlayer(player);
+			var worldPlayer = CurrentWorld.AddPlayer(player);
+
+			playerHud.RenderTarget = worldPlayer;
 
 			while (true)
 			{
