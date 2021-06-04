@@ -14,7 +14,6 @@ namespace CodeTestUnity
 		[SerializeField] private ControlSchema[] controls;
 		[SerializeField] private WorldRenderer worldRenderer;
 
-
 		private void Start()
 		{
 			StartCoroutine(RuntimeRoutine());

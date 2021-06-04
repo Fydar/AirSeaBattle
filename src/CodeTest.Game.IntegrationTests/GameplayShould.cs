@@ -1,6 +1,7 @@
 using CodeTest.Game.Math;
 using CodeTest.Game.Services.Configuration;
 using CodeTest.Game.Simulation;
+using CodeTest.Game.Simulation.Systems.EnemyBehaviour;
 using CodeTest.Game.Simulation.Systems.EnemySpawning;
 using CodeTest.Game.Simulation.Systems.PlayerControl;
 using NUnit.Framework;
@@ -20,6 +21,7 @@ namespace CodeTest.Game.IntegrationTests
 			var worldEngine = WorldEngineBuilder.Create()
 				.UseWorldSystem(new PlayerControlSystemFactory(new PlayerControlConfiguration()))
 				.UseWorldSystem(new EnemySpawnerSystemFactory(new EnemySpawnerConfiguration()))
+				.UseWorldSystem(new EnemyBehaviourSystemFactory(new EnemyBehaviourConfiguration()))
 				.Build();
 
 			var world = worldEngine.ConstructWorld()

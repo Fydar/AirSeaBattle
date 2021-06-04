@@ -16,6 +16,11 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 		/// <summary>
 		/// The enemy that the spawner should use.
 		/// </summary>
-		public WorldEnemyTemplate Enemy { get; set; } = new();
+		public WorldEnemyTemplate Enemy { get; set; } = new()
+		{
+			Speed = Constants.One,
+			Height = Constants.One,
+			Width = Constants.One
+		};
 	}
 }
