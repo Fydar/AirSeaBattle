@@ -1,4 +1,5 @@
 ﻿using CodeTest.Game.Simulation;
+using CodeTest.Game.Simulation.Models;
 using UnityEngine;
 
 namespace CodeTestUnity
@@ -33,6 +34,11 @@ namespace CodeTestUnity
 
 		private void OnDrawGizmos()
 		{
+			if (World == null)
+			{
+				return;
+			}
+
 			var localPosition = new Vector3(0.0f, 0.0f, 0.0f);
 			var gunSize = new Vector3(World.Width.AsFloat, World.Height.AsFloat, 0.0f);
 

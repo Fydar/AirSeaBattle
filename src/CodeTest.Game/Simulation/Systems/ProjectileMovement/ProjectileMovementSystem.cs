@@ -1,5 +1,4 @@
-﻿using CodeTest.Game.Math;
-using CodeTest.Game.Simulation.Models;
+﻿using CodeTest.Game.Simulation.Models;
 using System.Linq;
 
 namespace CodeTest.Game.Simulation.Systems.ProjectileMovement
@@ -41,16 +40,10 @@ namespace CodeTest.Game.Simulation.Systems.ProjectileMovement
 				{
 					var enemy = enemyKvp.Value;
 
-					var enemyBox = new FixedAABox(enemy.Position.Value,
-						new FixedVector2(
-							enemy.Template.Width,
-							enemy.Template.Height
-						)
-					);
-
-					if (enemyBox.Contains(projectile.Position.Value))
+					if (enemy.Bounds.Contains(projectile.Position.Value))
 					{
 						collided = true;
+						enemy.InvokeOnDestroyed();
 						world.Enemies.Remove(enemy.Identifier);
 						break;
 					}

@@ -1,5 +1,5 @@
 ﻿using CodeTest.Game.Math;
-using CodeTest.Game.Simulation;
+using CodeTest.Game.Simulation.Models;
 using RPGCore.Events;
 using System.Diagnostics;
 using UnityEngine;
