@@ -7,6 +7,7 @@ using CodeTest.Game.Simulation.Systems.EnemySpawning;
 using CodeTest.Game.Simulation.Systems.PlayerControl;
 using CodeTest.Game.Simulation.Systems.ProjectileMovement;
 using System.Collections;
+using System.Net.Http;
 using UnityEngine;
 
 namespace CodeTestUnity
@@ -19,6 +20,8 @@ namespace CodeTestUnity
 
 		[Header("Configuration")]
 		[SerializeField] private float enemySpeed = 1.0f;
+		[SerializeField] private string configurationUrl = "http://content.gamefuel.info/api/client_programming_test/air_battle_v1/content/config/config";
+
 
 		public World CurrentWorld { get; private set; }
 
@@ -44,8 +47,11 @@ namespace CodeTestUnity
 				.UseWorldSystem(new ProjectileMovementSystemFactory())
 				.Build();
 
+			var httpClient = new HttpClient();
+
 			var worldTask = worldEngine.ConstructWorld()
 				.UseConfiguration(new FallbackGameplayConfigurationService())
+				.UseConfiguration(new RemoteGameplayConfigurationService(httpClient, configurationUrl))
 				.Build();
 
 			// Wait until the async task is complete.
