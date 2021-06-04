@@ -1,24 +1,55 @@
-﻿using CodeTest.Game.Simulation;
+﻿using CodeTest.Game.Math;
+using CodeTest.Game.Simulation;
+using System.Diagnostics;
 using UnityEngine;
 
 namespace CodeTestUnity
 {
-	public class WorldEnemyRenderer : MonoBehaviour
+	public class WorldEnemyRenderer : MonoBehaviour, IRenderer<WorldEnemy>
 	{
 		[SerializeField] private SpriteRenderer graphic;
 
-		public WorldEnemy Enemy { get; private set; }
-
-		public void Render(WorldEnemy enemy)
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private WorldEnemy renderTarget;
+		public WorldEnemy RenderTarget
 		{
-			Enemy = enemy;
+			get
+			{
+				return renderTarget;
+			}
+			set
+			{
+				renderTarget = value;
+
+				if (renderTarget == null)
+				{
+					graphic.enabled = false;
+				}
+				else
+				{
+					graphic.enabled = true;
+					SetPosition();
+				}
+			}
+		}
+
+		private void Update()
+		{
+			if (renderTarget == null)
+			{
+				return;
+			}
 
 			SetPosition();
 		}
 
 		private void SetPosition()
 		{
-			transform.localPosition = new Vector3(Enemy.PositionX.AsFloat, 0.0f, 0.0f);
+			var position = renderTarget.Position.Value;
+			transform.localPosition = new Vector3(
+				(position.X - (renderTarget.World.Width * Constants.Half)).AsFloat,
+				(position.Y - (renderTarget.World.Height * Constants.Half)).AsFloat,
+				0.0f);
 		}
 	}
 }

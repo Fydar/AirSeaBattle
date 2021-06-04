@@ -11,4 +11,12 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Events\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RPGCore.Events\RPGCore.Events.csproj" />
+  </ItemGroup>
+
 </Project>

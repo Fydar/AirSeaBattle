@@ -1,12 +1,11 @@
-﻿using System;
+﻿using RPGCore.Events;
 
 namespace CodeTest.Game.Simulation
 {
 	public class LocalPlayer
 	{
-		public Guid Identifer { get; set; }
-		public int HighScore { get; set; }
 		public SimulationInput Input { get; }
+		public EventField<int> HighScore { get; } = new();
 
 		public LocalPlayer(SimulationInput input)
 		{

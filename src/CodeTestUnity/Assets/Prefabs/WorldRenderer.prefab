@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 171789320756831915}
+  - component: {fileID: 831583989248928261}
   m_Layer: 0
   m_Name: WorldRenderer
   m_TagString: Untagged
@@ -110,6 +111,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &831583989248928261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360664038639453652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5e07c6647b77144bcf1cc50ad49e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 7544431846100180352}
+  gunRendererPrefab: {fileID: 4955679028132254207, guid: 0ee0d7f1575340744b4efcc9a20c2446,
+    type: 3}
+  enemyRendererPrefab: {fileID: 290540009375414757, guid: 6de908be5feae1440b5e18a516bd90f5,
+    type: 3}
 --- !u!1 &1631405977107230699
 GameObject:
   m_ObjectHideFlags: 0

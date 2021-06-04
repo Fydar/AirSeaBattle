@@ -2,7 +2,7 @@ using System;
 
 namespace RPGCore.Events
 {
-	public interface IEventDictionaryHandler<TKey, TValue> : IDisposable
+	public interface IEventDictionaryHandler<TKey, TValue>
 	{
 		void OnAdd(TKey key, TValue value);
 

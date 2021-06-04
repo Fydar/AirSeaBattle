@@ -75,14 +75,15 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 
 			for (int i = 0; i < enemiesCount; i++)
 			{
-				var newEnemy = new WorldEnemy(world, configuration.Enemy)
-				{
-					Layer = startRow + i,
-					PositionX = Constants.Zero,
-					VelocityX = configuration.Enemy.Speed
-				};
+				int layer = startRow + i;
+				var height = GetLayerCenter(layer);
 
-				world.Enemies.Add(newEnemy);
+				var newEnemy = new WorldEnemy(world, configuration.Enemy);
+
+				newEnemy.Position.Value = new FixedVector2(0, height);
+				newEnemy.VelocityX.Value = configuration.Enemy.Speed;
+
+				world.Enemies.Add(newEnemy.Identifier, newEnemy);
 			}
 		}
 
