@@ -4,6 +4,7 @@ using CodeTest.Game.Simulation;
 using CodeTest.Game.Simulation.Systems.EnemyBehaviour;
 using CodeTest.Game.Simulation.Systems.EnemySpawning;
 using CodeTest.Game.Simulation.Systems.PlayerControl;
+using CodeTest.Game.Simulation.Systems.ProjectileMovement;
 using NUnit.Framework;
 
 namespace CodeTest.Game.IntegrationTests
@@ -22,6 +23,7 @@ namespace CodeTest.Game.IntegrationTests
 				.UseWorldSystem(new PlayerControlSystemFactory(new PlayerControlConfiguration()))
 				.UseWorldSystem(new EnemySpawnerSystemFactory(new EnemySpawnerConfiguration()))
 				.UseWorldSystem(new EnemyBehaviourSystemFactory(new EnemyBehaviourConfiguration()))
+				.UseWorldSystem(new ProjectileMovementSystemFactory())
 				.Build();
 
 			var world = worldEngine.ConstructWorld()

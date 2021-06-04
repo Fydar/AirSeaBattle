@@ -1,5 +1,3 @@
-using System;
-
 namespace RPGCore.Events
 {
 	public interface IEventDictionaryHandler<TKey, TValue>

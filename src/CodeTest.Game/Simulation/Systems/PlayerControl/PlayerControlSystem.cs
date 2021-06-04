@@ -1,6 +1,5 @@
 ﻿using CodeTest.Game.Control;
 using CodeTest.Game.Math;
-using System;
 
 namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {
@@ -56,10 +55,17 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 					{
 						gun.Value.Angle.Value = targetAngle;
 					}
-				}
 
-				if (player.Input.Fire.CurrentState == InputButtonState.Pressed)
-				{
+					if (player.Input.Fire.CurrentState == InputButtonState.Pressed)
+					{
+						var velocityVector = FixedVector2.Rotate(FixedVector2.Right, gun.Value.Angle.Value.Inclination * Constants.Deg2Rad);
+
+						var projectile = new WorldProjectile(world);
+						projectile.Position.Value = gun.Value.Position;
+						projectile.Velocity.Value = velocityVector * configuration.BulletSpeed;
+
+						world.Projectiles.Add(projectile.Identifier, projectile);
+					}
 				}
 			}
 		}

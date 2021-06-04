@@ -58,7 +58,6 @@ namespace CodeTest.Game.Math
 
 		public readonly Fixed Magnitude
 		{
-			
 			get
 			{
 				return FixedMath.Sqrt(SqrMagnitude);
@@ -68,7 +67,6 @@ namespace CodeTest.Game.Math
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public readonly Fixed SqrMagnitude
 		{
-			
 			get
 			{
 				return (X * X) + (Y * Y);
@@ -77,7 +75,6 @@ namespace CodeTest.Game.Math
 
 		public readonly FixedVector2 Normalized
 		{
-			
 			get
 			{
 				return Normalize(this);
