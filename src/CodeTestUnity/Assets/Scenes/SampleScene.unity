@@ -287,6 +287,7 @@ MonoBehaviour:
   controls:
   - {fileID: 11400000, guid: 18ea22b4df4076344ad505aa39939ab5, type: 2}
   worldRenderer: {fileID: 831583989248928261}
+  enemySpeed: 2
 --- !u!4 &879978923
 Transform:
   m_ObjectHideFlags: 0

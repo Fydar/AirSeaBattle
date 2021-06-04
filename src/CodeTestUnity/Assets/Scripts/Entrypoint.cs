@@ -15,6 +15,9 @@ namespace CodeTestUnity
 		[SerializeField] private ControlSchema[] controls;
 		[SerializeField] private WorldRenderer worldRenderer;
 
+		[Header("Configuration")]
+		[SerializeField] private float enemySpeed = 1.0f;
+
 		public World CurrentWorld { get; private set; }
 
 		private void Start()
@@ -26,8 +29,16 @@ namespace CodeTestUnity
 		{
 			var worldEngine = WorldEngineBuilder.Create()
 				.UseWorldSystem(new PlayerControlSystemFactory(new PlayerControlConfiguration()))
-				.UseWorldSystem(new EnemySpawnerSystemFactory(new EnemySpawnerConfiguration()))
-				.UseWorldSystem(new EnemyBehaviourSystemFactory(new EnemyBehaviourConfiguration()))
+				.UseWorldSystem(new EnemySpawnerSystemFactory(
+					new EnemySpawnerConfiguration()
+					{
+						Enemy = new WorldEnemyTemplate()
+						{
+							Speed = Fixed.FromFloat(enemySpeed)
+						}
+					}))
+				.UseWorldSystem(new EnemyBehaviourSystemFactory(
+					new EnemyBehaviourConfiguration()))
 				.UseWorldSystem(new ProjectileMovementSystemFactory())
 				.Build();
 
