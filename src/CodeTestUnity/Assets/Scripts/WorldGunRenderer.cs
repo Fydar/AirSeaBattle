@@ -66,6 +66,21 @@ namespace CodeTestUnity
 			UpdateGraphics();
 		}
 
+		private void OnDrawGizmos()
+		{
+			var simPosition = renderTarget.Position;
+			var localPosition = new Vector3(
+				(simPosition.X - (renderTarget.World.Width * Constants.Half)).AsFloat,
+				(simPosition.Y - (renderTarget.World.Height * Constants.Half)).AsFloat,
+				0.0f);
+
+			var gunSize = new Vector3(renderTarget.World.GunSize.X.AsFloat, renderTarget.World.GunSize.Y.AsFloat, 0.0f);
+
+			Gizmos.color = Color.green;
+			Gizmos.DrawWireCube(localPosition, gunSize);
+			Gizmos.color = Color.white;
+		}
+
 		private void UpdateGraphics()
 		{
 			var position = renderTarget.Position;
