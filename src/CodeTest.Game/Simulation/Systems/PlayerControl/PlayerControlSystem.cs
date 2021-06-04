@@ -40,22 +40,26 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 			{
 				var player = playerKvp.Value;
 
-				if (player.Input.Fire.CurrentState == InputButtonState.Pressed)
+				var targetAngle = configuration.DefaultPosition;
+				if (player.Input.Up.IsDown)
 				{
-					var targetAngle = configuration.DefaultPosition;
-					if (player.Input.Up.IsDown)
-					{
-						targetAngle = configuration.DownPosition;
-					}
-					else if (player.Input.Down.IsDown)
-					{
-						targetAngle = configuration.UpPosition;
-					}
+					targetAngle = configuration.DownPosition;
+				}
+				else if (player.Input.Down.IsDown)
+				{
+					targetAngle = configuration.UpPosition;
+				}
 
-					foreach (var gun in player.ControlledGuns)
+				foreach (var gun in player.ControlledGuns)
+				{
+					if (gun.Value.Angle.Value != targetAngle)
 					{
 						gun.Value.Angle.Value = targetAngle;
 					}
+				}
+
+				if (player.Input.Fire.CurrentState == InputButtonState.Pressed)
+				{
 				}
 			}
 		}

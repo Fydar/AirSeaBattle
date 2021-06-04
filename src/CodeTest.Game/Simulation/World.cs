@@ -1,6 +1,7 @@
 ﻿using CodeTest.Game.Math;
 using RPGCore.Events;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace CodeTest.Game.Simulation
@@ -9,6 +10,7 @@ namespace CodeTest.Game.Simulation
 	{
 		internal IWorldSystem[] systems = Array.Empty<IWorldSystem>();
 		private readonly WorldEngine worldEngine;
+		private readonly HashSet<SimulationInput> inputs;
 
 		public Fixed GunHeightPercent { get; set; } = Constants.One / 8;
 
@@ -33,6 +35,8 @@ namespace CodeTest.Game.Simulation
 		internal World(WorldEngine worldEngine)
 		{
 			this.worldEngine = worldEngine;
+
+			inputs = new HashSet<SimulationInput>();
 
 			Width = 16;
 			Height = 9;
@@ -69,6 +73,13 @@ namespace CodeTest.Game.Simulation
 				var system = systems[i];
 				system.OnUpdate(parameters);
 			}
+
+			foreach (var input in inputs)
+			{
+				input.Up.Update();
+				input.Down.Update();
+				input.Fire.Update();
+			}
 		}
 
 		/// <summary>
@@ -77,6 +88,8 @@ namespace CodeTest.Game.Simulation
 		/// <param name="localPlayer">An object representing the player that joined.</param>
 		public WorldPlayer AddPlayer(LocalPlayer localPlayer)
 		{
+			inputs.Add(localPlayer.Input);
+
 			var worldPlayer = new WorldPlayer(this, localPlayer.Input);
 			Players.Add(worldPlayer.Identifier, worldPlayer);
 
@@ -94,6 +107,8 @@ namespace CodeTest.Game.Simulation
 		/// <param name="worldPlayer">An object representing the player that left.</param>
 		public void RemovePlayer(WorldPlayer worldPlayer)
 		{
+			inputs.Remove(worldPlayer.Input);
+
 			Players.Remove(worldPlayer.Identifier);
 
 			for (int i = 0; i < systems.Length; i++)

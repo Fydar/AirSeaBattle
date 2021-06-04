@@ -123,4 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce1386911e029d448e3acd3ee870944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun90: {fileID: 21300000, guid: 8de810bbb1d83ec4f98da141572840de, type: 3}
+  gun60: {fileID: 21300000, guid: a14d858e647de25488256e5b8bbf366b, type: 3}
+  gun30: {fileID: 21300000, guid: 635d7acb4a801b4438cad2612d063569, type: 3}
   graphic: {fileID: 4955679027213464398}
