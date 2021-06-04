@@ -6,7 +6,7 @@ namespace CodeTestUnity
 {
 	public class WorldResizer : MonoBehaviour
 	{
-		[SerializeField] private Entrypoint entrypoint;
+		[SerializeField] private GameRunner entrypoint;
 
 		private int currentWidth;
 		private int currentHeight;
