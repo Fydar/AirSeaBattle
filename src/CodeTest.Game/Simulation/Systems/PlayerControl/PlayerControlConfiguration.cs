@@ -6,7 +6,6 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 	{
 		public Fixed BulletSpeed { get; set; } = Constants.One;
 		public Fixed BulletSize { get; set; } = Constants.One / 8;
-		public FixedVector2 GunSize { get; set; } = FixedVector2.One;
 
 		public WorldGunPosition DefaultPosition { get; set; } = new WorldGunPosition()
 		{

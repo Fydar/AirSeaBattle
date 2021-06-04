@@ -12,6 +12,7 @@ namespace CodeTest.Game.Simulation
 		private readonly WorldEngine worldEngine;
 		private readonly HashSet<SimulationInput> inputs;
 
+		public FixedVector2 GunSize { get; set; } = FixedVector2.One;
 		public Fixed GunHeightPercent { get; set; } = Constants.One / 8;
 
 		/// <summary>
