@@ -1,4 +1,5 @@
 ﻿using CodeTest.Game.Math;
+using RPGCore.Events;
 using System;
 using System.Collections.ObjectModel;
 
@@ -15,9 +16,9 @@ namespace CodeTest.Game.Simulation
 		public Fixed Age { get; private set; }
 		public Fixed Width { get; set; }
 		public Fixed Height { get; set; }
-		public ObservableCollection<WorldEnemy> Enemies { get; } = new();
-		public ObservableCollection<WorldPlayer> Players { get; } = new();
-		public ObservableCollection<WorldGun> Guns { get; } = new();
+		public EventDictionary<Guid, WorldEnemy> Enemies { get; } = new();
+		public EventDictionary<Guid, WorldPlayer> Players { get; } = new();
+		public EventDictionary<Guid, WorldGun> Guns { get; } = new();
 
 		/// <summary>
 		/// The maximum number of projects allowed in this <see cref="World"/>.
@@ -75,7 +76,7 @@ namespace CodeTest.Game.Simulation
 		public WorldPlayer AddPlayer(LocalPlayer localPlayer)
 		{
 			var worldPlayer = new WorldPlayer(this, localPlayer.Input);
-			Players.Add(worldPlayer);
+			Players.Add(worldPlayer.Identifier, worldPlayer);
 
 			for (int i = 0; i < systems.Length; i++)
 			{
@@ -91,7 +92,7 @@ namespace CodeTest.Game.Simulation
 		/// <param name="worldPlayer">An object representing the player that left.</param>
 		public void RemovePlayer(WorldPlayer worldPlayer)
 		{
-			Players.Remove(worldPlayer);
+			Players.Remove(worldPlayer.Identifier);
 
 			for (int i = 0; i < systems.Length; i++)
 			{

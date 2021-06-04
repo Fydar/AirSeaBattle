@@ -1,5 +1,4 @@
 ﻿using CodeTest.Game.Simulation;
-using System.Collections.Specialized;
 using UnityEngine;
 
 namespace CodeTestUnity
@@ -16,18 +15,8 @@ namespace CodeTestUnity
 		{
 			World = world;
 
-			World.Guns.CollectionChanged += GunCollectionChanged;
-		}
-
-		private void GunCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-		{
-			foreach (object newItem in e.NewItems)
-			{
-				var worldGun = (WorldGun)newItem;
-				var gunRenderer = Instantiate(gunRendererPrefab);
-
-				gunRenderer.Render(worldGun);
-			}
+			World.Guns.Handlers[this].AddAndInvoke(new InstantiateAndDestoryHandler<WorldGun>(gunRendererPrefab));
+			World.Enemies.Handlers[this].AddAndInvoke(new InstantiateAndDestoryHandler<WorldEnemy>(enemyRendererPrefab));
 		}
 	}
 }

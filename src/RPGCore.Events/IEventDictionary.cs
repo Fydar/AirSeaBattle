@@ -16,5 +16,6 @@ namespace RPGCore.Events
 		bool Remove(TKey key);
 
 		bool TryGetValue(TKey key, out TValue value);
+		void Clear();
 	}
 }

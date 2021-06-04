@@ -120,12 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!212 &172268540 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7544431846100180352, guid: b7fe368bca2520f4d82ac8536746146d,
-    type: 3}
-  m_PrefabInstance: {fileID: 831583989248928258}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,25 +409,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7fe368bca2520f4d82ac8536746146d, type: 3}
---- !u!1 &831583989248928259 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1360664038639453652, guid: b7fe368bca2520f4d82ac8536746146d,
+--- !u!114 &831583989248928261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 831583989248928261, guid: b7fe368bca2520f4d82ac8536746146d,
     type: 3}
   m_PrefabInstance: {fileID: 831583989248928258}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &831583989248928261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831583989248928259}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb5e07c6647b77144bcf1cc50ad49e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 172268540}
-  gunRendererPrefab: {fileID: 4955679028132254207, guid: 0ee0d7f1575340744b4efcc9a20c2446,
-    type: 3}
-  enemyRendererPrefab: {fileID: 0}

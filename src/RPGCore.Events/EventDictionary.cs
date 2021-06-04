@@ -57,6 +57,15 @@ namespace RPGCore.Events
 			return Collection.TryGetValue(key, out value);
 		}
 
+		public void Clear()
+		{
+			foreach (var item in Collection)
+			{
+				Handlers.InvokeRemoved(item.Key, item.Value);
+			}
+			Collection.Clear();
+		}
+
 		public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
 		{
 			return Collection.GetEnumerator();

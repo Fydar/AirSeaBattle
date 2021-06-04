@@ -18,41 +18,43 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
 			// give the player a gun in the world
-			var gun = new WorldGun(world, configuration.DefaultPosition)
-			{
-				PositionX = world.Guns.Count == 0 ? ((Fixed)1) / 4 : ((Fixed)3) / 4
-			};
+			var gun = new WorldGun(world, configuration.DefaultPosition);
 
-			world.Guns.Add(gun);
-			worldPlayer.ControlledGuns.Add(gun);
+			gun.PositionX.Value = world.Guns.Count == 0 ? ((Fixed)1) / 4 : ((Fixed)3) / 4;
+
+			world.Guns.Add(gun.Identifier, gun);
+			worldPlayer.ControlledGuns.Add(gun.Identifier, gun);
 		}
 
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
-			foreach (var gun in worldPlayer.ControlledGuns)
+			foreach (var gunKvp in worldPlayer.ControlledGuns)
 			{
-				world.Guns.Remove(gun);
+				world.Guns.Remove(gunKvp.Key);
 			}
 		}
 
 		public void OnUpdate(UpdateParameters parameters)
 		{
-			foreach (var player in world.Players)
+			foreach (var playerKvp in world.Players)
 			{
+				var player = playerKvp.Value;
+
 				if (player.Input.Fire.CurrentState == InputButtonState.Pressed)
 				{
+					var targetAngle = configuration.DefaultPosition;
+					if (player.Input.Up.IsDown)
+					{
+						targetAngle = configuration.DownPosition;
+					}
+					else if (player.Input.Down.IsDown)
+					{
+						targetAngle = configuration.UpPosition;
+					}
+
 					foreach (var gun in player.ControlledGuns)
 					{
-						var targetPosition = configuration.DefaultPosition;
-						if (player.Input.Up.IsDown)
-						{
-							targetPosition = configuration.DownPosition;
-						}
-						else if (player.Input.Down.IsDown)
-						{
-							targetPosition = configuration.UpPosition;
-						}
-
+						gun.Value.Angle.Value = targetAngle;
 					}
 				}
 			}
