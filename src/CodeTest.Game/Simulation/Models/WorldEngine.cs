@@ -1,4 +1,4 @@
-﻿namespace CodeTest.Game.Simulation
+﻿namespace CodeTest.Game.Simulation.Models
 {
 	public class WorldEngine
 	{

@@ -1,4 +1,5 @@
 ﻿using CodeTest.Game.Math;
+using CodeTest.Game.Simulation.Models;
 
 namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {
@@ -12,8 +13,8 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 			Graphic = "gun_60",
 			Inclination = 60,
 			BulletOffset = new FixedVector2(
-				Constants.One * 6 / 10,
-				Constants.One * 6 / 10
+				((Fixed)6) / 10,
+				((Fixed)6) / 10
 			)
 		};
 
@@ -22,8 +23,8 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 			Graphic = "gun_90",
 			Inclination = 90,
 			BulletOffset = new FixedVector2(
-				Constants.One * 3 / 10,
-				Constants.One * 9 / 10
+				((Fixed)17) / 40,
+				((Fixed)6) / 10
 			)
 		};
 
@@ -32,8 +33,8 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 			Graphic = "gun_30",
 			Inclination = 30,
 			BulletOffset = new FixedVector2(
-				Constants.One * 9 / 10,
-				Constants.One * 3 / 10
+				((Fixed)6) / 10,
+				((Fixed)5) / 10
 			)
 		};
 	}

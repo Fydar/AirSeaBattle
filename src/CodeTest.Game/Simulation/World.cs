@@ -1,4 +1,5 @@
 ﻿using CodeTest.Game.Math;
+using CodeTest.Game.Simulation.Models;
 using RPGCore.Events;
 using System;
 using System.Collections.Generic;

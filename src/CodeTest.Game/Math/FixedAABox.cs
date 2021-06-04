@@ -59,6 +59,28 @@ namespace CodeTest.Game.Math
 			Extents = extents;
 		}
 
+		public readonly FixedVector2 PointToNormalized(FixedVector2 point)
+		{
+			var min = Min;
+			var max = Max;
+
+			return new FixedVector2(
+				FixedMath.InverseLerp(min.X, max.X, point.X),
+				FixedMath.InverseLerp(min.Y, max.Y, point.Y)
+			);
+		}
+
+		public readonly FixedVector2 NormalizedToPoint(FixedVector2 normalised)
+		{
+			var min = Min;
+			var max = Max;
+
+			return new FixedVector2(
+				FixedMath.LerpUnclamped(min.X, max.X, normalised.X),
+				FixedMath.LerpUnclamped(min.Y, max.Y, normalised.Y)
+			);
+		}
+
 		public readonly bool Contains(in FixedVector2 point)
 		{
 			var min = Min;

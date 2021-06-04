@@ -2,7 +2,7 @@
 using RPGCore.Events;
 using System;
 
-namespace CodeTest.Game.Simulation
+namespace CodeTest.Game.Simulation.Models
 {
 	public class WorldGun
 	{
@@ -17,6 +17,14 @@ namespace CodeTest.Game.Simulation
 			get
 			{
 				return new FixedVector2(PositionX.Value * World.Width, World.GunHeightPercent * World.Height);
+			}
+		}
+
+		public FixedAABox Bounds
+		{
+			get
+			{
+				return new FixedAABox(Position, World.GunSize);
 			}
 		}
 
