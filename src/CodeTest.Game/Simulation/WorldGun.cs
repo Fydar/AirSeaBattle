@@ -12,6 +12,14 @@ namespace CodeTest.Game.Simulation
 		public EventField<Fixed> PositionX { get; } = new();
 		public EventField<bool> IsFlipped { get; } = new();
 
+		public FixedVector2 Position
+		{
+			get
+			{
+				return new FixedVector2(PositionX.Value * World.Width, World.GunHeightPercent * World.Height);
+			}
+		}
+
 		public WorldGun(World world, WorldGunPosition angle)
 		{
 			Identifier = Guid.NewGuid();

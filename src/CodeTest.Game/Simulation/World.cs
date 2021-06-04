@@ -10,6 +10,8 @@ namespace CodeTest.Game.Simulation
 		internal IWorldSystem[] systems = Array.Empty<IWorldSystem>();
 		private readonly WorldEngine worldEngine;
 
+		public Fixed GunHeightPercent { get; set; } = Constants.One / 8;
+
 		/// <summary>
 		/// The age of the world in seconds.
 		/// </summary>
