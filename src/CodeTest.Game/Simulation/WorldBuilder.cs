@@ -1,6 +1,7 @@
 ﻿using CodeTest.Game.Services.Configuration;
 using CodeTest.Game.Simulation.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CodeTest.Game.Simulation
 {
@@ -25,9 +26,15 @@ namespace CodeTest.Game.Simulation
 		/// Constructs a new <see cref="World"/> from the current state of this <see cref="WorldBuilder"/>.
 		/// </summary>
 		/// <returns>The new <see cref="World"/>.</returns>
-		public World Build()
+		public async Task<World> Build()
 		{
-			var world = new World(worldEngine);
+			var configuration = new GameplayConfiguration();
+			foreach (var configurationService in configurationServices)
+			{
+				await configurationService.Configure(configuration);
+			}
+
+			var world = new World(configuration);
 
 			var systems = new IWorldSystem[worldEngine.worldSystems.Length];
 			for (int i = 0; i < worldEngine.worldSystems.Length; i++)

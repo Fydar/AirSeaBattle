@@ -1,4 +1,5 @@
 ﻿using CodeTest.Game.Math;
+using CodeTest.Game.Services.Configuration;
 using CodeTest.Game.Simulation.Models;
 using RPGCore.Events;
 using System;
@@ -9,16 +10,13 @@ namespace CodeTest.Game.Simulation
 	public class World
 	{
 		internal IWorldSystem[] systems = Array.Empty<IWorldSystem>();
-		private readonly WorldEngine worldEngine;
 		private readonly HashSet<SimulationInput> inputs;
+
+		public GameplayConfiguration Configuration { get; }
 
 		public FixedVector2 GunSize { get; set; } = FixedVector2.One;
 		public Fixed GunHeightPercent { get; set; } = Constants.One / 8;
 		public Fixed LevelTime { get; set; } = 120;
-
-		public bool IsGameOver => Age >= LevelTime;
-
-		public Fixed TimeRemaining => LevelTime - Age;
 
 		/// <summary>
 		/// The age of the world in seconds.
@@ -32,6 +30,8 @@ namespace CodeTest.Game.Simulation
 		public EventDictionary<Guid, WorldProjectile> Projectiles { get; } = new();
 
 		public FixedAABox Bounds => new(new(Width / 2, Height / 2), new(Width / 2, Height / 2));
+		public bool IsGameOver => Age >= LevelTime;
+		public Fixed TimeRemaining => LevelTime - Age;
 
 		/// <summary>
 		/// The maximum number of projects allowed in this <see cref="World"/>.
@@ -41,9 +41,9 @@ namespace CodeTest.Game.Simulation
 		/// </remarks>
 		public int MaximumProjectiles { get; set; } = 5;
 
-		internal World(WorldEngine worldEngine)
+		internal World(GameplayConfiguration configuration)
 		{
-			this.worldEngine = worldEngine;
+			Configuration = configuration;
 
 			inputs = new HashSet<SimulationInput>();
 

@@ -18,7 +18,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
 			// give the player a gun in the world
-			var gun = new WorldGun(world, configuration.DefaultPosition);
+			var gun = new WorldGun(worldPlayer, configuration.DefaultPosition);
 
 			gun.PositionX.Value = world.Guns.Count == 0 ? ((Fixed)1) / 4 : ((Fixed)3) / 4;
 
@@ -79,7 +79,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 
 						var projectilePosition = gun.Value.Bounds.NormalizedToPoint(gun.Value.Angle.Value.BulletOffset);
 
-						var projectile = new WorldProjectile(world);
+						var projectile = new WorldProjectile(gun.Value);
 						projectile.Position.Value = projectilePosition;
 						projectile.Velocity.Value = velocityVector * configuration.BulletSpeed;
 
