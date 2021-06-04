@@ -17,9 +17,9 @@ namespace CodeTestUnity
 		{
 			World = world;
 
-			World.Guns.Handlers[this].AddAndInvoke(new InstantiateAndDestoryHandler<WorldGun>(gunRendererPrefab));
-			World.Enemies.Handlers[this].AddAndInvoke(new InstantiateAndDestoryHandler<WorldEnemy>(enemyRendererPrefab));
-			World.Projectiles.Handlers[this].AddAndInvoke(new InstantiateAndDestoryHandler<WorldProjectile>(projectileRendererPrefab));
+			World.Guns.Handlers[this].AddAndInvoke(new RendererPoolHandler<WorldGun>(gunRendererPrefab));
+			World.Enemies.Handlers[this].AddAndInvoke(new RendererPoolHandler<WorldEnemy>(enemyRendererPrefab));
+			World.Projectiles.Handlers[this].AddAndInvoke(new RendererPoolHandler<WorldProjectile>(projectileRendererPrefab));
 		}
 
 		private void Update()
