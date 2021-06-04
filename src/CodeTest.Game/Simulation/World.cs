@@ -14,6 +14,11 @@ namespace CodeTest.Game.Simulation
 
 		public FixedVector2 GunSize { get; set; } = FixedVector2.One;
 		public Fixed GunHeightPercent { get; set; } = Constants.One / 8;
+		public Fixed LevelTime { get; set; } = 120;
+
+		public bool IsGameOver => Age >= LevelTime;
+
+		public Fixed TimeRemaining => LevelTime - Age;
 
 		/// <summary>
 		/// The age of the world in seconds.
@@ -94,7 +99,7 @@ namespace CodeTest.Game.Simulation
 		{
 			inputs.Add(localPlayer.Input);
 
-			var worldPlayer = new WorldPlayer(this, localPlayer.Input);
+			var worldPlayer = new WorldPlayer(this, localPlayer);
 			Players.Add(worldPlayer.Identifier, worldPlayer);
 
 			for (int i = 0; i < systems.Length; i++)

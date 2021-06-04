@@ -31,6 +31,7 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
+
 		}
 
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
@@ -39,6 +40,11 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 
 		public void OnUpdate(UpdateParameters parameters)
 		{
+			if (world.IsGameOver)
+			{
+				return;
+			}
+
 			// Whilst there are no enemies, do nothing.
 			if (HasEnemies())
 			{
