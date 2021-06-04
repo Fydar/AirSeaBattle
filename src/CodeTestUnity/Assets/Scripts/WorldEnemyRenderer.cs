@@ -1,5 +1,5 @@
 ﻿using CodeTest.Game.Math;
-using CodeTest.Game.Simulation;
+using CodeTest.Game.Simulation.Models;
 using System.Diagnostics;
 using UnityEngine;
 
@@ -8,6 +8,7 @@ namespace CodeTestUnity
 	public class WorldEnemyRenderer : MonoBehaviour, IRenderer<WorldEnemy>
 	{
 		[SerializeField] private SpriteRenderer graphic;
+		[SerializeField] private AudioSource explosionSound;
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		private WorldEnemy renderTarget;
@@ -19,16 +20,22 @@ namespace CodeTestUnity
 			}
 			set
 			{
+				if (renderTarget != null)
+				{
+					renderTarget.OnDestroyed -= OnDestroyed;
+				}
+
 				renderTarget = value;
 
-				if (renderTarget == null)
+				if (renderTarget != null)
 				{
-					graphic.enabled = false;
+					renderTarget.OnDestroyed += OnDestroyed;
+					graphic.enabled = true;
+					SetPosition();
 				}
 				else
 				{
-					graphic.enabled = true;
-					SetPosition();
+					graphic.enabled = false;
 				}
 			}
 		}
@@ -62,6 +69,11 @@ namespace CodeTestUnity
 			Gizmos.color = Color.green;
 			Gizmos.DrawWireCube(localPosition, size);
 			Gizmos.color = Color.white;
+		}
+
+		private void OnDestroyed()
+		{
+			explosionSound.Play();
 		}
 
 		private void SetPosition()

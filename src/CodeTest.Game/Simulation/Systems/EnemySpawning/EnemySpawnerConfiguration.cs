@@ -12,7 +12,7 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 		// I took a look at the original game. It looks like 1/12th of the screen was reserved for
 		// the players and there was 10 possible spawning altitudes.
 		public int LayersCount { get; set; } = 10;
-		public Fixed MinimumAltitudePercent { get; set; } = Constants.One / 12;
+		public Fixed MinimumAltitudePercent { get; set; } = Constants.One / 6;
 
 		/// <summary>
 		/// The enemy that the spawner should use.

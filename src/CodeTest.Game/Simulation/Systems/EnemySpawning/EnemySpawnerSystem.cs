@@ -81,7 +81,7 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 
 				var newEnemy = new WorldEnemy(world, configuration.Enemy);
 
-				newEnemy.Position.Value = new FixedVector2(0, height);
+				newEnemy.Position.Value = new FixedVector2(-newEnemy.Template.Width / 2, height);
 				newEnemy.VelocityX.Value = configuration.Enemy.Speed;
 
 				world.Enemies.Add(newEnemy.Identifier, newEnemy);
