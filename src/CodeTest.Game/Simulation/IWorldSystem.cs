@@ -1,4 +1,6 @@
-﻿namespace CodeTest.Game.Simulation
+﻿using CodeTest.Game.Simulation.Models;
+
+namespace CodeTest.Game.Simulation
 {
 	public interface IWorldSystem
 	{

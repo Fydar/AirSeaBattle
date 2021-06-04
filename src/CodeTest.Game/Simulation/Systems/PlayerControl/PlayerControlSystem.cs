@@ -1,5 +1,6 @@
 ﻿using CodeTest.Game.Control;
 using CodeTest.Game.Math;
+using CodeTest.Game.Simulation.Models;
 
 namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {
@@ -39,14 +40,18 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 			{
 				var player = playerKvp.Value;
 
-				var targetAngle = configuration.DefaultPosition;
-				if (player.Input.Up.IsDown)
+				WorldGunPosition targetAngle;
+				if (player.Input.Down.IsDown)
 				{
 					targetAngle = configuration.DownPosition;
 				}
-				else if (player.Input.Down.IsDown)
+				else if (player.Input.Up.IsDown)
 				{
 					targetAngle = configuration.UpPosition;
+				}
+				else
+				{
+					targetAngle = configuration.DefaultPosition;
 				}
 
 				foreach (var gun in player.ControlledGuns)
@@ -60,8 +65,10 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 					{
 						var velocityVector = FixedVector2.Rotate(FixedVector2.Right, gun.Value.Angle.Value.Inclination * Constants.Deg2Rad);
 
+						var projectilePosition = gun.Value.Bounds.NormalizedToPoint(gun.Value.Angle.Value.BulletOffset);
+
 						var projectile = new WorldProjectile(world);
-						projectile.Position.Value = gun.Value.Position;
+						projectile.Position.Value = projectilePosition;
 						projectile.Velocity.Value = velocityVector * configuration.BulletSpeed;
 
 						world.Projectiles.Add(projectile.Identifier, projectile);

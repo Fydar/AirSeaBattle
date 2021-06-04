@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CodeTest.Game.Simulation
+namespace CodeTest.Game.Simulation.Models
 {
 	public class WorldEngineBuilder
 	{

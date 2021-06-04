@@ -1,4 +1,5 @@
 ﻿using CodeTest.Game.Services.Configuration;
+using CodeTest.Game.Simulation.Models;
 using System.Collections.Generic;
 
 namespace CodeTest.Game.Simulation
