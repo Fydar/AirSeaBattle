@@ -15,6 +15,8 @@ namespace CodeTestUnity
 		[SerializeField] private ControlSchema[] controls;
 		[SerializeField] private WorldRenderer worldRenderer;
 
+		public World CurrentWorld { get; private set; }
+
 		private void Start()
 		{
 			StartCoroutine(RuntimeRoutine());
@@ -29,11 +31,11 @@ namespace CodeTestUnity
 				.UseWorldSystem(new ProjectileMovementSystemFactory())
 				.Build();
 
-			var world = worldEngine.ConstructWorld()
+			CurrentWorld = worldEngine.ConstructWorld()
 				.UseConfiguration(new FallbackGameplayConfigurationService())
 				.Build();
 
-			worldRenderer.Render(world);
+			worldRenderer.Render(CurrentWorld);
 
 			var playerInput = new SimulationInput();
 			var playerInputManager = gameObject.AddComponent<UnitySimulationInputManager>();
@@ -41,13 +43,13 @@ namespace CodeTestUnity
 			playerInputManager.AttachInput(playerInput);
 
 			var player = new LocalPlayer(playerInput);
-			world.AddPlayer(player);
+			CurrentWorld.AddPlayer(player);
 
 			while (true)
 			{
 				yield return null;
 				var deltaTime = Fixed.FromFloat(Time.deltaTime);
-				world.Update(deltaTime);
+				CurrentWorld.Update(deltaTime);
 			}
 		}
 	}
