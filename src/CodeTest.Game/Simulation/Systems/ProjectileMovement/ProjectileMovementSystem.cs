@@ -45,6 +45,13 @@ namespace CodeTest.Game.Simulation.Systems.ProjectileMovement
 						collided = true;
 						enemy.InvokeOnDestroyed();
 						world.Enemies.Remove(enemy.Identifier);
+
+						projectile.Owner.Player.CurrentScore.Value += world.Configuration.PointsPerPlane ?? 0;
+
+						projectile.Owner.Player.Player.HighScore.Value = 
+							System.Math.Max(
+								projectile.Owner.Player.Player.HighScore.Value,
+								projectile.Owner.Player.CurrentScore.Value);
 						break;
 					}
 				}

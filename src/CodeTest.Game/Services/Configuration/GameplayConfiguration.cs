@@ -28,13 +28,13 @@ namespace CodeTest.Game.Services.Configuration
 		/// A default value for the game highscore.
 		/// </summary>
 		[JsonProperty("default_high_score")]
-		public float? DefaultHighScore { get; set; } = 35;
+		public int? DefaultHighScore { get; set; } = 35;
 
 		/// <summary>
 		/// How many points should be awarded to the player apon destroying a plane.
 		/// </summary>
 		[JsonProperty("points_per_plane")]
-		public float? PointsPerPlane { get; set; } = 5;
+		public int? PointsPerPlane { get; set; } = 5;
 
 		/// <summary>
 		/// An identifier for this gameplay configuration.

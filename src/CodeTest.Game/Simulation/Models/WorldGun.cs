@@ -6,7 +6,7 @@ namespace CodeTest.Game.Simulation.Models
 {
 	public class WorldGun
 	{
-		public World World { get; }
+		public WorldPlayer Player { get; }
 		public Guid Identifier { get; }
 		public EventField<WorldGunPosition> Angle { get; } = new();
 		public EventField<Fixed> PositionX { get; } = new();
@@ -28,10 +28,12 @@ namespace CodeTest.Game.Simulation.Models
 			}
 		}
 
-		public WorldGun(World world, WorldGunPosition angle)
+		public World World => Player.World;
+
+		public WorldGun(WorldPlayer player, WorldGunPosition angle)
 		{
 			Identifier = Guid.NewGuid();
-			World = world;
+			Player = player;
 			Angle.Value = angle;
 		}
 	}

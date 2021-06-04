@@ -7,15 +7,17 @@ namespace CodeTest.Game.Simulation.Models
 	public class WorldProjectile
 	{
 		public Guid Identifier { get; }
-		public World World { get; }
 
+		public WorldGun Owner { get; }
 		public EventField<FixedVector2> Position { get; } = new();
 		public EventField<FixedVector2> Velocity { get; } = new();
 
-		public WorldProjectile(World world)
+		public World World => Owner.World;
+
+		public WorldProjectile(WorldGun owner)
 		{
 			Identifier = Guid.NewGuid();
-			World = world;
+			Owner = owner;
 		}
 	}
 }

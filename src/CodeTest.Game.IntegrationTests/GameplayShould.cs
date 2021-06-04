@@ -7,6 +7,7 @@ using CodeTest.Game.Simulation.Systems.EnemySpawning;
 using CodeTest.Game.Simulation.Systems.PlayerControl;
 using CodeTest.Game.Simulation.Systems.ProjectileMovement;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace CodeTest.Game.IntegrationTests
 {
@@ -18,7 +19,7 @@ namespace CodeTest.Game.IntegrationTests
 		}
 
 		[Test]
-		public void Test1()
+		public async Task Test1()
 		{
 			var worldEngine = WorldEngineBuilder.Create()
 				.UseWorldSystem(new PlayerControlSystemFactory(new PlayerControlConfiguration()))
@@ -27,7 +28,7 @@ namespace CodeTest.Game.IntegrationTests
 				.UseWorldSystem(new ProjectileMovementSystemFactory())
 				.Build();
 
-			var world = worldEngine.ConstructWorld()
+			var world = await worldEngine.ConstructWorld()
 				.UseConfiguration(new FallbackGameplayConfigurationService())
 				.Build();
 

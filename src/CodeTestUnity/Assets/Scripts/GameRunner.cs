@@ -44,9 +44,18 @@ namespace CodeTestUnity
 				.UseWorldSystem(new ProjectileMovementSystemFactory())
 				.Build();
 
-			CurrentWorld = worldEngine.ConstructWorld()
+			var worldTask = worldEngine.ConstructWorld()
 				.UseConfiguration(new FallbackGameplayConfigurationService())
 				.Build();
+
+			// Wait until the async task is complete.
+			// We may be making web requests to download game configuration.
+			while (!worldTask.IsCompleted)
+			{
+				yield return null;
+			}
+			
+			CurrentWorld = worldTask.GetAwaiter().GetResult();
 
 			worldRenderer.Render(CurrentWorld);
 
