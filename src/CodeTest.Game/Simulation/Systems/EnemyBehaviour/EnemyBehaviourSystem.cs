@@ -34,7 +34,7 @@ namespace CodeTest.Game.Simulation.Systems.EnemyBehaviour
 				// Has the enemy left the bounds of the world
 				if (!world.Bounds.Overlaps(enemy.Bounds))
 				{
-					world.Enemies.Remove(enemy.Identifier);
+					enemy.Position.Value = new FixedVector2(-enemy.Template.Width / 2, enemy.Position.Value.Y);
 				}
 			}
 		}
