@@ -1,5 +1,6 @@
 ﻿using CodeTest.Game.Math;
 using CodeTest.Game.Simulation;
+using RPGCore.Events;
 using System.Diagnostics;
 using UnityEngine;
 
@@ -7,6 +8,28 @@ namespace CodeTestUnity
 {
 	public class WorldGunRenderer : MonoBehaviour, IRenderer<WorldGun>
 	{
+		[SerializeField] private Sprite gun90;
+		[SerializeField] private Sprite gun60;
+		[SerializeField] private Sprite gun30;
+
+		private class WorldGunPropertyChangedHandler : IEventFieldHandler
+		{
+			private readonly WorldGun worldGun;
+
+			public WorldGunPropertyChangedHandler(WorldGun worldGun)
+			{
+				this.worldGun = worldGun;
+			}
+
+			public void OnAfterChanged()
+			{
+			}
+
+			public void OnBeforeChanged()
+			{
+			}
+		}
+
 		[SerializeField] private SpriteRenderer graphic;
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -28,28 +51,43 @@ namespace CodeTestUnity
 				else
 				{
 					graphic.enabled = true;
-					SetPosition();
+					UpdateGraphics();
 				}
 			}
 		}
 
 		private void Update()
 		{
-			if (renderTarget != null)
+			if (renderTarget == null)
 			{
 				return;
 			}
 
-			SetPosition();
+			UpdateGraphics();
 		}
 
-		private void SetPosition()
+		private void UpdateGraphics()
 		{
 			var position = renderTarget.Position;
 			transform.localPosition = new Vector3(
 				(position.X - (renderTarget.World.Width * Constants.Half)).AsFloat,
 				(position.Y - (renderTarget.World.Height * Constants.Half)).AsFloat,
 				0.0f);
+
+			graphic.flipX = renderTarget.IsFlipped.Value;
+
+			if (renderTarget.Angle.Value.Graphic == "gun_90")
+			{
+				graphic.sprite = gun90;
+			}
+			else if (renderTarget.Angle.Value.Graphic == "gun_60")
+			{
+				graphic.sprite = gun60;
+			}
+			else if (renderTarget.Angle.Value.Graphic == "gun_30")
+			{
+				graphic.sprite = gun30;
+			}
 		}
 	}
 }

@@ -15,7 +15,9 @@ namespace CodeTestUnity
 			{
 				for (int i = 0; i < Controls.Down.Length; i++)
 				{
+					UpdateKey(SimulationInput.Up, Controls.Up);
 					UpdateKey(SimulationInput.Down, Controls.Down);
+					UpdateKey(SimulationInput.Fire, Controls.Fire);
 				}
 			}
 		}
