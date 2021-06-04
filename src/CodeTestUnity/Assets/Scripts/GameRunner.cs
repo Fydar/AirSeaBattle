@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace CodeTestUnity
 {
-	public class Entrypoint : MonoBehaviour
+	public class GameRunner : MonoBehaviour
 	{
 		[SerializeField] private ControlSchema[] controls;
 		[SerializeField] private WorldRenderer worldRenderer;
@@ -21,12 +21,12 @@ namespace CodeTestUnity
 
 		public World CurrentWorld { get; private set; }
 
-		private void Start()
+		public void RunGame()
 		{
-			StartCoroutine(RuntimeRoutine());
+			StartCoroutine(RunGameRoutine());
 		}
 
-		private IEnumerator RuntimeRoutine()
+		private IEnumerator RunGameRoutine()
 		{
 			var worldEngine = WorldEngineBuilder.Create()
 				.UseWorldSystem(new PlayerControlSystemFactory(new PlayerControlConfiguration()))
