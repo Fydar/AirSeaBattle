@@ -45,6 +45,11 @@ namespace CodeTestUnity
 
 		private void OnDrawGizmos()
 		{
+			if (renderTarget == null)
+			{
+				return;
+			}
+
 			var simPosition = renderTarget.Position.Value;
 
 			var localPosition = new Vector3(

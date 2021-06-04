@@ -2,7 +2,6 @@
 using RPGCore.Events;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace CodeTest.Game.Simulation
 {
@@ -24,6 +23,9 @@ namespace CodeTest.Game.Simulation
 		public EventDictionary<Guid, WorldEnemy> Enemies { get; } = new();
 		public EventDictionary<Guid, WorldPlayer> Players { get; } = new();
 		public EventDictionary<Guid, WorldGun> Guns { get; } = new();
+		public EventDictionary<Guid, WorldProjectile> Projectiles { get; } = new();
+
+		public FixedAABox Bounds => new(new(Width / 2, Height / 2), new(Width / 2, Height / 2));
 
 		/// <summary>
 		/// The maximum number of projects allowed in this <see cref="World"/>.

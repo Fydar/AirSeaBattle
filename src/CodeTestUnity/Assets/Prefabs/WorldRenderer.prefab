@@ -128,6 +128,8 @@ MonoBehaviour:
     type: 3}
   enemyRendererPrefab: {fileID: 290540009375414757, guid: 6de908be5feae1440b5e18a516bd90f5,
     type: 3}
+  projectileRendererPrefab: {fileID: 417011392339116278, guid: 575840dc65971364db42d2ac160c2a76,
+    type: 3}
 --- !u!1 &1631405977107230699
 GameObject:
   m_ObjectHideFlags: 0

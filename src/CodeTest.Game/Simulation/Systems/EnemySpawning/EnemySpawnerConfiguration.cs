@@ -19,8 +19,8 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 		public WorldEnemyTemplate Enemy { get; set; } = new()
 		{
 			Speed = Constants.One,
-			Height = Constants.One,
-			Width = Constants.One
+			Height = ((Fixed)6) / 10,
+			Width = ((Fixed)18) / 10
 		};
 	}
 }

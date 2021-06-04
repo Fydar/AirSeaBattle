@@ -14,8 +14,8 @@ namespace CodeTest.Game.Math.Internal
 
 		static MathEngine()
 		{
-			sin = Load ("CodeTest.Game.Math.LUT.Sin.bin");
-			tan = Load ("CodeTest.Game.Math.LUT.Tan.bin");
+			sin = Load("CodeTest.Game.Math.LUT.Sin.bin");
+			tan = Load("CodeTest.Game.Math.LUT.Tan.bin");
 			asin = Load("CodeTest.Game.Math.LUT.Asin.bin");
 			acos = Load("CodeTest.Game.Math.LUT.Acos.bin");
 			atan = Load("CodeTest.Game.Math.LUT.Atan.bin");

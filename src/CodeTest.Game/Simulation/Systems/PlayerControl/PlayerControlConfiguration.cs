@@ -4,7 +4,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {
 	public class PlayerControlConfiguration
 	{
-		public Fixed BulletSpeed { get; set; } = Constants.One;
+		public Fixed BulletSpeed { get; set; } = Constants.One * 4;
 		public Fixed BulletSize { get; set; } = Constants.One / 8;
 
 		public WorldGunPosition DefaultPosition { get; set; } = new WorldGunPosition()
@@ -20,7 +20,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 		public WorldGunPosition UpPosition { get; set; } = new WorldGunPosition()
 		{
 			Graphic = "gun_90",
-			Inclination = 60,
+			Inclination = 90,
 			BulletOffset = new FixedVector2(
 				Constants.One * 3 / 10,
 				Constants.One * 9 / 10
