@@ -2,7 +2,7 @@
 
 namespace CodeTestUnity
 {
-	public class LoadingScreen: MonoBehaviour
+	public class LoadingScreen : MonoBehaviour
 	{
 		[SerializeField] private GameObject container;
 
