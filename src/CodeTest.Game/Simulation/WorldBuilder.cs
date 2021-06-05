@@ -1,5 +1,6 @@
 ﻿using CodeTest.Game.Services.Configuration;
 using CodeTest.Game.Simulation.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -27,6 +28,17 @@ namespace CodeTest.Game.Simulation
 		public WorldBuilder UseConfiguration(IGameplayConfigurationService configurationService)
 		{
 			configurationServices.Add(configurationService);
+			return this;
+		}
+
+		/// <summary>
+		/// Registers an implementation for configuration.
+		/// </summary>
+		/// <param name="callback">A callback used to configure the configuration.</param>
+		/// <returns>This current instance of this <see cref="WorldBuilder"/>.</returns>
+		public WorldBuilder UseConfiguration(Action<GameplayConfiguration> callback)
+		{
+			configurationServices.Add(new DelegateGameplayConfigurationService(callback));
 			return this;
 		}
 

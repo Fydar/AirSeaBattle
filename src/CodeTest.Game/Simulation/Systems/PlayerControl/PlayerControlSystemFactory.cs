@@ -1,7 +1,7 @@
 ﻿namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {
 	/// <summary>
-	/// A <see cref="IWorldSystemFactory"/> that provides a <see cref="ProjectileMovementSystem"/>.
+	/// A <see cref="IWorldSystemFactory"/> that provides a <see cref="PlayerControlSystem"/> implementation.
 	/// </summary>
 	public class PlayerControlSystemFactory : IWorldSystemFactory
 	{

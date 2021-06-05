@@ -78,6 +78,18 @@ namespace CodeTest.Game.Simulation
 		/// </remarks>
 		public int MaximumProjectiles { get; set; } = 5;
 
+		/// <summary>
+		/// The height of every layer.
+		/// </summary>
+		public Fixed SingleLayerHeight
+		{
+			get
+			{
+				var minusReserved = WorldHeight - (Configuration.EnemySpawning.MinimumAltitudePercent * WorldHeight);
+				return minusReserved / Configuration.EnemySpawning.LayersCount;
+			}
+		}
+
 		internal World(GameplayConfiguration configuration)
 		{
 			Configuration = configuration;
@@ -173,6 +185,21 @@ namespace CodeTest.Game.Simulation
 			Enemies.Clear();
 			Players.Clear();
 			Projectiles.Clear();
+		}
+
+		/// <summary>
+		/// Converts and integer layer into a height in the world.
+		/// </summary>
+		/// <param name="layer">The layer to find the height of.</param>
+		/// <returns>The height of the layer.</returns>
+		public Fixed GetLayerHeight(int layer)
+		{
+			if (layer >= Configuration.EnemySpawning.LayersCount)
+			{
+				throw new ArgumentOutOfRangeException(nameof(layer), "Layer is too large.");
+			}
+
+			return (Configuration.EnemySpawning.MinimumAltitudePercent * WorldHeight) + (SingleLayerHeight * (layer - Constants.Half));
 		}
 	}
 }

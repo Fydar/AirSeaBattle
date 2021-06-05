@@ -1,4 +1,4 @@
-﻿using CodeTest.Game.Math;
+﻿using Industry.Simulation.Math;
 using CodeTest.Game.Services.Configuration;
 using CodeTest.Game.Simulation;
 using CodeTest.Game.Simulation.Models;
@@ -41,17 +41,9 @@ namespace CodeTestUnity
 			hudScreen.Hide();
 
 			var worldEngine = WorldEngineBuilder.Create()
-				.UseWorldSystem(new PlayerControlSystemFactory(new PlayerControlConfiguration()))
-				.UseWorldSystem(new EnemySpawnerSystemFactory(
-					new EnemySpawnerConfiguration()
-					{
-						Enemy = new WorldEnemyTemplate()
-						{
-							Speed = Fixed.FromFloat(enemySpeed)
-						}
-					}))
-				.UseWorldSystem(new EnemyBehaviourSystemFactory(
-					new EnemyBehaviourConfiguration()))
+				.UseWorldSystem(new PlayerControlSystemFactory())
+				.UseWorldSystem(new EnemySpawnerSystemFactory())
+				.UseWorldSystem(new EnemyBehaviourSystemFactory())
 				.UseWorldSystem(new ProjectileMovementSystemFactory())
 				.Build();
 
@@ -60,6 +52,11 @@ namespace CodeTestUnity
 			var worldTask = worldEngine.ConstructWorld()
 				.UseConfiguration(new FallbackGameplayConfigurationService())
 				.UseConfiguration(new RemoteGameplayConfigurationService(httpClient, configurationUrl))
+				.UseConfiguration(configuration =>
+				{
+					// Respect values provided by the editor.
+					configuration.EnemySpawning.Enemy.Speed = Fixed.FromFloat(enemySpeed);
+				})
 				.Build();
 
 			// Wait until the async task is complete.
@@ -78,7 +75,7 @@ namespace CodeTestUnity
 			playerInputManager.AttachInput(playerInput);
 			var player = new LocalPlayer(playerInput);
 
-			player.HighScore.Value = CurrentWorld.Configuration.DefaultHighScore ?? 0;
+			player.Highscore.Value = CurrentWorld.Configuration.DefaultHighScore;
 
 			loadingScreen.Hide();
 

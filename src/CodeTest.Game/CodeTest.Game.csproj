@@ -6,6 +6,7 @@
     <Deterministic>true</Deterministic>
     <ProjectType>library</ProjectType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +22,6 @@
   <ItemGroup>
     <ProjectReference Include="..\3rdParty\Industry.Simulation\Industry.Simulation.csproj" />
     <ProjectReference Include="..\3rdParty\RPGCore.Events\RPGCore.Events.csproj" />
-    <ProjectReference Include="..\RPGCore.Events\RPGCore.Events.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,7 +11,7 @@ namespace CodeTest.Game.Services.Configuration
 		/// <summary>
 		/// How long (in seconds) the player has per game.
 		/// </summary>
-		public int TimeLimit { get; set; } = 60;
+		public Fixed TimeLimit { get; set; } = 60;
 
 		/// <summary>
 		/// A default value for the game highscore.

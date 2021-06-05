@@ -3,11 +3,14 @@ using System.Linq;
 
 namespace CodeTest.Game.Simulation.Systems.ProjectileMovement
 {
+	/// <summary>
+	/// The system responcible for the moving of projectiles and destroying of enemies.
+	/// </summary>
 	public class ProjectileMovementSystem : IWorldSystem
 	{
 		private readonly World world;
 
-		public ProjectileMovementSystem(World world)
+		internal ProjectileMovementSystem(World world)
 		{
 			this.world = world;
 		}

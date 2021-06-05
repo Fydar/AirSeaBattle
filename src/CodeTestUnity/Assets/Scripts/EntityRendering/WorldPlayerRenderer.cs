@@ -58,8 +58,8 @@ namespace CodeTestUnity
 					scoreText,
 					score => score.ToString("###,##0")));
 
-				target.Player.HighScore.Handlers[this].AddAndInvoke(new TextUpdater<int>(
-					target.Player.HighScore,
+				target.Player.Highscore.Handlers[this].AddAndInvoke(new TextUpdater<int>(
+					target.Player.Highscore,
 					highscoreText,
 					score => score.ToString("###,##0")));
 			}
@@ -68,7 +68,7 @@ namespace CodeTestUnity
 		protected override void OnStopRendering(WorldPlayer target)
 		{
 			target.CurrentScore.Handlers[this].Clear();
-			target.Player.HighScore.Handlers[this].Clear();
+			target.Player.Highscore.Handlers[this].Clear();
 		}
 
 		private void Update()
