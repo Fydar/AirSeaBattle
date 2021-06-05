@@ -77,6 +77,8 @@ namespace CodeTestUnity
 			playerInputManager.AttachInput(playerInput);
 			var player = new LocalPlayer(playerInput);
 
+			player.HighScore.Value = CurrentWorld.Configuration.DefaultHighScore ?? 0;
+
 			loadingScreen.Hide();
 
 			while (true)
