@@ -1,4 +1,4 @@
-﻿using CodeTest.Game.Math;
+﻿using Industry.Simulation.Math;
 using CodeTest.Game.Simulation.Models;
 using System.Linq;
 

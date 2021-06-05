@@ -9,24 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Events\**" />
+    <EmbeddedResource Remove="Events\**" />
+    <None Remove="Events\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\3rdParty\Industry.Simulation\Industry.Simulation.csproj" />
+    <ProjectReference Include="..\3rdParty\RPGCore.Events\RPGCore.Events.csproj" />
     <ProjectReference Include="..\RPGCore.Events\RPGCore.Events.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Math\LUT\Acos.bin" />
-    <EmbeddedResource Include="Math\LUT\Asin.bin" />
-    <EmbeddedResource Include="Math\LUT\Atan.bin" />
-    <EmbeddedResource Include="Math\LUT\Sin.bin" />
-    <EmbeddedResource Include="Math\LUT\Sqrt.bin" />
-    <EmbeddedResource Include="Math\LUT\Tan.bin" />
   </ItemGroup>
 
 </Project>

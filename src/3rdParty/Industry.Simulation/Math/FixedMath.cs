@@ -1,9 +1,9 @@
 ﻿// Photon.Deterministic.FixedMath
-using CodeTest.Game.Math.Internal;
+using Industry.Simulation.Math.Internal;
 using System;
 using System.Runtime.InteropServices;
 
-namespace CodeTest.Game.Math
+namespace Industry.Simulation.Math
 {
 	/// <summary>
 	/// A collection of maths for <see cref="Fixed"/> decimal values.

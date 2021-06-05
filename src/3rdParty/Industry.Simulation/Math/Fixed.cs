@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace CodeTest.Game.Math
+namespace Industry.Simulation.Math
 {
 	/// <summary>
 	/// A deterministic, fixed-point decimal value.

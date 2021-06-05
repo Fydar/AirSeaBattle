@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace CodeTest.Game.Math
+namespace Industry.Simulation.Math
 {
 	/// <summary>
 	/// Represents a <see cref="Fixed"/> 2-value vector.

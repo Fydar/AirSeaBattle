@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace CodeTest.Game.Math.Internal
+namespace Industry.Simulation.Math.Internal
 {
 	internal static class MathEngine
 	{
@@ -14,12 +14,12 @@ namespace CodeTest.Game.Math.Internal
 
 		static MathEngine()
 		{
-			sin = Load("CodeTest.Game.Math.LUT.Sin.bin");
-			tan = Load("CodeTest.Game.Math.LUT.Tan.bin");
-			asin = Load("CodeTest.Game.Math.LUT.Asin.bin");
-			acos = Load("CodeTest.Game.Math.LUT.Acos.bin");
-			atan = Load("CodeTest.Game.Math.LUT.Atan.bin");
-			sqrt = Load("CodeTest.Game.Math.LUT.Sqrt.bin");
+			sin = Load("Industry.Simulation.Math.LUT.Sin.bin");
+			tan = Load("Industry.Simulation.Math.LUT.Tan.bin");
+			asin = Load("Industry.Simulation.Math.LUT.Asin.bin");
+			acos = Load("Industry.Simulation.Math.LUT.Acos.bin");
+			atan = Load("Industry.Simulation.Math.LUT.Atan.bin");
+			sqrt = Load("Industry.Simulation.Math.LUT.Sqrt.bin");
 		}
 
 		private static long[] Load(string resourceName)

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace CodeTest.Game.Math
+namespace Industry.Simulation.Math
 {
 	/// <summary>
 	/// Represents a <see cref="Fixed"/> axis-aligned box.

@@ -1,4 +1,4 @@
-﻿using CodeTest.Game.Math;
+﻿using Industry.Simulation.Math;
 using CodeTest.Game.Services.Configuration;
 using CodeTest.Game.Simulation.Models;
 using RPGCore.Events;
