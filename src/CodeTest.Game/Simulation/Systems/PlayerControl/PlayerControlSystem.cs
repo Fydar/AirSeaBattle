@@ -7,25 +7,25 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 	public class PlayerControlSystem : IWorldSystem
 	{
 		private readonly World world;
-		private readonly PlayerControlConfiguration configuration;
 
-		public PlayerControlSystem(World world, PlayerControlConfiguration configuration)
+		public PlayerControlSystem(World world)
 		{
 			this.world = world;
-			this.configuration = configuration;
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
 			// give the player a gun in the world
-			var gun = new WorldGun(worldPlayer, configuration.DefaultPosition);
+			var gun = new WorldGun(worldPlayer, world.Configuration.PlayerControl.DefaultPosition);
 
-			gun.PositionX.Value = world.Guns.Count == 0 ? ((Fixed)1) / 4 : ((Fixed)3) / 4;
+			gun.PercentX.Value = world.Guns.Count == 0 ? ((Fixed)1) / 4 : ((Fixed)3) / 4;
 
 			world.Guns.Add(gun.Identifier, gun);
 			worldPlayer.ControlledGuns.Add(gun.Identifier, gun);
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
 			foreach (var gunKvp in worldPlayer.ControlledGuns)
@@ -34,6 +34,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 			}
 		}
 
+		/// <inheritdoc/>
 		public void OnUpdate(UpdateParameters parameters)
 		{
 			if (world.IsGameOver)
@@ -46,17 +47,17 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 				var player = playerKvp.Value;
 
 				WorldGunPosition targetAngle;
-				if (player.Input.Down.IsDown)
+				if (player.Player.Input.Down.IsDown)
 				{
-					targetAngle = configuration.DownPosition;
+					targetAngle = world.Configuration.PlayerControl.DownPosition;
 				}
-				else if (player.Input.Up.IsDown)
+				else if (player.Player.Input.Up.IsDown)
 				{
-					targetAngle = configuration.UpPosition;
+					targetAngle = world.Configuration.PlayerControl.UpPosition;
 				}
 				else
 				{
-					targetAngle = configuration.DefaultPosition;
+					targetAngle = world.Configuration.PlayerControl.DefaultPosition;
 				}
 
 				foreach (var gun in player.ControlledGuns)
@@ -66,7 +67,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 						gun.Value.Angle.Value = targetAngle;
 					}
 
-					if (player.Input.Fire.CurrentState == InputButtonState.Pressed)
+					if (player.Player.Input.Fire.CurrentState == InputButtonState.Pressed)
 					{
 						// Limit the amount of projectiles in the game.
 						// Don't create new projectiles if there are too many.
@@ -81,7 +82,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 
 						var projectile = new WorldProjectile(gun.Value);
 						projectile.Position.Value = projectilePosition;
-						projectile.Velocity.Value = velocityVector * configuration.BulletSpeed;
+						projectile.Velocity.Value = velocityVector * world.Configuration.PlayerControl.BulletSpeed;
 
 						world.Projectiles.Add(projectile.Identifier, projectile);
 					}

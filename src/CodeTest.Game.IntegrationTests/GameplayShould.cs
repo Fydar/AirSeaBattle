@@ -22,9 +22,9 @@ namespace CodeTest.Game.IntegrationTests
 		public async Task Test1()
 		{
 			var worldEngine = WorldEngineBuilder.Create()
-				.UseWorldSystem(new PlayerControlSystemFactory(new PlayerControlConfiguration()))
-				.UseWorldSystem(new EnemySpawnerSystemFactory(new EnemySpawnerConfiguration()))
-				.UseWorldSystem(new EnemyBehaviourSystemFactory(new EnemyBehaviourConfiguration()))
+				.UseWorldSystem(new PlayerControlSystemFactory())
+				.UseWorldSystem(new EnemySpawnerSystemFactory())
+				.UseWorldSystem(new EnemyBehaviourSystemFactory())
 				.UseWorldSystem(new ProjectileMovementSystemFactory())
 				.Build();
 

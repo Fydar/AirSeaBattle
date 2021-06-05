@@ -1,52 +1,58 @@
-﻿using Newtonsoft.Json;
+﻿using CodeTest.Game.Math;
+using CodeTest.Game.Simulation.Systems.EnemySpawning;
 
 namespace CodeTest.Game.Services.Configuration
 {
 	/// <summary>
-	/// A class representing web-hosted game configuration.
+	/// A class representing game configuration.
 	/// </summary>
-	/// <example>
-	/// When serialized, this data looks something like:
-	/// <code lang="json">
-	/// {
-	///   "time_limit": 60,
-	///   "default_high_score": 35,
-	///   "points_per_plane": 5,
-	///   "id": "config"
-	/// }
-	/// </code>
-	/// </example>
 	public class GameplayConfiguration
 	{
 		/// <summary>
 		/// How long (in seconds) the player has per game.
 		/// </summary>
-		[JsonProperty("time_limit")]
-		public int? TimeLimit { get; set; } = 60;
+		public int TimeLimit { get; set; } = 60;
 
 		/// <summary>
 		/// A default value for the game highscore.
 		/// </summary>
-		[JsonProperty("default_high_score")]
-		public int? DefaultHighScore { get; set; } = 35;
+		public int DefaultHighScore { get; set; } = 35;
 
 		/// <summary>
 		/// How many points should be awarded to the player apon destroying a plane.
 		/// </summary>
-		[JsonProperty("points_per_plane")]
-		public int? PointsPerPlane { get; set; } = 5;
+		public int PointsPerPlane { get; set; } = 5;
 
 		/// <summary>
 		/// An identifier for this gameplay configuration.
 		/// </summary>
-		[JsonProperty("id")]
-		public string? Id { get; set; } = "config";
+		public string Id { get; set; } = "config";
+
+		/// <summary>
+		/// Diamentions for the gun.
+		/// </summary>
+		public FixedVector2 GunSize { get; set; } = FixedVector2.One;
+
+		/// <summary>
+		/// Height in the world (as a percent) that player guns are placed.
+		/// </summary>
+		public Fixed GunHeightPercent { get; set; } = Constants.One / 8;
+
+		/// <summary>
+		/// Configuration for enemy spawning behaviour.
+		/// </summary>
+		public EnemySpawnerConfiguration EnemySpawning { get; set; } = new();
+
+		/// <summary>
+		/// Configuration for player controls.
+		/// </summary>
+		public PlayerControlConfiguration PlayerControl { get; set; } = new();
 
 		/// <summary>
 		/// Overwrites configuration values that are not <c>null</c> in <c>this</c> <see cref="GameplayConfiguration"/>.
 		/// </summary>
 		/// <param name="other">The <see cref="GameplayConfiguration"/> to source values from.</param>
-		public void ConfigureFrom(GameplayConfiguration other)
+		public void ConfigureFrom(RemoteGameplayConfiguration other)
 		{
 			TimeLimit = other.TimeLimit ?? TimeLimit;
 			DefaultHighScore = other.DefaultHighScore ?? DefaultHighScore;

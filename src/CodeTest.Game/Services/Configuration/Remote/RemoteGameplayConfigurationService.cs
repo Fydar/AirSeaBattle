@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace CodeTest.Game.Services.Configuration
 {
-	/// <inheritdoc/>
+	/// <summary>
+	/// An implementation of <see cref="IGameplayConfigurationService"/> that downloads
+	/// configuration values from a remote server.
+	/// </summary>
 	public class RemoteGameplayConfigurationService : IGameplayConfigurationService
 	{
 		private readonly JsonSerializer serializer;
 		private readonly HttpClient httpClient;
 		private readonly string url;
 
+		/// <summary>
+		/// Creates a new instance of the <see cref="RemoteGameplayConfiguration"/> class.
+		/// </summary>
+		/// <param name="httpClient">A <see cref="HttpClient"/> to perform HTTP requests with.</param>
+		/// <param name="url">A remote URL to issue GET requests to.</param>
 		public RemoteGameplayConfigurationService(HttpClient httpClient, string url)
 		{
 			this.httpClient = httpClient;
@@ -36,7 +44,7 @@ namespace CodeTest.Game.Services.Configuration
 				using var contentStream = await response.Content.ReadAsStreamAsync();
 				using var textReader = new StreamReader(contentStream);
 				using var jsonReader = new JsonTextReader(textReader);
-				var config = serializer.Deserialize<GameplayConfiguration>(jsonReader);
+				var config = serializer.Deserialize<RemoteGameplayConfiguration>(jsonReader);
 
 				if (config == null)
 				{

@@ -1,17 +1,14 @@
 ﻿namespace CodeTest.Game.Simulation.Systems.EnemyBehaviour
 {
+	/// <summary>
+	/// A <see cref="IWorldSystemFactory"/> that provides a <see cref="EnemyBehaviourSystem"/>.
+	/// </summary>
 	public class EnemyBehaviourSystemFactory : IWorldSystemFactory
 	{
-		private readonly EnemyBehaviourConfiguration configuration;
-
-		public EnemyBehaviourSystemFactory(EnemyBehaviourConfiguration configuration)
-		{
-			this.configuration = configuration;
-		}
-
+		/// <inheritdoc/>
 		public IWorldSystem Build(World world)
 		{
-			return new EnemyBehaviourSystem(world, configuration);
+			return new EnemyBehaviourSystem(world);
 		}
 	}
 }

@@ -1,17 +1,14 @@
 ﻿namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 {
+	/// <summary>
+	/// A <see cref="IWorldSystemFactory"/> that provides a <see cref="EnemySpawnerSystem"/>.
+	/// </summary>
 	public class EnemySpawnerSystemFactory : IWorldSystemFactory
 	{
-		private readonly EnemySpawnerConfiguration configuration;
-
-		public EnemySpawnerSystemFactory(EnemySpawnerConfiguration configuration)
-		{
-			this.configuration = configuration;
-		}
-
+		/// <inheritdoc/>
 		public IWorldSystem Build(World world)
 		{
-			return new EnemySpawnerSystem(world, configuration);
+			return new EnemySpawnerSystem(world);
 		}
 	}
 }
