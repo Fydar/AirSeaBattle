@@ -12,11 +12,17 @@ namespace CodeTestUnity
 		private readonly List<IRenderer<TValue>> pool;
 		private readonly IRenderer<TValue> prefab;
 
-		public RendererPoolHandler(IRenderer<TValue> prefab)
+		public RendererPoolHandler(IRenderer<TValue> prefab, int preallocate = 0)
 		{
 			this.prefab = prefab;
 			reserved = new List<IRenderer<TValue>>();
 			pool = new List<IRenderer<TValue>>();
+
+			// Instantiate objects at the start to prevent instantation during gameplay.
+			for (int i = 0; i < preallocate; i++)
+			{
+				AllocateNewRenderer();
+			}
 		}
 
 		public void OnAdd(Guid key, TValue value)
@@ -29,14 +35,19 @@ namespace CodeTestUnity
 			}
 			if (renderer == null)
 			{
-				var prefabGameObject = (MonoBehaviour)prefab;
-				var rendererGameObject = UnityEngine.Object.Instantiate(prefabGameObject);
-
-				renderer = rendererGameObject.GetComponent<IRenderer<TValue>>();
+				renderer = AllocateNewRenderer();
 			}
 
 			renderer.RenderTarget = value;
 			reserved.Add(renderer);
+		}
+
+		private IRenderer<TValue> AllocateNewRenderer()
+		{
+			var prefabGameObject = (MonoBehaviour)prefab;
+			var rendererGameObject = UnityEngine.Object.Instantiate(prefabGameObject);
+
+			return rendererGameObject.GetComponent<IRenderer<TValue>>();
 		}
 
 		public void OnRemove(Guid key, TValue value)
