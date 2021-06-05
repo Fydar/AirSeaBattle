@@ -1,13 +1,21 @@
 ﻿using CodeTest.Game.Math;
 using CodeTest.Game.Simulation.Models;
 
-namespace CodeTest.Game.Simulation.Systems.PlayerControl
+namespace CodeTest.Game.Services.Configuration
 {
+	/// <summary>
+	/// Configuration for player controls.
+	/// </summary>
 	public class PlayerControlConfiguration
 	{
+		/// <summary>
+		/// Speed that projectiles shot from the player should travel at.
+		/// </summary>
 		public Fixed BulletSpeed { get; set; } = Constants.One * 4;
-		public Fixed BulletSize { get; set; } = Constants.One / 8;
 
+		/// <summary>
+		/// The default position for guns.
+		/// </summary>
 		public WorldGunPosition DefaultPosition { get; set; } = new WorldGunPosition()
 		{
 			Graphic = "gun_60",
@@ -18,6 +26,9 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 			)
 		};
 
+		/// <summary>
+		/// The upwards position for guns.
+		/// </summary>
 		public WorldGunPosition UpPosition { get; set; } = new WorldGunPosition()
 		{
 			Graphic = "gun_90",
@@ -28,6 +39,9 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 			)
 		};
 
+		/// <summary>
+		/// The downwards position for guns.
+		/// </summary>
 		public WorldGunPosition DownPosition { get; set; } = new WorldGunPosition()
 		{
 			Graphic = "gun_30",

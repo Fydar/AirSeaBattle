@@ -7,22 +7,23 @@ namespace CodeTest.Game.Simulation.Systems.EnemyBehaviour
 	public class EnemyBehaviourSystem : IWorldSystem
 	{
 		private readonly World world;
-		private readonly EnemyBehaviourConfiguration configuration;
 
-		public EnemyBehaviourSystem(World world, EnemyBehaviourConfiguration configuration)
+		public EnemyBehaviourSystem(World world)
 		{
 			this.world = world;
-			this.configuration = configuration;
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
 		}
 
+		/// <inheritdoc/>
 		public void OnUpdate(UpdateParameters parameters)
 		{
 			foreach (var enemyKvp in world.Enemies.ToList())

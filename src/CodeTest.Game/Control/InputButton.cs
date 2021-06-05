@@ -1,11 +1,20 @@
 ﻿namespace CodeTest.Game.Control
 {
+	/// <summary>
+	/// A model for accepting user input in the form of a button.
+	/// </summary>
 	public class InputButton
 	{
 		private InputButtonState currentState;
 
+		/// <summary>
+		/// The current state of this <see cref="InputButton"/>.
+		/// </summary>
 		public InputButtonState CurrentState => currentState;
 
+		/// <summary>
+		/// <c>true</c> whilst this <see cref="InputButton"/> is <see cref="InputButtonState.Pressed"/> or <see cref="InputButtonState.Held"/>; otherwise <c>false</c>.
+		/// </summary>
 		public bool IsDown => currentState == InputButtonState.Pressed
 			|| currentState == InputButtonState.Held;
 

@@ -1,17 +1,14 @@
 ﻿namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {
+	/// <summary>
+	/// A <see cref="IWorldSystemFactory"/> that provides a <see cref="ProjectileMovementSystem"/>.
+	/// </summary>
 	public class PlayerControlSystemFactory : IWorldSystemFactory
 	{
-		private readonly PlayerControlConfiguration configuration;
-
-		public PlayerControlSystemFactory(PlayerControlConfiguration configuration)
-		{
-			this.configuration = configuration;
-		}
-
+		/// <inheritdoc/>
 		public IWorldSystem Build(World world)
 		{
-			return new PlayerControlSystem(world, configuration);
+			return new PlayerControlSystem(world);
 		}
 	}
 }

@@ -12,14 +12,17 @@ namespace CodeTest.Game.Simulation.Systems.ProjectileMovement
 			this.world = world;
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
 		}
 
+		/// <inheritdoc/>
 		public void OnUpdate(UpdateParameters parameters)
 		{
 			foreach (var projectileKvp in world.Projectiles.ToList())
@@ -46,11 +49,11 @@ namespace CodeTest.Game.Simulation.Systems.ProjectileMovement
 						enemy.InvokeOnDestroyed();
 						world.Enemies.Remove(enemy.Identifier);
 
-						projectile.Owner.Player.CurrentScore.Value += world.Configuration.PointsPerPlane ?? 0;
+						projectile.Owner.Player.CurrentScore.Value += world.Configuration.PointsPerPlane;
 
-						projectile.Owner.Player.Player.HighScore.Value = 
+						projectile.Owner.Player.Player.Highscore.Value = 
 							System.Math.Max(
-								projectile.Owner.Player.Player.HighScore.Value,
+								projectile.Owner.Player.Player.Highscore.Value,
 								projectile.Owner.Player.CurrentScore.Value);
 						break;
 					}

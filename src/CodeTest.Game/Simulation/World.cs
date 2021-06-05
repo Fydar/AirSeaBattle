@@ -7,31 +7,68 @@ using System.Collections.Generic;
 
 namespace CodeTest.Game.Simulation
 {
+	/// <summary>
+	/// A model representing the persistant state of the game world.
+	/// </summary>
 	public class World
 	{
 		internal IWorldSystem[] systems = Array.Empty<IWorldSystem>();
 		private readonly HashSet<SimulationInput> inputs;
 
+		/// <summary>
+		/// Configuration used to contro gameplay systems.
+		/// </summary>
 		public GameplayConfiguration Configuration { get; }
-
-		public FixedVector2 GunSize { get; set; } = FixedVector2.One;
-		public Fixed GunHeightPercent { get; set; } = Constants.One / 8;
 
 		/// <summary>
 		/// The age of the world in seconds.
 		/// </summary>
 		public Fixed Age { get; private set; }
-		public Fixed Width { get; set; }
-		public Fixed Height { get; set; }
+
+		/// <summary>
+		/// The horizontal playspace that is available.
+		/// </summary>
+		public Fixed WorldWidth { get; set; }
+
+		/// <summary>
+		/// The vertical playspace that is available.
+		/// </summary>
+		public Fixed WorldHeight { get; set; }
+
+		/// <summary>
+		/// All <see cref="WorldEnemy"/> in the game world.
+		/// </summary>
 		public EventDictionary<Guid, WorldEnemy> Enemies { get; } = new();
+
+		/// <summary>
+		/// All <see cref="WorldPlayer"/> currently contributing to the game world.
+		/// </summary>
 		public EventDictionary<Guid, WorldPlayer> Players { get; } = new();
+
+		/// <summary>
+		/// All <see cref="WorldGun"/> in the game world.
+		/// </summary>
 		public EventDictionary<Guid, WorldGun> Guns { get; } = new();
+
+		/// <summary>
+		/// All <see cref="WorldProjectile"/> in the game world.
+		/// </summary>
 		public EventDictionary<Guid, WorldProjectile> Projectiles { get; } = new();
 
-		public FixedAABox Bounds => new(new(Width / 2, Height / 2), new(Width / 2, Height / 2));
-		public bool IsGameOver => Age >= TimeLimit;
-		public Fixed TimeRemaining => TimeLimit - Age;
-		public Fixed TimeLimit => Configuration.TimeLimit ?? 60;
+		/// <summary>
+		/// Bounds used to determine whether entities are contained within the playspace.
+		/// </summary>
+		public FixedAABox Bounds => new(new(WorldWidth / 2, WorldHeight / 2), new(WorldWidth / 2, WorldHeight / 2));
+
+		/// <summary>
+		/// <c>true</c> whilst the <see cref="TimeRemaining"/> is less than or equal to <c>0.0</c>.
+		/// </summary>
+		public bool IsGameOver => Age >= Configuration.TimeLimit;
+
+		/// <summary>
+		/// The time remaining (in seconds) until the game is over.
+		/// </summary>
+		public Fixed TimeRemaining => Configuration.TimeLimit - Age;
 
 		/// <summary>
 		/// The maximum number of projects allowed in this <see cref="World"/>.
@@ -47,8 +84,8 @@ namespace CodeTest.Game.Simulation
 
 			inputs = new HashSet<SimulationInput>();
 
-			Width = 16;
-			Height = 9;
+			WorldWidth = 16;
+			WorldHeight = 9;
 		}
 
 		/// <summary>
@@ -62,15 +99,14 @@ namespace CodeTest.Game.Simulation
 			// what the design document asks for. Got to make it so the world can be resized as I rather
 			// have control over this than let it be an implicit fact of the game.
 
-			Width = width;
-			Height = height;
+			WorldWidth = width;
+			WorldHeight = height;
 		}
 
 		/// <summary>
 		/// Advances the world forward by a specified amount of time.
 		/// </summary>
-		/// <param name="deltaTime"></param>
-		/// <param name="time"></param>
+		/// <param name="deltaTime">The time since the last update.</param>
 		public void Update(Fixed deltaTime)
 		{
 			Age += deltaTime;
@@ -116,7 +152,7 @@ namespace CodeTest.Game.Simulation
 		/// <param name="worldPlayer">An object representing the player that left.</param>
 		public void RemovePlayer(WorldPlayer worldPlayer)
 		{
-			inputs.Remove(worldPlayer.Input);
+			inputs.Remove(worldPlayer.Player.Input);
 
 			Players.Remove(worldPlayer.Identifier);
 

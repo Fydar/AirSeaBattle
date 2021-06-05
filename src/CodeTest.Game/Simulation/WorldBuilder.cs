@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace CodeTest.Game.Simulation
 {
+	/// <summary>
+	/// A builder for <see cref="World"/>.
+	/// </summary>
 	public class WorldBuilder
 	{
 		private readonly WorldEngine worldEngine;
@@ -16,6 +19,11 @@ namespace CodeTest.Game.Simulation
 			configurationServices = new();
 		}
 
+		/// <summary>
+		/// Registers an <see cref="IGameplayConfigurationService"/> implementation for configuration.
+		/// </summary>
+		/// <param name="configurationService">The service to register.</param>
+		/// <returns>This current instance of this <see cref="WorldBuilder"/>.</returns>
 		public WorldBuilder UseConfiguration(IGameplayConfigurationService configurationService)
 		{
 			configurationServices.Add(configurationService);

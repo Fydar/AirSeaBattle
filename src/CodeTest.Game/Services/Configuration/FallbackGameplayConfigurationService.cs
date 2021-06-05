@@ -2,7 +2,9 @@
 
 namespace CodeTest.Game.Services.Configuration
 {
-	/// <inheritdoc/>
+	/// <summary>
+	/// An implementation of <see cref="IGameplayConfigurationService"/> that provides default values.
+	/// </summary>
 	public class FallbackGameplayConfigurationService : IGameplayConfigurationService
 	{
 		/// <inheritdoc/>
