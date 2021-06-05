@@ -37,6 +37,7 @@ namespace CodeTestUnity.EntityRendering
 			{
 				renderer = AllocateNewRenderer();
 			}
+			renderer.gameObject.SetActive(true);
 
 			renderer.RenderTarget = value;
 			reserved.Add(renderer);
@@ -46,7 +47,7 @@ namespace CodeTestUnity.EntityRendering
 		{
 			var prefabGameObject = (MonoBehaviour)prefab;
 			var rendererGameObject = UnityEngine.Object.Instantiate(prefabGameObject);
-
+			rendererGameObject.gameObject.SetActive(false);
 			return rendererGameObject.GetComponent<EntityRenderer<TValue>>();
 		}
 
@@ -57,6 +58,7 @@ namespace CodeTestUnity.EntityRendering
 				if (renderer.RenderTarget == value)
 				{
 					renderer.RenderTarget = null;
+					renderer.gameObject.SetActive(true);
 					reserved.Remove(renderer);
 					pool.Add(renderer);
 					break;
