@@ -22,7 +22,7 @@ namespace CodeTest.Game.Services.Configuration
 		/// How long (in seconds) the player has per game.
 		/// </summary>
 		[JsonProperty("time_limit")]
-		public float? TimeLimit { get; set; } = 60;
+		public int? TimeLimit { get; set; } = 60;
 
 		/// <summary>
 		/// A default value for the game highscore.
