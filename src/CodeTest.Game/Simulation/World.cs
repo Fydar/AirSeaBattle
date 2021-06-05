@@ -136,6 +136,7 @@ namespace CodeTest.Game.Simulation
 			Guns.Clear();
 			Enemies.Clear();
 			Players.Clear();
+			Projectiles.Clear();
 		}
 	}
 }
