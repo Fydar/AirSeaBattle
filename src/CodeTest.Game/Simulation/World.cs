@@ -16,7 +16,6 @@ namespace CodeTest.Game.Simulation
 
 		public FixedVector2 GunSize { get; set; } = FixedVector2.One;
 		public Fixed GunHeightPercent { get; set; } = Constants.One / 8;
-		public Fixed LevelTime { get; set; } = 120;
 
 		/// <summary>
 		/// The age of the world in seconds.
@@ -30,8 +29,9 @@ namespace CodeTest.Game.Simulation
 		public EventDictionary<Guid, WorldProjectile> Projectiles { get; } = new();
 
 		public FixedAABox Bounds => new(new(Width / 2, Height / 2), new(Width / 2, Height / 2));
-		public bool IsGameOver => Age >= LevelTime;
-		public Fixed TimeRemaining => LevelTime - Age;
+		public bool IsGameOver => Age >= TimeLimit;
+		public Fixed TimeRemaining => TimeLimit - Age;
+		public Fixed TimeLimit => Configuration.TimeLimit ?? 60;
 
 		/// <summary>
 		/// The maximum number of projects allowed in this <see cref="World"/>.
