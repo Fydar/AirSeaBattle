@@ -1,6 +1,6 @@
 ﻿using CodeTest.Game.Control;
-using Industry.Simulation.Math;
 using CodeTest.Game.Simulation.Models;
+using Industry.Simulation.Math;
 
 namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {

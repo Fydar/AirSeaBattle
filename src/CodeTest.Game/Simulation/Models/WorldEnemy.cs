@@ -12,7 +12,7 @@ namespace CodeTest.Game.Simulation.Models
 		/// <summary>
 		/// An event that's fired when this <see cref="WorldEnemy"/> is destroyed.
 		/// </summary>
-		public event Action OnDestroyed;
+		public event Action? OnDestroyed;
 
 		/// <summary>
 		/// A unique identifier for this <see cref="WorldEnemy"/>.

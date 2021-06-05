@@ -1,5 +1,5 @@
-﻿using Industry.Simulation.Math;
-using CodeTest.Game.Simulation.Models;
+﻿using CodeTest.Game.Simulation.Models;
+using Industry.Simulation.Math;
 using System.Linq;
 
 namespace CodeTest.Game.Simulation.Systems.EnemyBehaviour

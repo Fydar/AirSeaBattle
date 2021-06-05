@@ -1,6 +1,5 @@
-﻿using Industry.Simulation.Math;
-using CodeTest.Game.Simulation.Models;
-using System.Diagnostics;
+﻿using CodeTest.Game.Simulation.Models;
+using Industry.Simulation.Math;
 using UnityEngine;
 
 namespace CodeTestUnity.EntityRendering
