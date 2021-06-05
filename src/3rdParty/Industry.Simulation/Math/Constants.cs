@@ -1,4 +1,4 @@
-﻿namespace CodeTest.Game.Math
+﻿namespace Industry.Simulation.Math
 {
 	public struct Constants
 	{

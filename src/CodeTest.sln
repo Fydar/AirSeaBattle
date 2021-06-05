@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31306.274
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTest.Game", "CodeTest.Game\CodeTest.Game.csproj", "{C98AFC3A-103C-43D8-A31E-1CAC1AA99583}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeTest.Game", "CodeTest.Game\CodeTest.Game.csproj", "{C98AFC3A-103C-43D8-A31E-1CAC1AA99583}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTest.Game.IntegrationTests", "CodeTest.Game.IntegrationTests\CodeTest.Game.IntegrationTests.csproj", "{EB89958E-EC24-457C-84A5-C71844A81E13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeTest.Game.IntegrationTests", "CodeTest.Game.IntegrationTests\CodeTest.Game.IntegrationTests.csproj", "{EB89958E-EC24-457C-84A5-C71844A81E13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTest.Unity", "CodeTest.Unity\CodeTest.Unity.csproj", "{523D8246-7E49-4BF3-9C0A-215CA080C49E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeTest.Unity", "CodeTest.Unity\CodeTest.Unity.csproj", "{523D8246-7E49-4BF3-9C0A-215CA080C49E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPGCore.Events", "RPGCore.Events\RPGCore.Events.csproj", "{5FD7234A-77BB-4CB5-9DD3-6ED855613A34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPGCore.Events", "3rdParty\RPGCore.Events\RPGCore.Events.csproj", "{5FD7234A-77BB-4CB5-9DD3-6ED855613A34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rdParty", "3rdParty", "{8948CA45-EFBC-4944-BE75-69D56C6A5A39}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Industry.Simulation", "3rdParty\Industry.Simulation\Industry.Simulation.csproj", "{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +37,17 @@ Global
 		{5FD7234A-77BB-4CB5-9DD3-6ED855613A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FD7234A-77BB-4CB5-9DD3-6ED855613A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FD7234A-77BB-4CB5-9DD3-6ED855613A34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5FD7234A-77BB-4CB5-9DD3-6ED855613A34} = {8948CA45-EFBC-4944-BE75-69D56C6A5A39}
+		{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC} = {8948CA45-EFBC-4944-BE75-69D56C6A5A39}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E15EF984-311D-454B-8B8B-CE77231AD2E8}

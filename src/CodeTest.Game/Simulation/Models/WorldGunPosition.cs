@@ -1,4 +1,4 @@
-﻿using CodeTest.Game.Math;
+﻿using Industry.Simulation.Math;
 
 namespace CodeTest.Game.Simulation.Models
 {

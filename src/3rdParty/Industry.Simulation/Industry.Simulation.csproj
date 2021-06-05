@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Deterministic>true</Deterministic>
+    <ProjectType>library</ProjectType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Math\LUT\Acos.bin" />
+    <EmbeddedResource Include="Math\LUT\Asin.bin" />
+    <EmbeddedResource Include="Math\LUT\Atan.bin" />
+    <EmbeddedResource Include="Math\LUT\Sin.bin" />
+    <EmbeddedResource Include="Math\LUT\Sqrt.bin" />
+    <EmbeddedResource Include="Math\LUT\Tan.bin" />
+  </ItemGroup>
+
+</Project>
