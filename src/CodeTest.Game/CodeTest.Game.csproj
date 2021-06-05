@@ -5,6 +5,7 @@
     <LangVersion>latest</LangVersion>
     <Deterministic>true</Deterministic>
     <ProjectType>library</ProjectType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
