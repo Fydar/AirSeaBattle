@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4955679028132254193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ce1386911e029d448e3acd3ee870944, type: 3}
+  m_Script: {fileID: 11500000, guid: 3327ab4ddf9c81c4f988b3047299ad1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gun90: {fileID: 21300000, guid: 8de810bbb1d83ec4f98da141572840de, type: 3}
