@@ -4,11 +4,14 @@ using CodeTest.Game.Simulation.Models;
 
 namespace CodeTest.Game.Simulation.Systems.PlayerControl
 {
+	/// <summary>
+	/// The system responcible for aiming the player gun and creating projectiles.
+	/// </summary>
 	public class PlayerControlSystem : IWorldSystem
 	{
 		private readonly World world;
 
-		public PlayerControlSystem(World world)
+		internal PlayerControlSystem(World world)
 		{
 			this.world = world;
 		}
@@ -16,7 +19,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 		/// <inheritdoc/>
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
-			// give the player a gun in the world
+			// Give the player a gun in the world
 			var gun = new WorldGun(worldPlayer, world.Configuration.PlayerControl.DefaultPosition);
 
 			gun.PercentX.Value = world.Guns.Count == 0 ? ((Fixed)1) / 4 : ((Fixed)3) / 4;
@@ -28,6 +31,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 		/// <inheritdoc/>
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
+			// Remove all guns that belonged to the player that left.
 			foreach (var gunKvp in worldPlayer.ControlledGuns)
 			{
 				world.Guns.Remove(gunKvp.Key);
@@ -37,6 +41,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 		/// <inheritdoc/>
 		public void OnUpdate(UpdateParameters parameters)
 		{
+			// Do nothing if the game has ended.
 			if (world.IsGameOver)
 			{
 				return;
@@ -62,6 +67,7 @@ namespace CodeTest.Game.Simulation.Systems.PlayerControl
 
 				foreach (var gun in player.ControlledGuns)
 				{
+					// Change the guns angle configuration
 					if (gun.Value.Angle.Value != targetAngle)
 					{
 						gun.Value.Angle.Value = targetAngle;

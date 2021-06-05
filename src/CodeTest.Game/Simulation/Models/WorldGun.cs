@@ -51,6 +51,9 @@ namespace CodeTest.Game.Simulation.Models
 			}
 		}
 
+		/// <summary>
+		/// The world that this entity belongs to.
+		/// </summary>
 		public World World => Player.World;
 
 		/// <summary>

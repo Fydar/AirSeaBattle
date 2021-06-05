@@ -4,11 +4,14 @@ using System.Linq;
 
 namespace CodeTest.Game.Simulation.Systems.EnemyBehaviour
 {
+	/// <summary>
+	/// The system responcible for moving enemies.
+	/// </summary>
 	public class EnemyBehaviourSystem : IWorldSystem
 	{
 		private readonly World world;
 
-		public EnemyBehaviourSystem(World world)
+		internal EnemyBehaviourSystem(World world)
 		{
 			this.world = world;
 		}

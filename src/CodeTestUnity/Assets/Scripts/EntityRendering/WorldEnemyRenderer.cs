@@ -1,4 +1,4 @@
-﻿using CodeTest.Game.Math;
+﻿using Industry.Simulation.Math;
 using CodeTest.Game.Simulation.Models;
 using System.Diagnostics;
 using UnityEngine;
@@ -52,8 +52,8 @@ namespace CodeTestUnity.EntityRendering
 			var simPosition = RenderTarget.Position.Value;
 
 			var localPosition = new Vector3(
-				(simPosition.X - (RenderTarget.World.Width * Constants.Half)).AsFloat,
-				(simPosition.Y - (RenderTarget.World.Height * Constants.Half)).AsFloat,
+				(simPosition.X - (RenderTarget.World.WorldWidth * Constants.Half)).AsFloat,
+				(simPosition.Y - (RenderTarget.World.WorldHeight * Constants.Half)).AsFloat,
 				0.0f);
 
 			var size = new Vector3(RenderTarget.Template.Width.AsFloat, RenderTarget.Template.Height.AsFloat, 0.0f);
@@ -72,8 +72,8 @@ namespace CodeTestUnity.EntityRendering
 		{
 			var position = RenderTarget.Position.Value;
 			transform.localPosition = new Vector3(
-				(position.X - (RenderTarget.World.Width * Constants.Half)).AsFloat,
-				(position.Y - (RenderTarget.World.Height * Constants.Half)).AsFloat,
+				(position.X - (RenderTarget.World.WorldWidth * Constants.Half)).AsFloat,
+				(position.Y - (RenderTarget.World.WorldHeight * Constants.Half)).AsFloat,
 				0.0f);
 		}
 	}

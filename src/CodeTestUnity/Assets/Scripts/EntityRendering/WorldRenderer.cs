@@ -35,7 +35,7 @@ namespace CodeTestUnity.EntityRendering
 				return;
 			}
 
-			background.transform.localScale = new Vector3(RenderTarget.Width.AsFloat, RenderTarget.Height.AsFloat, 0.0f);
+			background.transform.localScale = new Vector3(RenderTarget.WorldWidth.AsFloat, RenderTarget.WorldHeight.AsFloat, 0.0f);
 		}
 
 		private void OnDrawGizmos()
@@ -46,7 +46,7 @@ namespace CodeTestUnity.EntityRendering
 			}
 
 			var localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-			var gunSize = new Vector3(RenderTarget.Width.AsFloat, RenderTarget.Height.AsFloat, 0.0f);
+			var gunSize = new Vector3(RenderTarget.WorldWidth.AsFloat, RenderTarget.WorldHeight.AsFloat, 0.0f);
 
 			Gizmos.color = Color.green;
 			Gizmos.DrawWireCube(localPosition, gunSize);

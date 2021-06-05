@@ -1,8 +1,9 @@
-﻿using CodeTest.Game.Math;
+﻿using Industry.Simulation.Math;
 using CodeTest.Game.Simulation.Models;
 using RPGCore.Events;
 using System.Diagnostics;
 using UnityEngine;
+using CodeTest.Game.Simulation;
 
 namespace CodeTestUnity.EntityRendering
 {
@@ -66,16 +67,17 @@ namespace CodeTestUnity.EntityRendering
 				return;
 			}
 
-			var simPosition = RenderTarget.Position;
-			var localPosition = new Vector3(
-				(simPosition.X - (RenderTarget.World.Width * Constants.Half)).AsFloat,
-				(simPosition.Y - (RenderTarget.World.Height * Constants.Half)).AsFloat,
-				0.0f);
+			var position = new Vector3(
+				(RenderTarget.Bounds.Center.X - (RenderTarget.World.WorldWidth * Constants.Half)).AsFloat,
+				(RenderTarget.Bounds.Center.Y - (RenderTarget.World.WorldHeight * Constants.Half)).AsFloat, 0.0f);
 
-			var gunSize = new Vector3(RenderTarget.World.GunSize.X.AsFloat, RenderTarget.World.GunSize.Y.AsFloat, 0.0f);
+			var size = new Vector3(
+				RenderTarget.World.Configuration.GunSize.X.AsFloat,
+				RenderTarget.World.Configuration.GunSize.Y.AsFloat, 0.0f);
+
+			Gizmos.DrawWireCube(position, size);
 
 			Gizmos.color = Color.green;
-			Gizmos.DrawWireCube(localPosition, gunSize);
 			Gizmos.color = Color.white;
 		}
 
@@ -83,11 +85,9 @@ namespace CodeTestUnity.EntityRendering
 		{
 			var position = RenderTarget.Position;
 			transform.localPosition = new Vector3(
-				(position.X - (RenderTarget.World.Width * Constants.Half)).AsFloat,
-				(position.Y - (RenderTarget.World.Height * Constants.Half)).AsFloat,
+				(position.X - (RenderTarget.World.WorldWidth * Constants.Half)).AsFloat,
+				(position.Y - (RenderTarget.World.WorldHeight * Constants.Half)).AsFloat,
 				0.0f);
-
-			graphic.flipX = RenderTarget.IsFlipped.Value;
 
 			if (RenderTarget.Angle.Value.Graphic == "gun_90")
 			{

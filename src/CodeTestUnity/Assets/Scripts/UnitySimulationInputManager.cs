@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CodeTestUnity
 {
-	public class UnitySimulationInputManager : MonoBehaviour, ISimulationInputManager
+	public class UnitySimulationInputManager : MonoBehaviour
 	{
 		public ControlSchema Controls { get; set; }
 		public SimulationInput SimulationInput { get; private set; }

@@ -4,26 +4,16 @@ using System;
 
 namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 {
+	/// <summary>
+	/// The system responcible for spawning enemy waves.
+	/// </summary>
 	public class EnemySpawnerSystem : IWorldSystem
 	{
 		private readonly World world;
-
 		private readonly Random random;
 		private Fixed timeWaitingWithNoEnemies;
 
-		/// <summary>
-		/// The height of every layer.
-		/// </summary>
-		public Fixed LayerHeight
-		{
-			get
-			{
-				var minusReserved = world.WorldHeight - (world.Configuration.EnemySpawning.MinimumAltitudePercent * world.WorldHeight);
-				return minusReserved / world.Configuration.EnemySpawning.LayersCount;
-			}
-		}
-
-		public EnemySpawnerSystem(World world)
+		internal EnemySpawnerSystem(World world)
 		{
 			this.world = world;
 			random = new Random();
@@ -32,7 +22,6 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 		/// <inheritdoc/>
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
-
 		}
 
 		/// <inheritdoc/>
@@ -43,6 +32,7 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 		/// <inheritdoc/>
 		public void OnUpdate(UpdateParameters parameters)
 		{
+			// If the game has ended, do nothing.
 			if (world.IsGameOver)
 			{
 				return;
@@ -54,29 +44,13 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 				return;
 			}
 
+			// If we have been waiting long enough, spawn a wave of enemies.
 			timeWaitingWithNoEnemies += parameters.DeltaTime;
-
 			if (timeWaitingWithNoEnemies >= world.Configuration.EnemySpawning.DelayBetweenRounds)
 			{
 				timeWaitingWithNoEnemies = 0;
-
 				SpawnVerticalWave();
 			}
-		}
-
-		/// <summary>
-		/// Converts and integer layer into a height in the world.
-		/// </summary>
-		/// <param name="layer">The layer to find the height of.</param>
-		/// <returns>The height of the layer.</returns>
-		public Fixed GetLayerHeight(int layer)
-		{
-			if (layer >= world.Configuration.EnemySpawning.LayersCount)
-			{
-				throw new ArgumentOutOfRangeException(nameof(layer), "Layer is too large.");
-			}
-
-			return (world.Configuration.EnemySpawning.MinimumAltitudePercent * world.WorldHeight) + (LayerHeight * (layer - Constants.Half));
 		}
 
 		/// <summary>
@@ -85,13 +59,12 @@ namespace CodeTest.Game.Simulation.Systems.EnemySpawning
 		private void SpawnVerticalWave()
 		{
 			int enemiesCount = random.Next(world.Configuration.EnemySpawning.MinEnemies, world.Configuration.EnemySpawning.MaxEnemies);
-
 			int startRow = random.Next(0, world.Configuration.EnemySpawning.LayersCount - enemiesCount);
 
 			for (int i = 0; i < enemiesCount; i++)
 			{
 				int layer = startRow + i;
-				var height = GetLayerHeight(layer);
+				var height = world.GetLayerHeight(layer);
 
 				var newEnemy = new WorldEnemy(world, world.Configuration.EnemySpawning.Enemy);
 

@@ -1,4 +1,4 @@
-﻿using CodeTest.Game.Math;
+﻿using Industry.Simulation.Math;
 using CodeTest.Game.Simulation;
 using UnityEngine;
 
@@ -22,7 +22,7 @@ namespace CodeTestUnity
 				{
 					var ratio = ((Fixed)Screen.width) / ((Fixed)Screen.height);
 
-					entrypoint.CurrentWorld.Resize(entrypoint.CurrentWorld.Height * ratio, entrypoint.CurrentWorld.Height);
+					entrypoint.CurrentWorld.Resize(entrypoint.CurrentWorld.WorldHeight * ratio, entrypoint.CurrentWorld.WorldHeight);
 				}
 
 				currentWidth = Screen.width;
