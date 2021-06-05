@@ -54,7 +54,7 @@ namespace CodeTest.Game.Simulation.Systems.ProjectileMovement
 
 						projectile.Owner.Player.CurrentScore.Value += world.Configuration.PointsPerPlane;
 
-						projectile.Owner.Player.Player.Highscore.Value = 
+						projectile.Owner.Player.Player.Highscore.Value =
 							System.Math.Max(
 								projectile.Owner.Player.Player.Highscore.Value,
 								projectile.Owner.Player.CurrentScore.Value);

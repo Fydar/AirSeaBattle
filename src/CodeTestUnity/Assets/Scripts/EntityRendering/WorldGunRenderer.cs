@@ -1,9 +1,7 @@
-﻿using Industry.Simulation.Math;
-using CodeTest.Game.Simulation.Models;
+﻿using CodeTest.Game.Simulation.Models;
+using Industry.Simulation.Math;
 using RPGCore.Events;
-using System.Diagnostics;
 using UnityEngine;
-using CodeTest.Game.Simulation;
 
 namespace CodeTestUnity.EntityRendering
 {

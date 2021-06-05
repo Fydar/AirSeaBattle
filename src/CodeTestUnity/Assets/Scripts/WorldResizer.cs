@@ -1,5 +1,5 @@
-﻿using Industry.Simulation.Math;
-using CodeTest.Game.Simulation;
+﻿using CodeTest.Game.Simulation;
+using Industry.Simulation.Math;
 using UnityEngine;
 
 namespace CodeTestUnity

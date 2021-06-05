@@ -1,6 +1,6 @@
-﻿using Industry.Simulation.Math;
-using CodeTest.Game.Services.Configuration;
+﻿using CodeTest.Game.Services.Configuration;
 using CodeTest.Game.Simulation.Models;
+using Industry.Simulation.Math;
 using RPGCore.Events;
 using System;
 using System.Collections.Generic;

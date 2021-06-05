@@ -1,5 +1,4 @@
 ﻿using Industry.Simulation.Math;
-using CodeTest.Game.Simulation.Systems.EnemySpawning;
 
 namespace CodeTest.Game.Services.Configuration
 {

@@ -2,7 +2,6 @@
 using CodeTestUnity.EntityRendering;
 using RPGCore.Events;
 using System;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
