@@ -6,6 +6,7 @@ using CodeTest.Game.Simulation.Systems.EnemyBehaviour;
 using CodeTest.Game.Simulation.Systems.EnemySpawning;
 using CodeTest.Game.Simulation.Systems.PlayerControl;
 using CodeTest.Game.Simulation.Systems.ProjectileMovement;
+using CodeTestUnity.EntityRendering;
 using System.Collections;
 using System.Net.Http;
 using UnityEngine;
@@ -69,7 +70,7 @@ namespace CodeTestUnity
 			}
 			CurrentWorld = worldTask.GetAwaiter().GetResult();
 
-			worldRenderer.Render(CurrentWorld);
+			worldRenderer.RenderTarget = CurrentWorld;
 
 			var playerInput = new SimulationInput();
 			var playerInputManager = gameObject.AddComponent<UnitySimulationInputManager>();
@@ -90,7 +91,7 @@ namespace CodeTestUnity
 				mainMenuScreen.Hide();
 
 				var worldPlayer = CurrentWorld.AddPlayer(player);
-				hudScreen.RenderTarget = worldPlayer;
+				hudScreen.PlayerRenderer.RenderTarget = worldPlayer;
 
 				while (true)
 				{
