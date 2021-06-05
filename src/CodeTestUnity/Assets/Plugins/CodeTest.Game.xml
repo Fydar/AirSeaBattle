@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeTest.Game</name>
+    </assembly>
+    <members>
+        <member name="M:CodeTest.Game.Control.InputButton.Update">
+            <summary>
+            Advance the state of the button.
+            </summary>
+        </member>
+        <member name="M:CodeTest.Game.Control.InputButton.SimulateButtonDown">
+            <summary>
+            Inform this <see cref="T:CodeTest.Game.Control.InputButton"/> that it should represent a <see cref="F:CodeTest.Game.Control.InputButtonState.Pressed"/> state.
+            </summary>
+        </member>
+        <member name="M:CodeTest.Game.Control.InputButton.SimulateButtonUp">
+            <summary>
+            Inform this <see cref="T:CodeTest.Game.Control.InputButton"/> that it should represent a <see cref="F:CodeTest.Game.Control.InputButtonState.Released"/> state.
+            </summary>
+        </member>
+        <member name="T:CodeTest.Game.Math.Fixed">
+            <summary>
+            A deterministic, fixed-point decimal value.
+            </summary>
+        </member>
+        <member name="M:CodeTest.Game.Math.Fixed.EqualityComparer.Equals(CodeTest.Game.Math.Fixed,CodeTest.Game.Math.Fixed)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CodeTest.Game.Math.Fixed.EqualityComparer.GetHashCode(CodeTest.Game.Math.Fixed)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CodeTest.Game.Math.Fixed.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:CodeTest.Game.Math.Fixed.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CodeTest.Game.Math.Fixed.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:CodeTest.Game.Math.FixedAABox">
+            <summary>
+            Represents a <see cref="T:CodeTest.Game.Math.Fixed"/> axis-aligned box.
+            </summary>
+        </member>
+        <member name="T:CodeTest.Game.Math.FixedMath">
+            <summary>
+            A collection of maths for <see cref="T:CodeTest.Game.Math.Fixed"/> decimal values.
+            </summary>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Sign(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Abs(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the absolute value of a number.
+            </summary>
+            <param name="value">A number.</param>
+            <returns>The absolute value of <paramref name="value"/></returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Round(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Rounds a value to the nearest integer. If the value is midway between two integers then it is rounded up.
+            </summary>
+            <param name="value">A number to be rounded.</param>
+            <returns>The integer <paramref name="value"/> to the nearest integer value.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.RoundToInt(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Rounds a value to the nearest integer. If the value is midway between two integers then it is rounded up.
+            </summary>
+            <param name="value">A number to be rounded.</param>
+            <returns>The integer <paramref name="value"/> to the nearest integer value as an <see cref="T:System.Int32"/>.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Floor(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the largest integral value that is less than or equal to <paramref name="value"/>.
+            </summary>
+            <param name="value">A decimal number.</param>
+            <returns>The largest integral value that is less than or equal to <paramref name="value"/>.</returns>
+            <seealso cref="M:CodeTest.Game.Math.FixedMath.FloorToInt(CodeTest.Game.Math.Fixed@)"/>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.FloorToInt(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the largest integral value that is less than or equal to <paramref name="value"/>.
+            </summary>
+            <param name="value">A decimal number.</param>
+            <returns>The largest integral value that is less than or equal to <paramref name="value"/> as an <see cref="T:System.Int32"/>.</returns>
+            <seealso cref="M:CodeTest.Game.Math.FixedMath.Floor(CodeTest.Game.Math.Fixed@)"/>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Ceiling(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the smallest integral value that is greater than or equal to <paramref name="value"/>.
+            </summary>
+            <param name="value">A decimal number.</param>
+            <returns>The smallest integral value that is greater than or equal to <paramref name="value"/>.</returns>
+            <seealso cref="M:CodeTest.Game.Math.FixedMath.CeilToInt(CodeTest.Game.Math.Fixed@)"/>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.CeilToInt(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the smallest integral value that is greater than or equal to <paramref name="value"/>.
+            </summary>
+            <param name="value">A decimal number.</param>
+            <returns>The smallest integral value that is greater than or equal to <paramref name="value"/> as an <see cref="T:System.Int32"/>.</returns>
+            <seealso cref="M:CodeTest.Game.Math.FixedMath.Ceiling(CodeTest.Game.Math.Fixed@)"/>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Max(CodeTest.Game.Math.Fixed@,CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the larger of two numbers.
+            </summary>
+            <param name="val1">The first of two numbers to compare.</param>
+            <param name="val2">The second of two numbers to compare.</param>
+            <returns>Either <paramref name="val1"/> or <paramref name="val2"/>, whichever is largest.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Min(CodeTest.Game.Math.Fixed@,CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the smaller of two numbers.
+            </summary>
+            <param name="val1">The first of two numbers to compare.</param>
+            <param name="val2">The second of two numbers to compare.</param>
+            <returns>Either <paramref name="val1"/> or <paramref name="val2"/>, whichever is smallest.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Min(CodeTest.Game.Math.Fixed[])">
+            <summary>
+            Returns the smaller of supplied numbers.
+            </summary>
+            <param name="values">The supplied numbers.</param>
+            <returns>Whichever one of <paramref name="values"/> is the smallest.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Max(CodeTest.Game.Math.Fixed[])">
+            <summary>
+            Returns the largest of supplied numbers.
+            </summary>
+            <param name="values">The supplied numbers.</param>
+            <returns>Whichever one of <paramref name="values"/> is the largest.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.MinMax(CodeTest.Game.Math.Fixed@,CodeTest.Game.Math.Fixed@,CodeTest.Game.Math.Fixed@,CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Ensures the values are in order of minimim-to-maximum.
+            </summary>
+            <param name="a">The first of the two values to sort.</param>
+            <param name="b">The second of the two values to sort.</param>
+            <param name="min">Either <paramref name="a"/> or <paramref name="b"/>, whichever is smallest.</param>
+            <param name="max">Either <paramref name="a"/> or <paramref name="b"/>, whichever is largest.</param>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Sin(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the sine of the specified angle.
+            </summary>
+            <param name="a">An angle, measured in radians.</param>
+            <returns>The sine of <paramref name="a"/>.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Cos(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the cosine of the specified angle.
+            </summary>
+            <param name="d">An angle, measured in radians.</param>
+            <returns>The cosine of <paramref name="d"/>.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Tan(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the tangent of the specified angle.
+            </summary>
+            <param name="a">An angle, measured in radians.</param>
+            <returns>The tangent of <paramref name="a"/>.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Asin(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the angle whose sine is the specified number.
+            </summary>
+            <param name="d">A number representing a sine, where d must be greater than or equal to -1, but less than or equal to 1.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Acos(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the angle whose cosine is the specified number.
+            </summary>
+            <param name="d">A number representing a cosine, where d must be greater than or equal to -1, but less than or equal to 1.
+            </param>
+            <returns>An angle, θ, measured in radians.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Atan(CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the angle whose tangent is the specified number.
+            </summary>
+            <param name="d">A number representing a tangent.</param>
+            <returns>An angle, θ, measured in radians.</returns>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Log2(CodeTest.Game.Math.Fixed@)">
+            <remarks>
+            Implementation based off of Clay. S. Turner's fast binary logarithm
+            </remarks>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedMath.Atan2(CodeTest.Game.Math.Fixed@,CodeTest.Game.Math.Fixed@)">
+            <summary>
+            Returns the angle whose tangent is the quotient of two specified numbers.
+            </summary>
+            <param name="y">The <paramref name="y"/> coordinate of a point.</param>
+            <param name="x">The <paramref name="x"/> coordinate of a point.</param>
+            <returns>An angle, θ, measured in radians.</returns>
+        </member>
+        <member name="T:CodeTest.Game.Math.FixedVector2">
+            <summary>
+            Represents a <see cref="T:CodeTest.Game.Math.Fixed"/> 2-value vector.
+            </summary>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedVector2.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedVector2.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:CodeTest.Game.Math.FixedVector2.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:CodeTest.Game.Services.Configuration.FallbackGameplayConfigurationService">
+            <inheritdoc/>
+        </member>
+        <member name="M:CodeTest.Game.Services.Configuration.FallbackGameplayConfigurationService.Configure(CodeTest.Game.Services.Configuration.GameplayConfiguration)">
+            <inheritdoc/>
+        </member>
+        <member name="T:CodeTest.Game.Services.Configuration.GameplayConfiguration">
+            <summary>
+            A class representing web-hosted game configuration.
+            </summary>
+            <example>
+            When serialized, this data looks something like:
+            <code lang="json">
+            {
+              "time_limit": 60,
+              "default_high_score": 35,
+              "points_per_plane": 5,
+              "id": "config"
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:CodeTest.Game.Services.Configuration.GameplayConfiguration.TimeLimit">
+            <summary>
+            How long (in seconds) the player has per game.
+            </summary>
+        </member>
+        <member name="P:CodeTest.Game.Services.Configuration.GameplayConfiguration.DefaultHighScore">
+            <summary>
+            A default value for the game highscore.
+            </summary>
+        </member>
+        <member name="P:CodeTest.Game.Services.Configuration.GameplayConfiguration.PointsPerPlane">
+            <summary>
+            How many points should be awarded to the player apon destroying a plane.
+            </summary>
+        </member>
+        <member name="P:CodeTest.Game.Services.Configuration.GameplayConfiguration.Id">
+            <summary>
+            An identifier for this gameplay configuration.
+            </summary>
+        </member>
+        <member name="M:CodeTest.Game.Services.Configuration.GameplayConfiguration.ConfigureFrom(CodeTest.Game.Services.Configuration.GameplayConfiguration)">
+            <summary>
+            Overwrites configuration values that are not <c>null</c> in <c>this</c> <see cref="T:CodeTest.Game.Services.Configuration.GameplayConfiguration"/>.
+            </summary>
+            <param name="other">The <see cref="T:CodeTest.Game.Services.Configuration.GameplayConfiguration"/> to source values from.</param>
+        </member>
+        <member name="T:CodeTest.Game.Services.Configuration.IGameplayConfigurationService">
+            <summary>
+            A service for providing the game with configuration.
+            </summary>
+        </member>
+        <member name="M:CodeTest.Game.Services.Configuration.IGameplayConfigurationService.Configure(CodeTest.Game.Services.Configuration.GameplayConfiguration)">
+            <summary>
+            Mutate the gameplay configuration to match the behaviour specified by this service.
+            </summary>
+            <param name="configuration">The <see cref="T:CodeTest.Game.Services.Configuration.GameplayConfiguration"/> to mutate by this service.</param>
+        </member>
+        <member name="T:CodeTest.Game.Services.Configuration.RemoteGameplayConfigurationService">
+            <inheritdoc/>
+        </member>
+        <member name="M:CodeTest.Game.Services.Configuration.RemoteGameplayConfigurationService.Configure(CodeTest.Game.Services.Configuration.GameplayConfiguration)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CodeTest.Game.Simulation.Models.WorldEngineBuilder.UseWorldSystem(CodeTest.Game.Simulation.IWorldSystemFactory)">
+            <summary>
+            Adds a <see cref="T:CodeTest.Game.Simulation.IWorldSystemFactory"/> to the world which drives gameplay.
+            </summary>
+            <param name="worldSystem">The <see cref="T:CodeTest.Game.Simulation.IWorldSystemFactory"/> to add.</param>
+            <returns>The current instance of <c>this</c> builder.</returns>
+        </member>
+        <member name="P:CodeTest.Game.Simulation.Systems.EnemySpawning.EnemySpawnerConfiguration.Enemy">
+            <summary>
+            The enemy that the spawner should use.
+            </summary>
+        </member>
+        <member name="M:CodeTest.Game.Simulation.Systems.EnemySpawning.EnemySpawnerSystem.SpawnVerticalWave">
+            <summary>
+            Spawns a wave of enemies that are vertically stacked ontop of eachother.
+            </summary>
+        </member>
+        <member name="P:CodeTest.Game.Simulation.World.Age">
+            <summary>
+            The age of the world in seconds.
+            </summary>
+        </member>
+        <member name="P:CodeTest.Game.Simulation.World.MaximumProjectiles">
+            <summary>
+            The maximum number of projects allowed in this <see cref="T:CodeTest.Game.Simulation.World"/>.
+            </summary>
+            <remarks>
+            Could be moved into configuration, but the design brief didn't call for it.
+            </remarks>
+        </member>
+        <member name="M:CodeTest.Game.Simulation.World.Resize(CodeTest.Game.Math.Fixed,CodeTest.Game.Math.Fixed)">
+            <summary>
+            Resizes the game world.
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="M:CodeTest.Game.Simulation.World.Update(CodeTest.Game.Math.Fixed)">
+            <summary>
+            Advances the world forward by a specified amount of time.
+            </summary>
+            <param name="deltaTime"></param>
+            <param name="time"></param>
+        </member>
+        <member name="M:CodeTest.Game.Simulation.World.AddPlayer(CodeTest.Game.Simulation.LocalPlayer)">
+            <summary>
+            Adds a player to the game world.
+            </summary>
+            <param name="localPlayer">An object representing the player that joined.</param>
+        </member>
+        <member name="M:CodeTest.Game.Simulation.World.RemovePlayer(CodeTest.Game.Simulation.Models.WorldPlayer)">
+            <summary>
+            Removes a player from the game world.
+            </summary>
+            <param name="worldPlayer">An object representing the player that left.</param>
+        </member>
+        <member name="M:CodeTest.Game.Simulation.World.Reset">
+            <summary>
+            Resets the world to the default state (minus mutations to the screen size).
+            </summary>
+        </member>
+        <member name="M:CodeTest.Game.Simulation.WorldBuilder.Build">
+            <summary>
+            Constructs a new <see cref="T:CodeTest.Game.Simulation.World"/> from the current state of this <see cref="T:CodeTest.Game.Simulation.WorldBuilder"/>.
+            </summary>
+            <returns>The new <see cref="T:CodeTest.Game.Simulation.World"/>.</returns>
+        </member>
+    </members>
+</doc>

@@ -16,22 +16,29 @@ namespace CodeTestUnity
 	{
 		[SerializeField] private ControlSchema[] controls;
 		[SerializeField] private WorldRenderer worldRenderer;
-		[SerializeField] private HudController playerHud;
+
+		[Header("UI")]
+		[SerializeField] private LoadingScreen loadingScreen;
+		[SerializeField] private MainMenuScreen mainMenuScreen;
+		[SerializeField] private HudScreen hudScreen;
 
 		[Header("Configuration")]
 		[SerializeField] private float enemySpeed = 1.0f;
 		[SerializeField] private string configurationUrl = "http://content.gamefuel.info/api/client_programming_test/air_battle_v1/content/config/config";
 
-
 		public World CurrentWorld { get; private set; }
 
-		public void RunGame()
+		private void Start()
 		{
 			StartCoroutine(RunGameRoutine());
 		}
 
 		private IEnumerator RunGameRoutine()
 		{
+			loadingScreen.Show();
+			mainMenuScreen.Hide();
+			hudScreen.Hide();
+
 			var worldEngine = WorldEngineBuilder.Create()
 				.UseWorldSystem(new PlayerControlSystemFactory(new PlayerControlConfiguration()))
 				.UseWorldSystem(new EnemySpawnerSystemFactory(
@@ -60,7 +67,6 @@ namespace CodeTestUnity
 			{
 				yield return null;
 			}
-			
 			CurrentWorld = worldTask.GetAwaiter().GetResult();
 
 			worldRenderer.Render(CurrentWorld);
@@ -69,17 +75,36 @@ namespace CodeTestUnity
 			var playerInputManager = gameObject.AddComponent<UnitySimulationInputManager>();
 			playerInputManager.Controls = controls[0];
 			playerInputManager.AttachInput(playerInput);
-
 			var player = new LocalPlayer(playerInput);
-			var worldPlayer = CurrentWorld.AddPlayer(player);
 
-			playerHud.RenderTarget = worldPlayer;
+			loadingScreen.Hide();
 
 			while (true)
 			{
-				yield return null;
-				var deltaTime = Fixed.FromFloat(Time.deltaTime);
-				CurrentWorld.Update(deltaTime);
+				mainMenuScreen.Show();
+				yield return StartCoroutine(mainMenuScreen.WaitForButtonPressed());
+				hudScreen.Show();
+				hudScreen.ShowTime();
+				mainMenuScreen.Hide();
+
+				var worldPlayer = CurrentWorld.AddPlayer(player);
+				hudScreen.RenderTarget = worldPlayer;
+
+				while (true)
+				{
+					yield return null;
+					var deltaTime = Fixed.FromFloat(Time.deltaTime);
+					CurrentWorld.Update(deltaTime);
+
+					if (CurrentWorld.IsGameOver)
+					{
+						break;
+					}
+				}
+				CurrentWorld.Reset();
+
+				hudScreen.HideTime();
+				mainMenuScreen.Show();
 			}
 		}
 	}
