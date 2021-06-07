@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Deterministic>true</Deterministic>
+    <ProjectType>library</ProjectType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AirSeaBattle.Game\AirSeaBattle.Game.csproj" />
+  </ItemGroup>
+
+  <!-- Publish files directly to the Unity project. -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <PublishDir>../AirSeaBattleUnity/Assets/Plugins/</PublishDir>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+</Project>

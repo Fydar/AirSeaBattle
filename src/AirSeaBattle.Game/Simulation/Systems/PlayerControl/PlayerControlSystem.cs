@@ -1,12 +1,12 @@
 ﻿using AirSeaBattle.Game.Control;
-using AirSeaBattle.Game.Simulation;
 using AirSeaBattle.Game.Simulation.Models;
 using Industry.Simulation.Math;
 
-namespace RPGCore.Documentation.Samples
+namespace AirSeaBattle.Game.Simulation.Systems.PlayerControl
 {
-	#region system
-	// The system responcible for aiming the player gun and creating projectiles.
+	/// <summary>
+	/// The system responcible for aiming the player gun and creating projectiles.
+	/// </summary>
 	public class PlayerControlSystem : IWorldSystem
 	{
 		private readonly World world;
@@ -16,6 +16,7 @@ namespace RPGCore.Documentation.Samples
 			this.world = world;
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
 			// Give the player a gun in the world
@@ -27,6 +28,7 @@ namespace RPGCore.Documentation.Samples
 			worldPlayer.ControlledGuns.Add(gun.Identifier, gun);
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
 			// Remove all guns that belonged to the player that left.
@@ -36,6 +38,7 @@ namespace RPGCore.Documentation.Samples
 			}
 		}
 
+		/// <inheritdoc/>
 		public void OnUpdate(UpdateParameters parameters)
 		{
 			// Do nothing if the game has ended.
@@ -79,8 +82,7 @@ namespace RPGCore.Documentation.Samples
 							continue;
 						}
 
-						var velocityVector = FixedVector2.Rotate(FixedVector2.Right,
-							gun.Value.Angle.Value.Inclination * Constants.Deg2Rad);
+						var velocityVector = FixedVector2.Rotate(FixedVector2.Right, gun.Value.Angle.Value.Inclination * Constants.Deg2Rad);
 
 						var projectilePosition = gun.Value.Bounds.NormalizedToPoint(gun.Value.Angle.Value.BulletOffset);
 
@@ -94,5 +96,4 @@ namespace RPGCore.Documentation.Samples
 			}
 		}
 	}
-	#endregion system
 }

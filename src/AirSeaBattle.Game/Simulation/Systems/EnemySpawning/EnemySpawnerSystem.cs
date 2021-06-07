@@ -1,12 +1,12 @@
-﻿using AirSeaBattle.Game.Simulation;
-using AirSeaBattle.Game.Simulation.Models;
+﻿using AirSeaBattle.Game.Simulation.Models;
 using Industry.Simulation.Math;
 using System;
 
-namespace RPGCore.Documentation.Samples
+namespace AirSeaBattle.Game.Simulation.Systems.EnemySpawning
 {
-	#region system
-	// The system responcible for spawning enemy waves.
+	/// <summary>
+	/// The system responcible for spawning enemy waves.
+	/// </summary>
 	public class EnemySpawnerSystem : IWorldSystem
 	{
 		private readonly World world;
@@ -19,14 +19,17 @@ namespace RPGCore.Documentation.Samples
 			random = new Random();
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
 		}
 
+		/// <inheritdoc/>
 		public void OnUpdate(UpdateParameters parameters)
 		{
 			// If the game has ended, do nothing.
@@ -50,11 +53,12 @@ namespace RPGCore.Documentation.Samples
 			}
 		}
 
-		// Spawns a wave of enemies that are vertically stacked ontop of eachother.
+		/// <summary>
+		/// Spawns a wave of enemies that are vertically stacked ontop of eachother.
+		/// </summary>
 		private void SpawnVerticalWave()
 		{
-			int enemiesCount = random.Next(world.Configuration.EnemySpawning.MinEnemies,
-				world.Configuration.EnemySpawning.MaxEnemies);
+			int enemiesCount = random.Next(world.Configuration.EnemySpawning.MinEnemies, world.Configuration.EnemySpawning.MaxEnemies);
 			int startRow = random.Next(0, world.Configuration.EnemySpawning.LayersCount - enemiesCount);
 
 			for (int i = 0; i < enemiesCount; i++)
@@ -76,5 +80,4 @@ namespace RPGCore.Documentation.Samples
 			return world.Enemies.Count > 0;
 		}
 	}
-	#endregion system
 }

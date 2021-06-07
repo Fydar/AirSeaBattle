@@ -1,20 +1,26 @@
-﻿using AirSeaBattle.Game.Services.Configuration;
+using AirSeaBattle.Game.Services.Configuration;
 using AirSeaBattle.Game.Simulation;
 using AirSeaBattle.Game.Simulation.Models;
 using AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour;
 using AirSeaBattle.Game.Simulation.Systems.EnemySpawning;
 using AirSeaBattle.Game.Simulation.Systems.PlayerControl;
 using AirSeaBattle.Game.Simulation.Systems.ProjectileMovement;
+using Industry.Simulation.Math;
+using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace RPGCore.Documentation.Samples
+namespace AirSeaBattle.Game.IntegrationTests
 {
-	public class WorldFactorySample
+	public class GameplayShould
 	{
-		public static async Task Run()
+		[SetUp]
+		public void Setup()
 		{
-			#region factory
-			// A world engine describes the mechanics and behaviours that run in the world.
+		}
+
+		[Test]
+		public async Task Test1()
+		{
 			var worldEngine = WorldEngineBuilder.Create()
 				.UseWorldSystem(new PlayerControlSystemFactory())
 				.UseWorldSystem(new EnemySpawnerSystemFactory())
@@ -22,17 +28,19 @@ namespace RPGCore.Documentation.Samples
 				.UseWorldSystem(new ProjectileMovementSystemFactory())
 				.Build();
 
-			// Multiple worlds can be constructed from the same engine, with different configurations.
 			var world = await worldEngine.ConstructWorld()
 				.UseConfiguration(new FallbackGameplayConfigurationService())
 				.Build();
 
-			// Players can then join the world
-			var playerInput = new SimulationInput();
-			var player = new LocalPlayer(playerInput);
+			var player = new LocalPlayer(new SimulationInput());
 
 			world.AddPlayer(player);
-			#endregion factory
+
+			world.Update(((Fixed)1) / 5);
+			world.Update(((Fixed)1) / 5);
+			world.Update(((Fixed)1) / 5);
+			world.Update(((Fixed)1) / 5);
+			world.Update(((Fixed)1) / 5);
 		}
 	}
 }

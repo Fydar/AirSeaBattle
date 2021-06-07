@@ -1,13 +1,12 @@
-﻿
-using AirSeaBattle.Game.Simulation;
-using AirSeaBattle.Game.Simulation.Models;
+﻿using AirSeaBattle.Game.Simulation.Models;
 using Industry.Simulation.Math;
 using System.Linq;
 
-namespace RPGCore.Documentation.Samples
+namespace AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour
 {
-	#region system
-	// The system responcible for moving enemies.
+	/// <summary>
+	/// The system responcible for moving enemies.
+	/// </summary>
 	public class EnemyBehaviourSystem : IWorldSystem
 	{
 		private readonly World world;
@@ -17,14 +16,17 @@ namespace RPGCore.Documentation.Samples
 			this.world = world;
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
 		}
 
+		/// <inheritdoc/>
 		public void OnUpdate(UpdateParameters parameters)
 		{
 			foreach (var enemyKvp in world.Enemies)
@@ -41,5 +43,4 @@ namespace RPGCore.Documentation.Samples
 			}
 		}
 	}
-	#endregion system
 }

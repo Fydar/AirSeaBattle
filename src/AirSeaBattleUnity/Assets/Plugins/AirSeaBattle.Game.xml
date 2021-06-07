@@ -1,0 +1,823 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AirSeaBattle.Game</name>
+    </assembly>
+    <members>
+        <member name="T:AirSeaBattle.Game.Control.InputButton">
+            <summary>
+            A model for accepting user input in the form of a button.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Control.InputButton.CurrentState">
+            <summary>
+            The current state of this <see cref="T:AirSeaBattle.Game.Control.InputButton"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Control.InputButton.IsDown">
+            <summary>
+            <c>true</c> whilst this <see cref="T:AirSeaBattle.Game.Control.InputButton"/> is <see cref="F:AirSeaBattle.Game.Control.InputButtonState.Pressed"/> or <see cref="F:AirSeaBattle.Game.Control.InputButtonState.Held"/>; otherwise <c>false</c>.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Control.InputButton.Update">
+            <summary>
+            Advance the state of the button.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Control.InputButton.SimulateButtonDown">
+            <summary>
+            Inform this <see cref="T:AirSeaBattle.Game.Control.InputButton"/> that it should represent a <see cref="F:AirSeaBattle.Game.Control.InputButtonState.Pressed"/> state.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Control.InputButton.SimulateButtonUp">
+            <summary>
+            Inform this <see cref="T:AirSeaBattle.Game.Control.InputButton"/> that it should represent a <see cref="F:AirSeaBattle.Game.Control.InputButtonState.Released"/> state.
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Control.InputButtonState">
+            <summary>
+            An enum representing the states of an <see cref="T:AirSeaBattle.Game.Control.InputButton"/>.
+            </summary>
+        </member>
+        <member name="F:AirSeaBattle.Game.Control.InputButtonState.Unpressed">
+            <summary>
+            The button is not pressed.
+            </summary>
+        </member>
+        <member name="F:AirSeaBattle.Game.Control.InputButtonState.Pressed">
+            <summary>
+            The button has recently been pressed.
+            </summary>
+        </member>
+        <member name="F:AirSeaBattle.Game.Control.InputButtonState.Held">
+            <summary>
+            The button was previously <see cref="F:AirSeaBattle.Game.Control.InputButtonState.Pressed"/> and is now being held down.
+            </summary>
+        </member>
+        <member name="F:AirSeaBattle.Game.Control.InputButtonState.Released">
+            <summary>
+            The button was previously <see cref="F:AirSeaBattle.Game.Control.InputButtonState.Pressed"/> and is now being released.
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Services.Configuration.DelegateGameplayConfigurationService">
+            <summary>
+            An implementation of <see cref="T:AirSeaBattle.Game.Services.Configuration.IGameplayConfigurationService"/> that provides default values.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Services.Configuration.DelegateGameplayConfigurationService.#ctor(System.Action{AirSeaBattle.Game.Services.Configuration.GameplayConfiguration})">
+            <summary>
+            Constructs a new instance of the <see cref="T:AirSeaBattle.Game.Services.Configuration.DelegateGameplayConfigurationService"/> class.
+            </summary>
+            <param name="configureImplementation">A callback used to configure.</param>
+        </member>
+        <member name="M:AirSeaBattle.Game.Services.Configuration.DelegateGameplayConfigurationService.Configure(AirSeaBattle.Game.Services.Configuration.GameplayConfiguration)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AirSeaBattle.Game.Services.Configuration.EnemySpawnerConfiguration">
+            <summary>
+            Configuration for enemy spawning behaviour
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.EnemySpawnerConfiguration.MinEnemies">
+            <summary>
+            Minimum amount of enemies to be spawned every wave.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.EnemySpawnerConfiguration.MaxEnemies">
+            <summary>
+            Maximum amount of enemies to be spawned every wave.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.EnemySpawnerConfiguration.DelayBetweenRounds">
+            <summary>
+            Time delay between each round.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.EnemySpawnerConfiguration.LayersCount">
+            <summary>
+            Amount of layers that enemies can spawn over.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.EnemySpawnerConfiguration.MinimumAltitudePercent">
+            <summary>
+            The minimum altitude for enemies.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.EnemySpawnerConfiguration.Enemy">
+            <summary>
+            The enemy that the spawner should use.
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Services.Configuration.FallbackGameplayConfigurationService">
+            <summary>
+            An implementation of <see cref="T:AirSeaBattle.Game.Services.Configuration.IGameplayConfigurationService"/> that provides default values.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Services.Configuration.FallbackGameplayConfigurationService.Configure(AirSeaBattle.Game.Services.Configuration.GameplayConfiguration)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration">
+            <summary>
+            A class representing game configuration.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration.TimeLimit">
+            <summary>
+            How long (in seconds) the player has per game.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration.DefaultHighScore">
+            <summary>
+            A default value for the game highscore.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration.PointsPerPlane">
+            <summary>
+            How many points should be awarded to the player apon destroying a plane.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration.Id">
+            <summary>
+            An identifier for this gameplay configuration.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration.GunSize">
+            <summary>
+            Diamentions for the gun.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration.GunHeightPercent">
+            <summary>
+            Height in the world (as a percent) that player guns are placed.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration.EnemySpawning">
+            <summary>
+            Configuration for enemy spawning behaviour.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration.PlayerControl">
+            <summary>
+            Configuration for player controls.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration.ConfigureFrom(AirSeaBattle.Game.Services.Configuration.RemoteGameplayConfiguration)">
+            <summary>
+            Overwrites configuration values that are not <c>null</c> in <c>this</c> <see cref="T:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration"/>.
+            </summary>
+            <param name="other">The <see cref="T:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration"/> to source values from.</param>
+        </member>
+        <member name="T:AirSeaBattle.Game.Services.Configuration.IGameplayConfigurationService">
+            <summary>
+            A service for providing the game with configuration.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Services.Configuration.IGameplayConfigurationService.Configure(AirSeaBattle.Game.Services.Configuration.GameplayConfiguration)">
+            <summary>
+            Mutate the gameplay configuration to match the behaviour specified by this service.
+            </summary>
+            <param name="configuration">The <see cref="T:AirSeaBattle.Game.Services.Configuration.GameplayConfiguration"/> to mutate by this service.</param>
+        </member>
+        <member name="T:AirSeaBattle.Game.Services.Configuration.PlayerControlConfiguration">
+            <summary>
+            Configuration for player controls.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.PlayerControlConfiguration.BulletSpeed">
+            <summary>
+            Speed that projectiles shot from the player should travel at.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.PlayerControlConfiguration.DefaultPosition">
+            <summary>
+            The default position for guns.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.PlayerControlConfiguration.UpPosition">
+            <summary>
+            The upwards position for guns.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.PlayerControlConfiguration.DownPosition">
+            <summary>
+            The downwards position for guns.
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Services.Configuration.RemoteGameplayConfiguration">
+            <summary>
+            A class representing web-hosted game configuration.
+            </summary>
+            <example>
+            When serialized, this data looks something like:
+            <code lang="json">
+            {
+              "time_limit": 60,
+              "default_high_score": 35,
+              "points_per_plane": 5,
+              "id": "config"
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.RemoteGameplayConfiguration.TimeLimit">
+            <summary>
+            How long (in seconds) the player has per game.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.RemoteGameplayConfiguration.DefaultHighScore">
+            <summary>
+            A default value for the game highscore.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.RemoteGameplayConfiguration.PointsPerPlane">
+            <summary>
+            How many points should be awarded to the player apon destroying a plane.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Services.Configuration.RemoteGameplayConfiguration.Id">
+            <summary>
+            An identifier for this gameplay configuration.
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Services.Configuration.RemoteGameplayConfigurationService">
+            <summary>
+            An implementation of <see cref="T:AirSeaBattle.Game.Services.Configuration.IGameplayConfigurationService"/> that downloads
+            configuration values from a remote server.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Services.Configuration.RemoteGameplayConfigurationService.#ctor(System.Net.Http.HttpClient,System.String)">
+            <summary>
+            Creates a new instance of the <see cref="T:AirSeaBattle.Game.Services.Configuration.RemoteGameplayConfiguration"/> class.
+            </summary>
+            <param name="httpClient">A <see cref="T:System.Net.Http.HttpClient"/> to perform HTTP requests with.</param>
+            <param name="url">A remote URL to issue GET requests to.</param>
+        </member>
+        <member name="M:AirSeaBattle.Game.Services.Configuration.RemoteGameplayConfigurationService.Configure(AirSeaBattle.Game.Services.Configuration.GameplayConfiguration)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.IWorldSystem">
+            <summary>
+            A system that drives gameplay and behaviour.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.IWorldSystem.OnPlayerJoined(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <summary>
+            A callback that allows <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystem"/> implementors to modify the <see cref="T:AirSeaBattle.Game.Simulation.World"/>
+            state when a <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldPlayer"/> joins the world.
+            </summary>
+            <param name="worldPlayer">A model representing the new player that joined the world.</param>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.IWorldSystem.OnPlayerRemoved(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <summary>
+            A callback that allows <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystem"/> implementors to modify the <see cref="T:AirSeaBattle.Game.Simulation.World"/>
+            state when a <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldPlayer"/> leaves the world.
+            </summary>
+            <param name="worldPlayer">A model representing the player that left the world.</param>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.IWorldSystem.OnUpdate(AirSeaBattle.Game.Simulation.UpdateParameters)">
+            <summary>
+            A callback that allows <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystem"/> implementors to modify the <see cref="T:AirSeaBattle.Game.Simulation.World"/>
+            state periodically.
+            </summary>
+            <param name="parameters">Parameters for the update.</param>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.IWorldSystemFactory">
+            <summary>
+            A factory for a system that drives gameplay and behaviour.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.IWorldSystemFactory.Build(AirSeaBattle.Game.Simulation.World)">
+            <summary>
+            Creates an <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystem"/> that drives gameplay and behaviour.
+            </summary>
+            <param name="world">The world to create a <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystem"/> for.</param>
+            <returns>A <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystem"/> for the <see cref="T:AirSeaBattle.Game.Simulation.World"/>.</returns>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.LocalPlayer">
+            <summary>
+            A model representing a player and their interaction with the game state.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.LocalPlayer.Input">
+            <summary>
+            Represents input provided by this <see cref="T:AirSeaBattle.Game.Simulation.LocalPlayer"/>
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.LocalPlayer.Highscore">
+            <summary>
+            The players highest achieved score.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.LocalPlayer.#ctor(AirSeaBattle.Game.Simulation.SimulationInput)">
+            <summary>
+            Creates a new instance of the <see cref="T:AirSeaBattle.Game.Simulation.LocalPlayer"/> class.
+            </summary>
+            <param name="input">Input from the player.</param>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy">
+            <summary>
+            Represents a moving enemy in the <see cref="P:AirSeaBattle.Game.Simulation.Models.WorldEnemy.World"/>.
+            </summary>
+        </member>
+        <member name="E:AirSeaBattle.Game.Simulation.Models.WorldEnemy.OnDestroyed">
+            <summary>
+            An event that's fired when this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/> is destroyed.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldEnemy.Identifier">
+            <summary>
+            A unique identifier for this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldEnemy.World">
+            <summary>
+            The world that this entity belongs to.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldEnemy.Template">
+            <summary>
+            Provides shared characteristics for this type of <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldEnemy.Position">
+            <summary>
+            The current position of the <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/> in the <see cref="P:AirSeaBattle.Game.Simulation.Models.WorldEnemy.World"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldEnemy.VelocityX">
+            <summary>
+            The horizontal velocity of this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldEnemy.Bounds">
+            <summary>
+            Bounds used to detect collisions between this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/> and other entities (e.g. projectiles).
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Models.WorldEnemy.#ctor(AirSeaBattle.Game.Simulation.World,AirSeaBattle.Game.Simulation.Models.WorldEnemyTemplate)">
+            <summary>
+            Creates a new instance of the <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/> class.
+            </summary>
+            <param name="world">The <see cref="P:AirSeaBattle.Game.Simulation.Models.WorldEnemy.World"/> that this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/> belongs to.</param>
+            <param name="template">Shared characteristics for the new <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/>.</param>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Models.WorldEnemy.InvokeOnDestroyed">
+            <summary>
+            Invokes the <see cref="E:AirSeaBattle.Game.Simulation.Models.WorldEnemy.OnDestroyed"/> event.
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Models.WorldEnemyTemplate">
+            <summary>
+            Represents shared characteristics for classifications of enemies.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldEnemyTemplate.Width">
+            <summary>
+            The collider width of <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/>s that use this template.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldEnemyTemplate.Height">
+            <summary>
+            The collider width of <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/>s that use this template.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldEnemyTemplate.Speed">
+            <summary>
+            The speed of <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/>s that use this template.
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Models.WorldGun">
+            <summary>
+            Represents a gun in the <see cref="P:AirSeaBattle.Game.Simulation.Models.WorldGun.World"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldGun.Identifier">
+            <summary>
+            A unique identifier for this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldGun.Player">
+            <summary>
+            The world that this entity belongs to.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldGun.Angle">
+            <summary>
+            The current <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGunPosition"/> that this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/> is in.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldGun.PercentX">
+            <summary>
+            The horizontal position of the gun in the <see cref="P:AirSeaBattle.Game.Simulation.Models.WorldGun.World"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldGun.Position">
+            <summary>
+            The position of this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/> in the <see cref="P:AirSeaBattle.Game.Simulation.Models.WorldGun.World"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldGun.Bounds">
+            <summary>
+            Bounds used to calculate intersections between this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/> and other entities.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldGun.World">
+            <summary>
+            The world that this entity belongs to.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Models.WorldGun.#ctor(AirSeaBattle.Game.Simulation.Models.WorldPlayer,AirSeaBattle.Game.Simulation.Models.WorldGunPosition)">
+            <summary>
+            Creates a new instance of the <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/> class.
+            </summary>
+            <param name="player">The <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldPlayer"/> that owns this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/>.</param>
+            <param name="angle">The default angle of the gun.</param>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Models.WorldGunPosition">
+            <summary>
+            Represents an angle that the <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/> can be positioned in.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldGunPosition.Graphic">
+            <summary>
+            A string used to determine what graphics to be used to render the gun.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldGunPosition.Inclination">
+            <summary>
+            An angle used to calculate the vector of the fired projectile.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldGunPosition.BulletOffset">
+            <summary>
+            The starting position of the bullet (in normalised space of the gun bounds).
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Models.WorldPlayer">
+            <summary>
+            Represents a moving projectile in the <see cref="P:AirSeaBattle.Game.Simulation.Models.WorldPlayer.World"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldPlayer.Identifier">
+            <summary>
+            A unique identifier for this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldPlayer"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldPlayer.World">
+            <summary>
+            The world that this entity belongs to.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldPlayer.Player">
+            <summary>
+            A model representing the input and state of the local player.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldPlayer.CurrentScore">
+            <summary>
+            The current score of the player.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldPlayer.ControlledGuns">
+            <summary>
+            A collection of all <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/>s that are controlled by this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldPlayer"/>.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Models.WorldPlayer.#ctor(AirSeaBattle.Game.Simulation.World,AirSeaBattle.Game.Simulation.LocalPlayer)">
+            <summary>
+            Creates a new instance of the <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldPlayer"/> class.
+            </summary>
+            <param name="world">The <see cref="P:AirSeaBattle.Game.Simulation.Models.WorldPlayer.World"/> that this player belongs to.</param>
+            <param name="player">The external player to provide input.</param>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Models.WorldProjectile">
+            <summary>
+            Represents a moving projectile in the <see cref="P:AirSeaBattle.Game.Simulation.Models.WorldProjectile.World"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldProjectile.Identifier">
+            <summary>
+            A unique identifier for this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldProjectile"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldProjectile.Owner">
+            <summary>
+            The <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/> that fired this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldProjectile"/>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldProjectile.Position">
+            <summary>
+            The current position of this projectile.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldProjectile.Velocity">
+            <summary>
+            The velocity of the project (how fast it will move every frame).
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.Models.WorldProjectile.World">
+            <summary>
+            The world that this entity belongs to.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Models.WorldProjectile.#ctor(AirSeaBattle.Game.Simulation.Models.WorldGun)">
+            <summary>
+            Creates a new instance of the <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldProjectile"/> class.
+            </summary>
+            <param name="owner">The <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/> that shot this projectile.</param>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Models.WorldEngine">
+            <summary>
+            A collection of mechanics and systems that a <see cref="T:AirSeaBattle.Game.Simulation.World"/> can be created from.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Models.WorldEngine.ConstructWorld">
+            <summary>
+            Constructs a new <see cref="T:AirSeaBattle.Game.Simulation.World"/> from this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/>.
+            </summary>
+            <returns>A <see cref="T:AirSeaBattle.Game.Simulation.WorldBuilder"/> that can be used to build a new <see cref="T:AirSeaBattle.Game.Simulation.World"/> instance.</returns>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Models.WorldEngineBuilder">
+            <summary>
+            A factory for <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEngine"/>
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Models.WorldEngineBuilder.UseWorldSystem(AirSeaBattle.Game.Simulation.IWorldSystemFactory)">
+            <summary>
+            Adds a <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystemFactory"/> to the world which drives gameplay.
+            </summary>
+            <param name="worldSystem">The <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystemFactory"/> to add.</param>
+            <returns>The current instance of <c>this</c> builder.</returns>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Models.WorldEngineBuilder.Create">
+            <summary>
+            Begins construction of a <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEngine"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Models.WorldEngineBuilder.Build">
+            <summary>
+            Constructs a new <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEngine"/> from the current state of this <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEngineBuilder"/>.
+            </summary>
+            <returns>The new <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEngine"/>.</returns>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.SimulationInput">
+            <summary>
+            A collection of controls for the game simulation.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.SimulationInput.Up">
+            <summary>
+            A button for "up" input.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.SimulationInput.Down">
+            <summary>
+            A button for "down" input.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.SimulationInput.Fire">
+            <summary>
+            A button for "fire" input.
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour.EnemyBehaviourSystem">
+            <summary>
+            The system responcible for moving enemies.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour.EnemyBehaviourSystem.OnPlayerJoined(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour.EnemyBehaviourSystem.OnPlayerRemoved(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour.EnemyBehaviourSystem.OnUpdate(AirSeaBattle.Game.Simulation.UpdateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour.EnemyBehaviourSystemFactory">
+            <summary>
+            A <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystemFactory"/> that provides a <see cref="T:AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour.EnemyBehaviourSystem"/> implementation.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour.EnemyBehaviourSystemFactory.Build(AirSeaBattle.Game.Simulation.World)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Systems.EnemySpawning.EnemySpawnerSystem">
+            <summary>
+            The system responcible for spawning enemy waves.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.EnemySpawning.EnemySpawnerSystem.OnPlayerJoined(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.EnemySpawning.EnemySpawnerSystem.OnPlayerRemoved(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.EnemySpawning.EnemySpawnerSystem.OnUpdate(AirSeaBattle.Game.Simulation.UpdateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.EnemySpawning.EnemySpawnerSystem.SpawnVerticalWave">
+            <summary>
+            Spawns a wave of enemies that are vertically stacked ontop of eachother.
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Systems.EnemySpawning.EnemySpawnerSystemFactory">
+            <summary>
+            A <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystemFactory"/> that provides a <see cref="T:AirSeaBattle.Game.Simulation.Systems.EnemySpawning.EnemySpawnerSystem"/> implementation.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.EnemySpawning.EnemySpawnerSystemFactory.Build(AirSeaBattle.Game.Simulation.World)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Systems.PlayerControl.PlayerControlSystem">
+            <summary>
+            The system responcible for aiming the player gun and creating projectiles.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.PlayerControl.PlayerControlSystem.OnPlayerJoined(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.PlayerControl.PlayerControlSystem.OnPlayerRemoved(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.PlayerControl.PlayerControlSystem.OnUpdate(AirSeaBattle.Game.Simulation.UpdateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Systems.PlayerControl.PlayerControlSystemFactory">
+            <summary>
+            A <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystemFactory"/> that provides a <see cref="T:AirSeaBattle.Game.Simulation.Systems.PlayerControl.PlayerControlSystem"/> implementation.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.PlayerControl.PlayerControlSystemFactory.Build(AirSeaBattle.Game.Simulation.World)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Systems.ProjectileMovement.ProjectileMovementSystem">
+            <summary>
+            The system responcible for the moving of projectiles and destroying of enemies.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.ProjectileMovement.ProjectileMovementSystem.OnPlayerJoined(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.ProjectileMovement.ProjectileMovementSystem.OnPlayerRemoved(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.ProjectileMovement.ProjectileMovementSystem.OnUpdate(AirSeaBattle.Game.Simulation.UpdateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.Systems.ProjectileMovement.ProjectileMovementSystemFactory">
+            <summary>
+            A <see cref="T:AirSeaBattle.Game.Simulation.IWorldSystemFactory"/> that provides a <see cref="T:AirSeaBattle.Game.Simulation.Systems.ProjectileMovement.ProjectileMovementSystem"/> implementation.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.Systems.ProjectileMovement.ProjectileMovementSystemFactory.Build(AirSeaBattle.Game.Simulation.World)">
+            <inheritdoc/>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.UpdateParameters">
+            <summary>
+            A set of parameters for an update.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.UpdateParameters.DeltaTime">
+            <summary>
+            The amount of the (in seconds) that has past since last update.
+            </summary>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.World">
+            <summary>
+            A model representing the persistant state of the game world.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.Configuration">
+            <summary>
+            Configuration used to contro gameplay systems.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.Age">
+            <summary>
+            The age of the world in seconds.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.WorldWidth">
+            <summary>
+            The horizontal playspace that is available.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.WorldHeight">
+            <summary>
+            The vertical playspace that is available.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.Enemies">
+            <summary>
+            All <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldEnemy"/> in the game world.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.Players">
+            <summary>
+            All <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldPlayer"/> currently contributing to the game world.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.Guns">
+            <summary>
+            All <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldGun"/> in the game world.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.Projectiles">
+            <summary>
+            All <see cref="T:AirSeaBattle.Game.Simulation.Models.WorldProjectile"/> in the game world.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.Bounds">
+            <summary>
+            Bounds used to determine whether entities are contained within the playspace.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.IsGameOver">
+            <summary>
+            <c>true</c> whilst the <see cref="P:AirSeaBattle.Game.Simulation.World.TimeRemaining"/> is less than or equal to <c>0.0</c>.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.TimeRemaining">
+            <summary>
+            The time remaining (in seconds) until the game is over.
+            </summary>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.MaximumProjectiles">
+            <summary>
+            The maximum number of projects allowed in this <see cref="T:AirSeaBattle.Game.Simulation.World"/>.
+            </summary>
+            <remarks>
+            Could be moved into configuration, but the design brief didn't call for it.
+            </remarks>
+        </member>
+        <member name="P:AirSeaBattle.Game.Simulation.World.SingleLayerHeight">
+            <summary>
+            The height of every layer.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.World.Resize(Industry.Simulation.Math.Fixed,Industry.Simulation.Math.Fixed)">
+            <summary>
+            Resizes the game world.
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.World.Update(Industry.Simulation.Math.Fixed)">
+            <summary>
+            Advances the world forward by a specified amount of time.
+            </summary>
+            <param name="deltaTime">The time since the last update.</param>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.World.AddPlayer(AirSeaBattle.Game.Simulation.LocalPlayer)">
+            <summary>
+            Adds a player to the game world.
+            </summary>
+            <param name="localPlayer">An object representing the player that joined.</param>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.World.RemovePlayer(AirSeaBattle.Game.Simulation.Models.WorldPlayer)">
+            <summary>
+            Removes a player from the game world.
+            </summary>
+            <param name="worldPlayer">An object representing the player that left.</param>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.World.Reset">
+            <summary>
+            Resets the world to the default state (minus mutations to the screen size).
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.World.GetLayerHeight(System.Int32)">
+            <summary>
+            Converts and integer layer into a height in the world.
+            </summary>
+            <param name="layer">The layer to find the height of.</param>
+            <returns>The height of the layer.</returns>
+        </member>
+        <member name="T:AirSeaBattle.Game.Simulation.WorldBuilder">
+            <summary>
+            A builder for <see cref="T:AirSeaBattle.Game.Simulation.World"/>.
+            </summary>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.WorldBuilder.UseConfiguration(AirSeaBattle.Game.Services.Configuration.IGameplayConfigurationService)">
+            <summary>
+            Registers an <see cref="T:AirSeaBattle.Game.Services.Configuration.IGameplayConfigurationService"/> implementation for configuration.
+            </summary>
+            <param name="configurationService">The service to register.</param>
+            <returns>This current instance of this <see cref="T:AirSeaBattle.Game.Simulation.WorldBuilder"/>.</returns>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.WorldBuilder.UseConfiguration(System.Action{AirSeaBattle.Game.Services.Configuration.GameplayConfiguration})">
+            <summary>
+            Registers an implementation for configuration.
+            </summary>
+            <param name="callback">A callback used to configure the configuration.</param>
+            <returns>This current instance of this <see cref="T:AirSeaBattle.Game.Simulation.WorldBuilder"/>.</returns>
+        </member>
+        <member name="M:AirSeaBattle.Game.Simulation.WorldBuilder.Build">
+            <summary>
+            Constructs a new <see cref="T:AirSeaBattle.Game.Simulation.World"/> from the current state of this <see cref="T:AirSeaBattle.Game.Simulation.WorldBuilder"/>.
+            </summary>
+            <returns>The new <see cref="T:AirSeaBattle.Game.Simulation.World"/>.</returns>
+        </member>
+    </members>
+</doc>

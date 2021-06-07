@@ -1,10 +1,10 @@
-﻿using CodeTest.Game.Services.Configuration;
-using CodeTest.Game.Simulation;
-using CodeTest.Game.Simulation.Models;
-using CodeTest.Game.Simulation.Systems.EnemyBehaviour;
-using CodeTest.Game.Simulation.Systems.EnemySpawning;
-using CodeTest.Game.Simulation.Systems.PlayerControl;
-using CodeTest.Game.Simulation.Systems.ProjectileMovement;
+﻿using AirSeaBattle.Game.Services.Configuration;
+using AirSeaBattle.Game.Simulation;
+using AirSeaBattle.Game.Simulation.Models;
+using AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour;
+using AirSeaBattle.Game.Simulation.Systems.EnemySpawning;
+using AirSeaBattle.Game.Simulation.Systems.PlayerControl;
+using AirSeaBattle.Game.Simulation.Systems.ProjectileMovement;
 using Industry.Simulation.Math;
 using System.Collections;
 
