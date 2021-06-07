@@ -29,17 +29,17 @@ ExportedObj/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
-src/CodeTestUnity/*.sln
-src/CodeTestUnity/*.csproj
-src/CodeTestUnity/[Ll]ibrary/
-src/CodeTestUnity/Assets/AssetStoreTools*
-src/CodeTestUnity/Logs
-src/CodeTestUnity/UserSettings
-src/CodeTestUnity/.vsconfig
+src/AirSeaBattleUnity/*.sln
+src/AirSeaBattleUnity/*.csproj
+src/AirSeaBattleUnity/[Ll]ibrary/
+src/AirSeaBattleUnity/Assets/AssetStoreTools*
+src/AirSeaBattleUnity/Logs
+src/AirSeaBattleUnity/UserSettings
+src/AirSeaBattleUnity/.vsconfig
 
-!src/CodeTestUnity/Assets/**/*.dll
-!src/CodeTestUnity/Assets/**/*.pdb
-!src/CodeTestUnity/Assets/**/*.pdb.meta
+!src/AirSeaBattleUnity/Assets/**/*.dll
+!src/AirSeaBattleUnity/Assets/**/*.pdb
+!src/AirSeaBattleUnity/Assets/**/*.pdb.meta
 
 # Builds
 *.apk

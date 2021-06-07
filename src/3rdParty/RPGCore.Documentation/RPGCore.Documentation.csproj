@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CodeTest.Game\CodeTest.Game.csproj" />
+    <ProjectReference Include="..\..\AirSeaBattle.Game\AirSeaBattle.Game.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,11 +1,11 @@
-﻿using AirSeaBattle.Game.Simulation;
-using AirSeaBattle.Game.Simulation.Models;
+﻿using AirSeaBattle.Game.Simulation.Models;
 using System.Linq;
 
-namespace RPGCore.Documentation.Samples
+namespace AirSeaBattle.Game.Simulation.Systems.ProjectileMovement
 {
-	#region system
-	// The system responcible for the moving of projectiles and destroying of enemies.
+	/// <summary>
+	/// The system responcible for the moving of projectiles and destroying of enemies.
+	/// </summary>
 	public class ProjectileMovementSystem : IWorldSystem
 	{
 		private readonly World world;
@@ -15,14 +15,17 @@ namespace RPGCore.Documentation.Samples
 			this.world = world;
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
 		}
 
+		/// <inheritdoc/>
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
 		}
 
+		/// <inheritdoc/>
 		public void OnUpdate(UpdateParameters parameters)
 		{
 			foreach (var projectileKvp in world.Projectiles.ToList())
@@ -67,5 +70,4 @@ namespace RPGCore.Documentation.Samples
 			}
 		}
 	}
-	#endregion system
 }
