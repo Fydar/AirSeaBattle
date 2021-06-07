@@ -56,6 +56,7 @@ namespace RPGCore.Documentation.SyntaxHighlighting.CSharp
 				[SyntaxKind.TryKeyword] = KeywordControl,
 				[SyntaxKind.CatchKeyword] = KeywordControl,
 				[SyntaxKind.FinallyKeyword] = KeywordControl,
+				[SyntaxKind.YieldKeyword] = KeywordControl,
 
 				[SyntaxKind.VoidKeyword] = Keyword,
 				[SyntaxKind.ByteKeyword] = Keyword,
@@ -123,11 +124,18 @@ namespace RPGCore.Documentation.SyntaxHighlighting.CSharp
 				[SyntaxKind.AscendingKeyword] = Keyword,
 				[SyntaxKind.DescendingKeyword] = Keyword,
 				[SyntaxKind.DisableKeyword] = Keyword,
+				[SyntaxKind.AwaitKeyword] = Keyword,
 
 				[SyntaxKind.StringLiteralExpression] = String,
 				[SyntaxKind.StringLiteralToken] = String,
 				[SyntaxKind.CharacterLiteralExpression] = String,
 				[SyntaxKind.CharacterLiteralToken] = String,
+
+				[SyntaxKind.InterpolatedStringStartToken] = String,
+				[SyntaxKind.InterpolatedStringEndToken] = String,
+				[SyntaxKind.InterpolatedVerbatimStringStartToken] = String,
+				[SyntaxKind.InterpolatedStringText] = String,
+				[SyntaxKind.InterpolatedStringTextToken] = String,
 
 				[SyntaxKind.NumericLiteralExpression] = Numeric,
 				[SyntaxKind.NumericLiteralToken] = Numeric,
