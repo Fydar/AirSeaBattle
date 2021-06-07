@@ -47,6 +47,8 @@ namespace RPGCore.Documentation.SyntaxHighlighting.CSharp
 				[SyntaxKind.UsingKeyword] = Keyword,
 
 				[SyntaxKind.ReturnKeyword] = KeywordControl,
+				[SyntaxKind.ContinueKeyword] = KeywordControl,
+				[SyntaxKind.BreakKeyword] = KeywordControl,
 				[SyntaxKind.ForKeyword] = KeywordControl,
 				[SyntaxKind.ForEachKeyword] = KeywordControl,
 				[SyntaxKind.IfKeyword] = KeywordControl,
@@ -94,6 +96,8 @@ namespace RPGCore.Documentation.SyntaxHighlighting.CSharp
 				[SyntaxKind.SealedKeyword] = Keyword,
 				[SyntaxKind.OverrideKeyword] = Keyword,
 				[SyntaxKind.BaseKeyword] = Keyword,
+
+				[SyntaxKind.ReadOnlyKeyword] = Keyword,
 
 				[SyntaxKind.RefKeyword] = Keyword,
 				[SyntaxKind.OutKeyword] = Keyword,

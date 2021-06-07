@@ -1,12 +1,13 @@
-﻿using CodeTest.Game.Simulation.Models;
+﻿
+using CodeTest.Game.Simulation;
+using CodeTest.Game.Simulation.Models;
 using Industry.Simulation.Math;
 using System.Linq;
 
-namespace CodeTest.Game.Simulation.Systems.EnemyBehaviour
+namespace RPGCore.Documentation.Samples
 {
-	/// <summary>
-	/// The system responcible for moving enemies.
-	/// </summary>
+	#region system
+	// The system responcible for moving enemies.
 	public class EnemyBehaviourSystem : IWorldSystem
 	{
 		private readonly World world;
@@ -16,17 +17,14 @@ namespace CodeTest.Game.Simulation.Systems.EnemyBehaviour
 			this.world = world;
 		}
 
-		/// <inheritdoc/>
 		public void OnPlayerJoined(WorldPlayer worldPlayer)
 		{
 		}
 
-		/// <inheritdoc/>
 		public void OnPlayerRemoved(WorldPlayer worldPlayer)
 		{
 		}
 
-		/// <inheritdoc/>
 		public void OnUpdate(UpdateParameters parameters)
 		{
 			foreach (var enemyKvp in world.Enemies)
@@ -43,4 +41,5 @@ namespace CodeTest.Game.Simulation.Systems.EnemyBehaviour
 			}
 		}
 	}
+	#endregion system
 }
