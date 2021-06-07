@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rdParty", "3rdParty", "{89
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Industry.Simulation", "3rdParty\Industry.Simulation\Industry.Simulation.csproj", "{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPGCore.Documentation", "3rdParty\RPGCore.Documentation\RPGCore.Documentation.csproj", "{66D54B60-81D0-4DCC-BF6B-DEABB9EB6D9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D54B60-81D0-4DCC-BF6B-DEABB9EB6D9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D54B60-81D0-4DCC-BF6B-DEABB9EB6D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D54B60-81D0-4DCC-BF6B-DEABB9EB6D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D54B60-81D0-4DCC-BF6B-DEABB9EB6D9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5FD7234A-77BB-4CB5-9DD3-6ED855613A34} = {8948CA45-EFBC-4944-BE75-69D56C6A5A39}
 		{A8DC9AB4-6546-4526-812D-FD1C2DB8C7EC} = {8948CA45-EFBC-4944-BE75-69D56C6A5A39}
+		{66D54B60-81D0-4DCC-BF6B-DEABB9EB6D9E} = {8948CA45-EFBC-4944-BE75-69D56C6A5A39}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E15EF984-311D-454B-8B8B-CE77231AD2E8}
