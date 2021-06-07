@@ -1,27 +1,27 @@
 # Air-Sea Battle Code Test
 
-03/06/2021
+[![Video Timelapse](https://img.shields.io/badge/Development%20Timelapse-FF0000?logo=youtube)](https://www.youtube.com/watch?v=TL1X6Fn5d1Y)
 
-Completed (and over-engineered) in ~8 hours by Anthony Marmont.
+![Header Image](./docs/header.png)
 
-Code screenshots in this README are generated using [RPGCore.Documentation](https://github.com/Fydar/RPGCore).
+Completed _(and over-engineered)_ in ~8 hours by Anthony Marmont.
 
 ## Overview
 
 ### Architecture
 
->_"I approached this problem by first creating my **out-of-engine library** that will power the simulation of the game world."_
+_"I approached this problem by first creating my **out-of-engine library** that will power the simulation of the game world."_
 
-✨ **Pro:** I can run automated tests outside of the game engine.\
-✨ **Pro:** I can easily rebuild the game in a different game engine.\
-✨ **Pro:** I can easily create in-browser versions built on WASM for tools.\
-✨ **Pro:** I can create game servers that require minimal overhead from the engine.\
-✨ **Pro:** I have full access to the build pipeline for my DLLs.\
-✨ **Pro:** I can use the latest language features such as `nullable` without having to worry about Unity's APIs.
-
-🔥 **Con:** I don't have _direct_ access to Unity's APIs and systems\
-🔥 **Con:** I have to git-commit DLLs built from the library into the Unity project.\
-🔥 **Con:** I'm going to get a bad reputation for over-engineering stuff.
+> ✨ **Benefit:** I can run **automated tests** outside of the game engine.\
+> ✨ **Benefit:** I can easily rebuild the game in a **different game engine**.\
+> ✨ **Benefit:** I can easily create **in-browser versions** built on WASM for tools.\
+> ✨ **Benefit:** I can create **game servers** that require minimal overhead from the engine.\
+> ✨ **Benefit:** I have full access to the **build pipeline** for my DLLs.\
+> ✨ **Benefit:** I can use the latest language features such as `nullable` without having to  > worry about Unity's APIs.
+> 
+> 🔥 **Downside:** I don't have _direct_ access to **Unity's APIs and systems**\
+> 🔥 **Downside:** I have to **git-commit DLLs** built from the library into the Unity project.\
+> 🔥 **Downside:** I'm going to get a bad reputation for **over-engineering stuff**.
 
 ### Library APIs
 
@@ -156,7 +156,9 @@ There is logic in this system that would be desirable elsewhere in the project f
 
 Gameplay footage of the original _'Air-Sea Battle - (1977) - Atari 2600'_ Available at: <[https://www.youtube.com/watch?v=YpZ7GfneiO0](https://www.youtube.com/watch?v=YpZ7GfneiO0)> [Accessed 3 June 2021].
 
-Documentation for `System.TimeSpan.ToString()` Available at: <[https://docs.microsoft.com/en-us/dotnet/api/system.timespan.tostring?view=netstandard-2.0](https://docs.microsoft.com/en-us/dotnet/api/system.timespan.tostring?view=netstandard-2.0)> [Accessed 4 June 2021].
+Documentation for `System.TimeSpan.ToString()` Available at: <[https://docs.microsoft.com/en-us/dotnet/api/system.timespan.tostring](https://docs.microsoft.com/en-us/dotnet/api/system.timespan.tostring?view=netstandard-2.0)> [Accessed 4 June 2021].
+
+Documentation for `System.Collections.ObjectModel.ObservableCollection` Available at: <[https://docs.microsoft.com/en-us/dotnet/api/system.collections.objectmodel.observablecollection-1](https://docs.microsoft.com/en-us/dotnet/api/system.collections.objectmodel.observablecollection-1?view=netstandard-2.0)> [Accessed 4 June 2021].
 
 ### Industry.Simulation
 
