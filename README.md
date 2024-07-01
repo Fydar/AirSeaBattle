@@ -1,10 +1,13 @@
-# Air-Sea Battle Code Test
+<h1>
+<img src="img/icon.svg" width="54" height="54" align="left" />
+Air-Sea Battle
+</h1>
 
-[![Video Timelapse](https://img.shields.io/badge/Development%20Timelapse-FF0000?logo=youtube)](https://www.youtube.com/watch?v=TL1X6Fn5d1Y)
+[![Unity Version: 2023.2.20f1](https://img.shields.io/badge/Made%20with%20Unity-2023.2.20f1-333333.svg?logo=unity)](https://unity.com/releases/editor/archive) [![Video Timelapse](https://img.shields.io/badge/Development%20Timelapse-FF0000?logo=youtube)](https://youtu.be/TL1X6Fn5d1Y)
 
 ![Header Image](./docs/header.png)
 
-Completed _(and over-engineered)_ in ~8 hours by Anthony Marmont.
+Completed _(and over-engineered)_ in ~8 hours by Fydar.
 
 ## Overview
 
