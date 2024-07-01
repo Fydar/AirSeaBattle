@@ -3,7 +3,7 @@
 Air-Sea Battle
 </h1>
 
-[![Unity Version: 2023.2.20f1](https://img.shields.io/badge/Made%20with%20Unity-2023.2.20f1-333333.svg?logo=unity)](https://unity.com/releases/editor/archive) [![Video Timelapse](https://img.shields.io/badge/Development%20Timelapse-FF0000?logo=youtube)](https://youtu.be/TL1X6Fn5d1Y)
+[![Unity Version: 2023.2.20f1](https://img.shields.io/badge/Made%20with%20Unity-2023.2.20f1-333333.svg?logo=unity)](https://unity.com/releases/editor/whats-new/2023.2.20) [![Video Timelapse](https://img.shields.io/badge/Development%20Timelapse-FF0000?logo=youtube)](https://youtu.be/TL1X6Fn5d1Y)
 
 ![Header Image](./docs/header.png)
 
@@ -20,7 +20,7 @@ _"I approached this problem by first creating my **out-of-engine library** that 
 > ✨ **Benefit:** I can easily create **in-browser versions** built on WASM for tools.\
 > ✨ **Benefit:** I can create **game servers** that require minimal overhead from the engine.\
 > ✨ **Benefit:** I have full access to the **build pipeline** for my DLLs.\
-> ✨ **Benefit:** I can use the latest language features such as `nullable` without having to  > worry about Unity's APIs.
+> ✨ **Benefit:** I can use the latest language features such as `nullable` without having to  worry about Unity's APIs.
 > 
 > 🔥 **Downside:** I don't have _direct_ access to **Unity's APIs and systems**\
 > 🔥 **Downside:** I have to **git-commit DLLs** built from the library into the Unity project.\

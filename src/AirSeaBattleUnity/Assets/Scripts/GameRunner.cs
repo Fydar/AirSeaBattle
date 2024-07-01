@@ -25,7 +25,6 @@ namespace AirSeaBattleUnity
 
         [Header("Configuration")]
         [SerializeField] private float enemySpeed = 1.0f;
-        [SerializeField] private string configurationUrl = "http://content.gamefuel.info/api/client_programming_test/air_battle_v1/content/config/config";
 
         public World CurrentWorld { get; private set; }
 
@@ -51,7 +50,6 @@ namespace AirSeaBattleUnity
 
             var worldTask = worldEngine.ConstructWorld()
                 .UseConfiguration(new FallbackGameplayConfigurationService())
-                .UseConfiguration(new RemoteGameplayConfigurationService(httpClient, configurationUrl))
                 .UseConfiguration(configuration =>
                 {
                     // Respect values provided by the editor.

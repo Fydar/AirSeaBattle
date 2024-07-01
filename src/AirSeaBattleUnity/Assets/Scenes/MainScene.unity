@@ -751,7 +751,6 @@ MonoBehaviour:
   mainMenuScreen: {fileID: 1008992621}
   hudScreen: {fileID: 970856831}
   enemySpeed: 2
-  configurationUrl: http://content.gamefuel.info/api/client_programming_test/air_battle_v1/content/config/config
 --- !u!4 &879978923
 Transform:
   m_ObjectHideFlags: 0
