@@ -3,30 +3,27 @@ using UnityEngine;
 
 namespace AirSeaBattleUnity.EntityRendering
 {
-	public abstract class EntityRenderer<TTarget> : MonoBehaviour
-	{
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		private TTarget renderTarget;
-		public TTarget RenderTarget
-		{
-			get
-			{
-				return renderTarget;
-			}
-			set
-			{
-				if (renderTarget != null)
-				{
-					OnStopRendering(renderTarget);
-				}
+    public abstract class EntityRenderer<TTarget> : MonoBehaviour
+    {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private TTarget renderTarget;
+        public TTarget RenderTarget
+        {
+            get => renderTarget;
+            set
+            {
+                if (renderTarget != null)
+                {
+                    OnStopRendering(renderTarget);
+                }
 
-				renderTarget = value;
+                renderTarget = value;
 
-				OnStartRendering(value);
-			}
-		}
+                OnStartRendering(value);
+            }
+        }
 
-		protected abstract void OnStopRendering(TTarget target);
-		protected abstract void OnStartRendering(TTarget target);
-	}
+        protected abstract void OnStopRendering(TTarget target);
+        protected abstract void OnStartRendering(TTarget target);
+    }
 }

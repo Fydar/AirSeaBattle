@@ -2,18 +2,18 @@
 
 namespace AirSeaBattleUnity
 {
-	public class LoadingScreen : MonoBehaviour
-	{
-		[SerializeField] private GameObject container;
+    public class LoadingScreen : MonoBehaviour
+    {
+        [SerializeField] private GameObject container;
 
-		public void Show()
-		{
-			container.SetActive(true);
-		}
+        public void Show()
+        {
+            container.SetActive(true);
+        }
 
-		public void Hide()
-		{
-			container.SetActive(false);
-		}
-	}
+        public void Hide()
+        {
+            container.SetActive(false);
+        }
+    }
 }

@@ -1,6 +1,5 @@
 ﻿using AirSeaBattle.Game.Services.Configuration;
 using AirSeaBattle.Game.Simulation;
-using AirSeaBattle.Game.Simulation.Models;
 using AirSeaBattle.Game.Simulation.Systems.EnemyBehaviour;
 using AirSeaBattle.Game.Simulation.Systems.EnemySpawning;
 using AirSeaBattle.Game.Simulation.Systems.PlayerControl;
@@ -8,82 +7,81 @@ using AirSeaBattle.Game.Simulation.Systems.ProjectileMovement;
 using Industry.Simulation.Math;
 using System.Collections;
 
-namespace RPGCore.Documentation.Samples
+namespace RPGCore.Documentation.Samples;
+
+public class AddingInputSample
 {
-	public class AddingInputSample
-	{
-		public static class Time
-		{
-			public static float deltaTime { get; } = 0.2f;
-		}
+    public static class Time
+    {
+        public static float deltaTime { get; } = 0.2f;
+    }
 
-		public static class Input
-		{
-			public static bool GetKeyDown(KeyCode keyCode)
-			{
-				return false;
-			}
+    public static class Input
+    {
+        public static bool GetKeyDown(KeyCode keyCode)
+        {
+            return false;
+        }
 
-			public static bool GetKeyUp(KeyCode keyCode)
-			{
-				return false;
-			}
-		}
+        public static bool GetKeyUp(KeyCode keyCode)
+        {
+            return false;
+        }
+    }
 
-		public enum KeyCode
-		{
-			W,
-			S,
-			Up,
-			Down,
-			Space,
-		}
+    public enum KeyCode
+    {
+        W,
+        S,
+        Up,
+        Down,
+        Space,
+    }
 
-		public static IEnumerable Run()
-		{
-			// A world engine describes the mechanics and behaviours that run in the world.
-			var worldEngine = WorldEngineBuilder.Create()
-				.UseWorldSystem(new PlayerControlSystemFactory())
-				.UseWorldSystem(new EnemySpawnerSystemFactory())
-				.UseWorldSystem(new EnemyBehaviourSystemFactory())
-				.UseWorldSystem(new ProjectileMovementSystemFactory())
-				.Build();
+    public static IEnumerable Run()
+    {
+        // A world engine describes the mechanics and behaviours that run in the world.
+        var worldEngine = WorldEngineBuilder.Create()
+            .UseWorldSystem(new PlayerControlSystemFactory())
+            .UseWorldSystem(new EnemySpawnerSystemFactory())
+            .UseWorldSystem(new EnemyBehaviourSystemFactory())
+            .UseWorldSystem(new ProjectileMovementSystemFactory())
+            .Build();
 
-			// Multiple worlds can be constructed from the same engine, with different configurations.
-			var world = worldEngine.ConstructWorld()
-				.UseConfiguration(new FallbackGameplayConfigurationService())
-				.Build()
-				.GetAwaiter().GetResult();
+        // Multiple worlds can be constructed from the same engine, with different configurations.
+        var world = worldEngine.ConstructWorld()
+            .UseConfiguration(new FallbackGameplayConfigurationService())
+            .Build()
+            .GetAwaiter().GetResult();
 
-			// Players can then join the world
-			var playerInput = new SimulationInput();
-			var player = new LocalPlayer(playerInput);
+        // Players can then join the world
+        var playerInput = new SimulationInput();
+        var player = new LocalPlayer(playerInput);
 
-			world.AddPlayer(player);
+        world.AddPlayer(player);
 
-			#region update
-			// Repeat until the game is over
-			while (!world.IsGameOver)
-			{
-				// Mutate the players SimulationInput to control the player in the simulation.
-				if (Input.GetKeyDown(KeyCode.Up))
-				{
-					playerInput.Up.SimulateButtonDown();
-				}
-				else if (Input.GetKeyUp(KeyCode.Up))
-				{
-					playerInput.Up.SimulateButtonUp();
-				}
+        #region update
+        // Repeat until the game is over
+        while (!world.IsGameOver)
+        {
+            // Mutate the players SimulationInput to control the player in the simulation.
+            if (Input.GetKeyDown(KeyCode.Up))
+            {
+                playerInput.Up.SimulateButtonDown();
+            }
+            else if (Input.GetKeyUp(KeyCode.Up))
+            {
+                playerInput.Up.SimulateButtonUp();
+            }
 
-				// ... handle the rest of the keys ...
+            // ... handle the rest of the keys ...
 
-				// Advance the game simulation by a frame.
-				world.Update(Fixed.FromFloat(Time.deltaTime));
+            // Advance the game simulation by a frame.
+            world.Update(Fixed.FromFloat(Time.deltaTime));
 
-				// Wait until the next frame.
-				yield return null;
-			}
-			#endregion update
-		}
-	}
+            // Wait until the next frame.
+            yield return null;
+        }
+        #endregion update
+    }
 }

@@ -9,48 +9,47 @@ using RPGCore.Events;
 using System;
 using System.Threading.Tasks;
 
-namespace RPGCore.Documentation.Samples
+namespace RPGCore.Documentation.Samples;
+
+public class WorldEventsSample
 {
-	public class WorldEventsSample
-	{
-		#region handler
-		// A basic event handler for rendering entities in the world.
-		public class EntityRendererEventHandler<TValue> : IEventDictionaryHandler<Guid, TValue>
-		{
-			public void OnAdd(Guid key, TValue value)
-			{
-				Console.WriteLine($"Starting rendering entity '{key}'.");
-			}
+    #region handler
+    // A basic event handler for rendering entities in the world.
+    public class EntityRendererEventHandler<TValue> : IEventDictionaryHandler<Guid, TValue>
+    {
+        public void OnAdd(Guid key, TValue value)
+        {
+            Console.WriteLine($"Starting rendering entity '{key}'.");
+        }
 
-			public void OnRemove(Guid key, TValue value)
-			{
-				Console.WriteLine($"Stopped rendering entity '{key}'.");
-			}
-		}
-		#endregion handler
+        public void OnRemove(Guid key, TValue value)
+        {
+            Console.WriteLine($"Stopped rendering entity '{key}'.");
+        }
+    }
+    #endregion handler
 
-		public async Task Run()
-		{
-			// A world engine describes the mechanics and behaviours that run in the world.
-			var worldEngine = WorldEngineBuilder.Create()
-				.UseWorldSystem(new PlayerControlSystemFactory())
-				.UseWorldSystem(new EnemySpawnerSystemFactory())
-				.UseWorldSystem(new EnemyBehaviourSystemFactory())
-				.UseWorldSystem(new ProjectileMovementSystemFactory())
-				.Build();
+    public async Task Run()
+    {
+        // A world engine describes the mechanics and behaviours that run in the world.
+        var worldEngine = WorldEngineBuilder.Create()
+            .UseWorldSystem(new PlayerControlSystemFactory())
+            .UseWorldSystem(new EnemySpawnerSystemFactory())
+            .UseWorldSystem(new EnemyBehaviourSystemFactory())
+            .UseWorldSystem(new ProjectileMovementSystemFactory())
+            .Build();
 
-			var world = await worldEngine.ConstructWorld()
-				.UseConfiguration(new FallbackGameplayConfigurationService())
-				.Build();
+        var world = await worldEngine.ConstructWorld()
+            .UseConfiguration(new FallbackGameplayConfigurationService())
+            .Build();
 
-			#region subscribe
-			// Create an object to handle the rendering of entities in the world.
-			var entityRenderer = new EntityRendererEventHandler<WorldEnemy>();
+        #region subscribe
+        // Create an object to handle the rendering of entities in the world.
+        var entityRenderer = new EntityRendererEventHandler<WorldEnemy>();
 
-			// Subscribe to change events from the world.
-			// "AddAndInvoke" invokes the "OnAdd" event to every item that may already exist in the collection.
-			world.Enemies.Handlers[this].AddAndInvoke(entityRenderer);
-			#endregion subscribe
-		}
-	}
+        // Subscribe to change events from the world.
+        // "AddAndInvoke" invokes the "OnAdd" event to every item that may already exist in the collection.
+        world.Enemies.Handlers[this].AddAndInvoke(entityRenderer);
+        #endregion subscribe
+    }
 }

@@ -4,31 +4,31 @@ using UnityEngine;
 
 namespace AirSeaBattleUnity
 {
-	public class WorldResizer : MonoBehaviour
-	{
-		[SerializeField] private GameRunner entrypoint;
+    public class WorldResizer : MonoBehaviour
+    {
+        [SerializeField] private GameRunner entrypoint;
 
-		private int currentWidth;
-		private int currentHeight;
-		private World lastWorld;
+        private int currentWidth;
+        private int currentHeight;
+        private World lastWorld;
 
-		private void Update()
-		{
-			if (currentWidth != Screen.width
-				|| currentHeight != Screen.height
-				|| lastWorld != entrypoint.CurrentWorld)
-			{
-				if (entrypoint.CurrentWorld != null)
-				{
-					var ratio = ((Fixed)Screen.width) / ((Fixed)Screen.height);
+        private void Update()
+        {
+            if (currentWidth != Screen.width
+                || currentHeight != Screen.height
+                || lastWorld != entrypoint.CurrentWorld)
+            {
+                if (entrypoint.CurrentWorld != null)
+                {
+                    var ratio = ((Fixed)Screen.width) / ((Fixed)Screen.height);
 
-					entrypoint.CurrentWorld.Resize(entrypoint.CurrentWorld.WorldHeight * ratio, entrypoint.CurrentWorld.WorldHeight);
-				}
+                    entrypoint.CurrentWorld.Resize(entrypoint.CurrentWorld.WorldHeight * ratio, entrypoint.CurrentWorld.WorldHeight);
+                }
 
-				currentWidth = Screen.width;
-				currentHeight = Screen.height;
-				lastWorld = entrypoint.CurrentWorld;
-			}
-		}
-	}
+                currentWidth = Screen.width;
+                currentHeight = Screen.height;
+                lastWorld = entrypoint.CurrentWorld;
+            }
+        }
+    }
 }
